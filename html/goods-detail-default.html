@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/goods-detail-default.css">
+    <link rel="stylesheet" type="text/css" href="css/comment.css">
+    <title>商品详情（默认）</title>
+</head>
+
+<body>
+<header>
+    <div class="header-nav-both-icon">
+        <div class="nav-icon-left">
+        </div>
+        <div class="nav-icon-right">
+        </div>
+    </div>
+</header>
+<!-- 内容部分
+            {{~it.array :value:index}}
+        <div>{{=value}}!</div>
+        {{~}}
+-->
+<main>
+    <script id="goods-detail-default-tpl" type="text/x-dot-template">
+        <div class="loop-images-container">
+            <div class="loop-image-item" data-goodId="{{= it.goodDetailBean.goodid}}">
+                <img src="{{= it.goodDetailBean.goodPicUrl}}">
+            </div>
+        </div>
+
+        <div class="price-container">
+            <div class="init-price">
+                <span class="type">￥</span>
+                <div class="price" data-favourGoodId="{{= it.goodDetailBean.goodid}}">{{= max(it.goodDetailBean.skuList,'max')}}</div>
+                <div class="price-tag">{{= it.goodDetailBean.goodTag}}</div>
+            </div>
+            <div class="discount-price">
+                <del class="del-container"><span class="delete">￥{{= max(it.goodDetailBean.skuList,'min') }}</span>
+                </del>
+            </div>
+            <div class="introduction">
+                {{= it.goodDetailBean.goodName}}
+            </div>
+        </div>
+        <!-- 促销 -->
+        <div class="promotion">
+            <div class="left">
+                <span class="title">促销：</span>
+                <span class="content">{{= it.orderSale}}</span>
+            </div>
+            <div class="right"></div>
+        </div>
+        <!-- 选择款式 -->
+        <div class="choose-style">
+            <div class="left">
+                <span class="title">选择款式</span>
+                <span class="content"></span>
+            </div>
+            <div class="right">
+                <div class="icon-container">
+                    <div class="icon-nav"><img src="img/warehouse/home_icon_next@3x.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- 查看全部评论 -->
+        <div class="checkout-all-comment">
+            <div class="left">
+                {{? it.allcount}}
+                <span class="title">宝贝评价({{= it.allcount}})</span>
+                {{??}}
+                <span class="title">无评价</span>
+                {{?}}
+                <span class="content"></span>
+            </div>
+            <div class="right">
+                <div class="text-container">
+                    查看全部
+                </div>
+                <div class="icon-container">
+                    <div class="icon-nav"><img src="img/warehouse/home_icon_next@3x.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- 评论列表 -->
+        <div class="comment-content-list">
+            {{? it.singleComment}}
+            <div class="comment-item">
+                <!-- 用户信息 -->
+                <div class="user-info">
+                    <div class="logo-name">
+                        <!-- 用户头像 -->
+                        <div class="user-logo">
+                            <img src="{{= it.singleComment.userAvatar}}" alt="" title="">
+                        </div>
+                        <!-- 用户名称 -->
+                        <div class="user-name">{{= it.singleComment.userName}}</div>
+                    </div>
+                    <div class="time">{{= getdate(it.singleComment.createTime) }}</div>
+                </div>
+                <div class="content">
+                    {{= it.singleComment.commentText }}
+                </div>
+                <div class="type">
+                    类别：全新现货
+                </div>
+            </div>
+            {{?}}
+        </div>
+        <!-- 上拉显示更多 -->
+        <div class="pull-up-show-more">
+            点击加载更多详情
+        </div>
+        <!--更多详情-->
+        <div class="more-information" id="more-information">
+            <iframe id="iframe" scrolling="no" width="100%" height="100%" class="iframe"
+                    src="{{= it.goodDetailBean.goodDescUrl}}" frameborder="0" onLoad="clickHanlder()"></iframe>
+        </div>
+        <!-- 快捷菜单 -->
+        <div class="quick-memu">
+            <div class="connect-customer">
+                <span class="inner"></span>
+            </div>
+            <div class="into-shopping-bag">
+                <div class="inner"></div>
+            </div>
+            <div class="favour">
+                <div class="inner"></div>
+            </div>
+            <div class="buy-now">立即购买</div>
+            <div class="add-to-shopping-bag">加入购物袋</div>
+        </div>
+        <div class="popupBox-goods-details">
+            <div class="popupBoxBody">
+                <!-- 图片和说明 -->
+                <div class="goods-picture">
+                    <div class="img"><img src="{{=it.goodDetailBean.goodPicUrl}}"></div>
+                    <div class="text">
+                        <div class="price">￥{{= max(it.goodDetailBean.skuList,'max')}}</div>
+                        <div class="selected-type">已选类型</div>
+                    </div>
+                </div>
+                <!-- 类型 -->
+                <div class="propertyList">
+                    {{~it.goodDetailBean.propertyList:p:index}}
+                    <div class="goodDetailBean-item type{{=index}}">
+                        <div class="type-select-container">
+                            <div class="text" data-propertyid="{{= p.propertyid}}">
+                                {{= p.propertyName}}
+                            </div>
+                        </div>
+                        <!-- 选择文字 -->
+                        <div class="pedding-select-{{=index}}">
+                            <!--遍历valueList-->
+                            {{~p.valueList :list}}
+                            <div class="text-content-{{=index}}" data-valueid="{{= list.valueid}}">
+                                {{= list.valueName}}
+                            </div>
+                            {{~}}
+                            <!--遍历SKU-->
+                            {{~it.goodDetailBean.skuList :sku}}
+                            <span class="skuList-item" data-skuidText="{{= sku.skuidText}}" data-skuid="{{= sku.skuid}}"
+                                  data-skuPic="{{= sku.skuPic}}" data-stockNum="{{= sku.stockNum}}"
+                                  data-nowPrice="{{= sku.nowPrice}}" data-oldPrice="{{= sku.oldPrice}}"
+                                  data-skuDesc="{{= sku.skuDesc}}"></span>
+                            {{~}}
+                        </div>
+                    </div>
+                    {{~}}
+                </div>
+
+                <!-- 数量提示-->
+                <div class="type-select-container">
+                    <div class="text">
+                        数量
+                    </div>
+                </div>
+                <!-- 数量 -->
+                <div class="pedding-buy-count">
+                    <div class="button-left">
+                        <div class="icon-nav">-</div>
+                    </div>
+                    <div class="count-input">
+                        <input type="number" name="buy-count" placeholder="0" value="0" disabled="disabled">
+                    </div>
+                    <div class="button-right">
+                        <div class="icon-nav">+</div>
+                    </div>
+                    <!--库存-->
+                    <div class="stored">
+                        库存:
+                    </div>
+                </div>
+                <div class="quick-memu2">
+                    <div class="connect-customer2">
+                        <span class="inner"></span>
+                    </div>
+                    <div class="into-shopping-bag2">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="favour2">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="buy-now2">立即购买</div>
+                    <div class="add-to-shopping-bag2">加入购物袋</div>
+                </div>
+
+                <div class="popupBox-closeBtn"></div>
+                <!--<div class="popupBox-ensureBtn">确定</div>-->
+            </div>
+        </div>
+    </script>
+    <div class="goods-detail-default" id="goods-detail-default">
+    </div>
+
+
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/imageViewer.min.js"></script>
+<script type="text/javascript">
+    var server_data = {
+        "data": {
+            "goodDetailBean": {
+                "goodid": 333,
+                "goodName": "埃罗芒阿老师我的妹妹是黄漫和泉沙雾COSt恤短袖夏装上衣服女",
+                "goodSecondName": "",
+                "goodTag": "新品特惠",
+                "goodPicUrl": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837138997.JPEG",
+                "propertyList": [
+                    {
+                        "propertyid": 437,
+                        "propertyName": "尺码",
+                        "valueList": [
+                            {
+                                "valueid": 1038,
+                                "valueName": "M"
+                            },
+                            {
+                                "valueid": 1039,
+                                "valueName": "L"
+                            },
+                            {
+                                "valueid": 1040,
+                                "valueName": "XL"
+                            }
+                        ]
+                    }
+                ],
+                "skuList": [
+                    {
+                        "skuid": 743,
+                        "skuidText": "437:1038/",
+                        "skuPic": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837138997.JPEG",
+                        "stockNum": 19,
+                        "nowPrice": 5900,
+                        "oldPrice": 0,
+                        "skuDesc": "尺码:M "
+                    },
+                    {
+                        "skuid": 744,
+                        "skuidText": "437:1039/",
+                        "skuPic": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837138997.JPEG",
+                        "stockNum": 79,
+                        "nowPrice": 5900,
+                        "oldPrice": 0,
+                        "skuDesc": "尺码:L "
+                    },
+                    {
+                        "skuid": 745,
+                        "skuidText": "437:1040/",
+                        "skuPic": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837138997.JPEG",
+                        "stockNum": 0,
+                        "nowPrice": 5900,
+                        "oldPrice": 0,
+                        "skuDesc": "尺码:XL "
+                    }
+                ],
+                "picList": [
+                    "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837196024.JPEG",
+                    "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170602151837138997.JPEG"
+                ],
+                "goodDescUrl": "http://192.168.0.176:8084/h5/h5good/findGoodDetailH5Page/333",
+                "userCollectionState": false
+            },
+            "onSale": true,
+            "singleComment": {
+                "commentid": 592,
+                "goodId": 333,
+                "orderId": 3366,
+                "skuText": "尺码:M ",
+                "userId": 4981,
+                "commentText": "该用户暂无任何评价",
+                "level": 3,
+                "createTime": 1499826689000,
+                "skuId": 743,
+                "userAvatar": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/img_20170627153124996049.JPEG",
+                "userName": "亲，还没有设置昵称哦",
+                "skuPic1": null,
+                "skuPic2": null,
+                "skuPic3": null,
+                "skuPic4": null,
+                "skuPic5": null,
+                "haspic": 1
+            },
+            "allcount": 7,
+            "state": "success",
+            "orderSale": "全场满100减8 满200减18"
+        }
+    };
+    /*常用的函数*/
+    var popularFunction = {
+        /*显示指定长度的字符串*/
+        apostrophe: function (select, count) {
+            $(select).each(function () {
+                var maxwidth = count;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + '...');
+                }
+            });
+        }
+    };
+    var pagefn = doT.template($('#goods-detail-default-tpl').html(), undefined);
+    /*时间戳转换为正常时间的函数*/
+    function getdate() {
+        var now = new Date(),
+            y = now.getFullYear(),
+            m = now.getMonth() + 1,
+            d = now.getDate();
+        return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+    }
+    /*Logger类*/
+    function Logger(data, type) {
+        /**
+         * @param data 要打印的数据
+         * @param type 类型 'warning'
+         * */
+        if (!type) {
+            console.log(data);
+        }
+        if ('warning' == type) {
+            console.log("%c" + data, "color:orange;font-weight:bold");
+            return 1;
+        }
+        if ('info' == type) {
+            console.log("%c" + data, "color:blue;font-weight:bold");
+            return true;
+
+        }
+        if ('error' == type) {
+            console.log("%c" + data, "color:red;font-weight:bold");
+            return 3;
+        }
+        if ('color' == type) {
+            console.log('%c' + data, 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:1em;');
+            return 4;
+        }
+    }
+    //        添加内容的方法
+    function showListAppend(userList, data, type) {
+        if (type) {
+            console.log(JSON.stringify(pagefn(data)));
+            $(userList).append(pagefn(data));
+        } else {
+            console.log('禁止渲染');
+        }
+    }
+    //        覆盖内容的方法
+    function showListOverride(userList, data, type) {
+        if (type) {
+            console.log(JSON.stringify(pagefn(data)));
+            $(userList).html(pagefn(data));
+        } else {
+            console.log('禁止渲染');
+        }
+    }
+    /*提示信息*/
+    function popBox(el, msg) {
+        console.log('msg' + msg);
+        $(el).append(
+            '<div class="hintPopBox">\
+            <div class="hintPop">' + msg + '</div>\
+                </div>'
+        );
+        setTimeout(removePopBox, 2000);
+        function removePopBox() {
+            $('.hintPopBox').remove();
+        }
+    }
+    /*动态获取商品的价格范围 包含打折之前之后*/
+    function max(data, type) {
+        if (type == 'max') {
+            var priceGroupNowPrice = [];
+            var maxPrice = null;
+            var minPrice = null;
+            if (data.length > 1) {
+                for (var i = 0; i < data.length; i++) {
+                    priceGroupNowPrice.push(data[i].nowPrice);
+                }
+                maxPrice = Math.max.apply(null, priceGroupNowPrice);
+                minPrice = Math.min.apply(null, priceGroupNowPrice);
+                if (maxPrice - minPrice == 0) {
+                    return maxPrice / 100;
+                }
+                return minPrice / 100 + '-' + maxPrice / 100;
+            }
+            if (data.length == 1) {
+                return data[0].nowPrice / 100;
+            }
+        }
+        if (type == 'min') {
+            var priceGroupOldPrice = [];
+            var maxPrice = null;
+            var minPrice = null;
+            if (data.length > 1) {
+                for (var i = 0; i < data.length; i++) {
+                    priceGroupOldPrice.push(data[i].oldPrice);
+                }
+                maxPrice = Math.max.apply(null, priceGroupOldPrice);
+                minPrice = Math.min.apply(null, priceGroupOldPrice);
+                if (maxPrice - minPrice == 0) {
+                    return maxPrice / 100;
+                }
+                return minPrice / 100 + '-' + maxPrice / 100;
+            }
+            if (data.length == 1) {
+                return data[0].oldPrice / 100;
+            }
+        }
+    }
+    // 计算页面的实际高度，iframe自适应会用到
+    function calcPageHeight(doc) {
+        var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
+        var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+        var height = Math.max(cHeight, sHeight)
+        return height
+    }
+    /*点击获取获取详情页*/
+    function clickHanlder() {
+        var ifm = document.getElementById("iframe");
+        var subWeb = document.frames ? document.frames["iframe"].document :
+            ifm.contentDocument;
+        if (ifm != null && subWeb != null) {
+            ifm.height = subWeb.body.scrollHeight;
+        }
+    }
+    /*匹配价格标签*/
+    function handlerComparePriceTag(el, val) {
+        /*找到商品的详细信息*/
+        $(el).find('.skuList-item').each(function (event) {
+            Logger(event);
+            /*判断属性是否相等*/
+            var tmpSkuIdText = $(this).attr('data-skuidtext');
+            var tmpSkuId = $(this).attr('data-skuid');
+            var tmpSkuPic = $(this).attr('data-skupic');
+            var tmpStockNum = $(this).attr('data-stocknum');
+            var tmpNowPrice = $(this).attr('data-nowprice');
+            var tmpOldPrice = $(this).attr('data-oldprice');
+            var tmpSkuDesc = $(this).attr('data-skudesc');
+            var TmpObject = {
+                tmpSkuIdText: tmpSkuIdText,
+                tmpSkuId: tmpSkuId,
+                tmpSkuPic: tmpSkuPic,
+                tmpStockNum: tmpStockNum,
+                tmpNowPrice: tmpNowPrice,
+                tmpOldPrice: tmpOldPrice,
+                tmpSkuDesc: tmpSkuDesc
+            };
+            if (val == tmpSkuIdText) {
+                Logger(TmpObject.tmpNowPrice);
+                /*设置一下价格*/
+                $(this).parents('.popupBoxBody').find('.goods-picture').find('.text').find('.price').text('￥' + TmpObject.tmpNowPrice / 100);
+                /*设置一下商品描述*/
+                $(this).parents('.popupBoxBody').find('.goods-picture').find('.text').find('.selected-type').text(TmpObject.tmpSkuDesc == 'undefined' ? '暂无描述信息' : TmpObject.tmpSkuDesc);
+                /*设置一下商品的ID*/
+                $(this).parents('.popupBoxBody').find('.goods-picture').find('.text').attr('data-skuid', TmpObject.tmpSkuIdText);
+                /*设置一下商品图片*/
+                $(this).parents('.popupBoxBody').find('.goods-picture').find('.img').find('img').attr('src', TmpObject.tmpSkuPic);
+                /*设置一下库存的数量*/
+                $(this).parents('.popupBoxBody').find('.pedding-buy-count').find('.stored').html('库存：(' +"<span class=\"number\">"+ TmpObject.tmpStockNum + '</span>'+')');
+                //提示仓库是否充足
+                var stockNum = $(this).parents().find('.stored').find('.number').text();
+                // 判断库存是否充足
+                if (stockNum==0) {
+                    popBox('.popupBoxBody', '库存不足');
+                    $(this).parents().find('.count-input').find('input').val(0);
+                    return false;
+                }
+            }
+        });
+    }
+    /*处理选择商品价格的事件1*/
+    function handlerToShowPrice1() {
+
+        $('.popupBoxBody').find('.propertyList').find('.type0').each(function (index) {
+            Logger(index);
+            /*初始化一个选择器变量*/
+            /*获取属性ID*/
+            var thisPropertyId = $(this)
+                .find('.type-select-container').find('.text').attr('data-propertyid');
+            Logger(parseInt(thisPropertyId), 'warning');
+            /*颜色*/
+            $(this).find('.pedding-select-0').find('.text-content-0').each(function (index2) {
+                Logger(index2, 'info');
+                /*选中一个选项的时候,获取*/
+                $(this).on('touchend', function (event) {
+                    $(this).css({
+                        'color': '#ffffff',
+                        'background-color': '#4595e5'
+                    });
+                    $('.text-content-0').not(this).css(
+                        {
+                            'color': '#cccccc',
+                            'background-color': '#ffffff'
+                        }
+                    );
+                    var dataValueId = $(this).attr('data-valueid');
+                    Logger(dataValueId, 'warning');
+                    findSkuText = thisPropertyId + ':' + dataValueId + '/';
+                    Logger(findSkuText);
+//                    返回组合的数据
+                    totalSkuText = findSkuText + findSkuText2;
+                    handlerComparePriceTag('.pedding-select-0', totalSkuText);
+                    return findSkuText;
+                })
+            });
+
+        })
+    }
+    /*处理选择商品价格的事件2*/
+    function handlerToShowPrice2() {
+
+        $('.popupBoxBody').find('.propertyList').find('.type1').each(function (index) {
+            Logger(index);
+            /*初始化一个选择器变量*/
+            /*获取属性ID*/
+            var thisPropertyId = $(this)
+                .find('.type-select-container').find('.text').attr('data-propertyid');
+            Logger(parseInt(thisPropertyId), 'warning');
+            /*颜色*/
+            $(this).find('.pedding-select-1').find('.text-content-1').each(function (index2) {
+                Logger(index2, 'info');
+                /*选中一个选项的时候,获取*/
+                $(this).on('touchend', function (event) {
+                    $(this).css({
+                        'color': '#ffffff',
+                        'background-color': '#4595e5'
+                    });
+                    $('.text-content-1').not(this).css(
+                        {
+                            'color': '#cccccc',
+                            'background-color': '#ffffff'
+                        }
+                    );
+                    var dataValueId = $(this).attr('data-valueid');
+                    Logger(dataValueId, 'warning');
+                    findSkuText2 = thisPropertyId + ':' + dataValueId + '/';
+                    Logger(findSkuText2);
+                    totalSkuText = findSkuText + findSkuText2;
+                    handlerComparePriceTag('.pedding-select-0', totalSkuText);
+//                    返回组合的数据
+                    return findSkuText;
+                })
+            });
+
+        })
+    }
+    /*处理购买数量点击事件*/
+    function handlerClickChooseGoodsNUmber(total) {
+        /*减少购买商品数量*/
+        $('.popupBoxBody').find('.pedding-buy-count').find('.button-left').on('touchend', function (events) {
+            var stockNum = $(this).parents().find('.stored').find('.number').text();
+            // 判断库存是否充足
+            if (stockNum==0) {
+                popBox('.popupBoxBody', '库存不足');
+                $(this).parents().find('.count-input').find('input').val(0);
+                return false;
+            }
+            if (!totalSkuText) {
+                popBox('.popupBoxBody', '请选择商品和类型');
+                return false;
+            }
+            var initNum = $(this).parents().find('.count-input').find('input').val();
+            initNum--;
+            if (initNum < 0) {
+//                popBox('.popupBoxBody', '数量不能小于1');
+                return false;
+            }
+
+            $(this).parents().find('.count-input').find('input').val(initNum);
+            console.log('initNum::' + initNum);
+        })
+        /*增加购买商品数量*/
+        $('.popupBoxBody').find('.pedding-buy-count').find('.button-right').on('touchend', function (events) {
+            /*获取库存*/
+            var stockNum = $(this).parents().find('.stored').find('.number').text();
+            if (!totalSkuText) {
+                popBox('.popupBoxBody', '请选择商品和类型');
+                return false;
+            }
+            // 判断库存是否充足
+            if (stockNum==0) {
+                popBox('.popupBoxBody', '库存不足');
+                $(this).parents().find('.count-input').find('input').val(0);
+                return false;
+            }
+            var initNum = $(this).parents().find('.count-input').find('input').val();
+            initNum++;
+
+            $(this).parents().find('.count-input').find('input').val(initNum);
+            console.log('initNum::' + initNum);
+        })
+
+        /*监听立即购买函数*/
+        $('.popupBoxBody').find('.quick-memu2').find('.buy-now2').on('touchend',function (event) {
+            var stockNum = $(this).parents().find('.stored').find('.number').text();
+            // 判断库存是否充足
+            if (stockNum==0) {
+                popBox('.popupBoxBody', '库存不足，不能购买');
+                $(this).parents().find('.count-input').find('input').val(0);
+                return false;
+            }
+            if (!totalSkuText) {
+                popBox('.popupBoxBody', '请选择商品和类型');
+                return false;
+            }
+            var initNum = $(this).parents().find('.count-input').find('input').val();
+            if (initNum<=0) {
+                popBox('.popupBoxBody', '购买数量不能小于1');
+                return false;
+            }
+            /*获取数据 提交数据*/
+            /*购买的商品类型*/
+            var goods_id = $('.popupBoxBody').find('.goods-picture').find('.text').attr('data-skuid');
+            console.log(goods_id);
+        })
+        /*监听加入购物车函数*/
+        $('.popupBoxBody').find('.quick-memu2').on('touchend', '.add-to-shopping-bag2', function (event2) {
+            var stockNum = $(this).parents().find('.stored').find('.number').text();
+            // 判断库存是否充足
+            if (stockNum == 0) {
+                popBox('.popupBoxBody', '库存不足,不能加入购物车');
+                $(this).parents().find('.count-input').find('input').val(0);
+                return false;
+            }
+            if (!totalSkuText) {
+                popBox('.popupBoxBody', '请选择商品和类型');
+                return false;
+            }
+            /*购买的数量*/
+            var initNum = $(this).parents().find('.count-input').find('input').val();
+            if (initNum <= 0) {
+                popBox('.popupBoxBody', '购买数量不能小于1');
+                return false;
+            }
+            /*获取数据 提交数据*/
+            /*购买的商品类型*/
+            var goods_id = $('.popupBoxBody').find('.goods-picture').find('.text').attr('data-skuid');
+            console.log(goods_id);
+            /*TODO AJAX请求*/
+        });
+       /*todo 监听各个按钮*/
+        AddEventListenerMenuOfPopBox();
+
+    }
+    /*监听弹出层各个菜单按钮*/
+    function AddEventListenerMenuOfPopBox() {
+        /*监听点击客服 进入页面*/
+        $('.popupBoxBody').find('.quick-memu2').on('touchend', '.connect-customer2', function () {
+            console.log('进入客服页面');
+        });
+        /*监听点击进入购物袋 进入页面*/
+        $('.popupBoxBody').find('.quick-memu2').on('touchend', '.into-shopping-bag2', function () {
+            console.log('进入购物袋页面');
+        });
+        /*监听点击收藏 请求接口*/
+        $('.popupBoxBody').find('.quick-memu2').on('touchend', '.favour2', function () {
+            console.log('请求收藏接口');
+            // goodId
+            var goodId = $('.goods-detail-default').find('.price-container').find('.price').attr('data-favourgoodid');
+            console.log('goodId::'+goodId);
+        });
+    }
+    /*监听外部菜单栏各个按钮的点击事件*/
+    function AddEventListenerMenuOut() {
+        /*收藏商品*/
+        $('.goods-detail-default').find('.quick-memu').on('touchend','.favour',function (event) {
+            // goodId
+            var goodId = $('.goods-detail-default').find('.price-container').find('.price').attr('data-favourgoodid');
+            console.log('goodId::'+goodId);
+            console.log('请求收藏接口');
+
+        })
+        /*监听点击客服 进入页面*/
+        $('.goods-detail-default').find('.quick-memu').on('touchend', '.connect-customer', function () {
+            console.log('进入客服页面');
+        });
+        /*监听点击进入购物袋 进入页面*/
+        $('.goods-detail-default').find('.quick-memu').on('touchend', '.into-shopping-bag', function () {
+            console.log('进入购物袋页面');
+        });
+        /*外部点击立即购买*/
+        $('.goods-detail-default').find('.quick-memu').find('.buy-now').on('touchend',function (event) {
+            /*弹出选择商品类型的弹窗*/
+            handlerChooseStyle();
+        })
+        /*外部点击加入购物车*/
+        $('.goods-detail-default').find('.quick-memu').find('.add-to-shopping-bag').on('touchend',function (event) {
+            /*弹出选择商品类型的弹窗*/
+            handlerChooseStyle();
+        })
+    }
+    /*处理选择宝贝类型的函数*/
+    function handlerChooseStyle() {
+        /*监听选择数量的事件*/
+        handlerClickChooseGoodsNUmber();
+        $('.popupBox-goods-details').show();
+        var isHaveType = $('.propertyList').children();
+        /*只有一个节点的时候 值选择第一个选项*/
+        if (isHaveType.length == 1) {
+            handlerToShowPrice1();
+        }
+        /*有两个节点的时候选择两个选项*/
+        if (isHaveType.length == 2) {
+            handlerToShowPrice1();
+            handlerToShowPrice2();
+        }
+    }
+    Zepto(function ($) {
+        /*处理显示价格*/
+        totalSkuText = '';
+        findSkuText = '';
+        findSkuText2 = '';
+//        开始渲染
+        showListAppend($('#goods-detail-default'), server_data.data, true);
+        /*截取评论名称为指定长度*/
+        var userCommentNickName = $('.comment-content-list').find('.comment-item').find('.user-name');
+        popularFunction.apostrophe(userCommentNickName,3);
+        //        默认隐藏弹出
+        $('.popupBox-goods-details').hide();
+        $('.more-information').hide();
+        //        点击选择款式弹出
+        $('.choose-style').on('touchend', function () {
+            /*选择款式的时候触发*/
+            handlerChooseStyle();
+        })
+        /*TODO 外部菜单栏的监听事件*/
+        AddEventListenerMenuOut();
+        //        点击关闭弹窗按钮关闭弹窗
+        $('.popupBox-closeBtn').tap(function () {
+            console.log(1);
+            $(this).parents('.popupBox-goods-details').hide();
+        });
+        /*大图预览图片数组*/
+        var img_group = [];
+        /*给商品详情页的轮播图 绑定大图预览事件*/
+        $('.goods-detail-default').find('.loop-images-container').find('.loop-image-item').find('img').each(function (index) {
+            console.log(index);
+            img_group.push($(this).attr('src'));
+            $(this).attr('data-index', index);
+            $(this).on('tap', function (event) {
+                var index = $(this).attr('data-index');
+                console.log(index);
+                if (index !== undefined && index !== null) {
+                    imageViewer.open(parseInt(index));
+                }
+            });
+        });
+        /*初始化大图预览*/
+        var imageViewer = new ImageViewer(img_group, {
+            container: 'body',
+            enableScale: true,
+            startIndex: 0,
+            headerRender: function () {
+                setTimeout(function () {
+                    document.getElementById('close').addEventListener('click', function () {
+                        imageViewer.close();
+                    }, false);
+                }, 0);
+                return '<div id="close">关闭</div>';
+            },
+            footerRender: function () {
+                return '<span class="number-current"></span>/<span class="number-total"></span>';
+            },
+            beforeSwipe: function (current) {
+                console.info('current-before: ' + current);
+            },
+            afterSwipe: function (current) {
+                console.info('current-after: ' + current);
+            },
+            swipeLastLeft: function (imageViewer, distance) {
+                console.log('swipeLastLeft', distance);
+                if (distance > 50) {
+                    popBox('.image-footer', '亲，我也是有底线的！');
+                    return true;
+                }
+            },
+            swipeFirstRight: function (imageViewer, distance) {
+                popBox('.image-footer', '亲，到顶了！');
+                console.log('swipeFirstRight', distance);
+                if (distance > 30) {
+                    // imageViewer.setImageOption(['images/5.jpg', 'images/6.jpg', 'images/7.jpg']);
+                    return true;
+                }
+            }
+        });
+        // 弹窗 ，2秒后消失
+        /*点击获取更多详情*/
+        $('.pull-up-show-more').on('tap', function () {
+            $('.more-information').show();
+        })
+//        Zepto 结束
+    });
+
+</script>
+</body>
+
+</html>

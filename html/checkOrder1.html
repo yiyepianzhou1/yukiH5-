@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ensure-order-no-address.css">
+    <title>确认订单无地址</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            填写订单
+        </div>
+    </div>
+</header>
+<main>
+    <div class="ensure-order-no-address">
+        <!--彩条背景-->
+        <div class="color-line"></div>
+        <!--添加地址-->
+        <div class="add-address">
+            <div class="left">
+                <div class="left-icon"></div>
+                <div class="text">请添加收货地址</div>
+            </div>
+            <div class="right">
+                <div class="right-icon"></div>
+            </div>
+        </div>
+        <!--购物车商品列表-->
+        <div class="carts-goods">
+            <div class="carts-goods-item">
+                <div class="goods-picture">
+                    1
+                </div>
+                <div class="goods-details">
+                    <div class="goods-title">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="sub-heading">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="goods-price">
+                        ￥34822
+                    </div>
+                </div>
+                <div class="count"><span>x</span>1
+                </div>
+            </div>
+            <div class="carts-goods-item">
+                <div class="goods-picture">
+                    1
+                </div>
+                <div class="goods-details">
+                    <div class="goods-title">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="sub-heading">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="goods-price">
+                        ￥34822
+                    </div>
+                </div>
+                <div class="count"><span>x</span>1
+                </div>
+            </div>
+            <div class="carts-goods-item">
+                <div class="goods-picture">
+                    1
+                </div>
+                <div class="goods-details">
+                    <div class="goods-title">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="sub-heading">
+                        这里是商品标题,这里是商品标题，这里是商品标题
+                    </div>
+                    <div class="goods-price">
+                        ￥34822
+                    </div>
+                </div>
+                <div class="count"><span>x</span>1
+                </div>
+            </div>
+
+        </div>
+        <!--总价-->
+        <div class="goods-total-price">
+            <div class="left">
+                <div class="text">商品总价</div>
+                <div class="tag"></div>
+            </div>
+            <div class="right">
+                <div class="tag"></div>
+                <div class="text"><span>￥</span>293.00</div>
+            </div>
+        </div>
+        <!--运费-->
+        <div class="carriage">
+            <div class="left">
+                <div class="text">运费</div>
+                <div class="tag"></div>
+            </div>
+            <div class="right">
+                <div class="tag"></div>
+                <div class="text"><span>￥</span>6.00</div>
+            </div>
+        </div>
+        <!--优惠券-->
+        <div class="coupon">
+            <div class="left">
+                <div class="text">优惠券</div>
+                <div class="tag"></div>
+            </div>
+            <div class="right">
+                <div class="tag"></div>
+                <div class="text"><span>-￥</span>45.00</div>
+            </div>
+        </div>
+        <!--折扣信息-->
+        <div class="discount-info">
+            <div class="left">
+                <div class="text">折扣信息</div>
+                <div class="tag"></div>
+            </div>
+            <div class="right">
+                <div class="tag"></div>
+                <div class="text"><span>-￥</span>45.00</div>
+            </div>
+        </div>
+        <!--买家留言-->
+        <div class="bbs">
+            <div class="left">
+                <div class="text">买家留言</div>
+                <div class="tag"></div>
+            </div>
+            <div class="right">
+                <div class="tag"></div>
+                <div class="text"><span>选填：</span>对本次交易的说明</div>
+            </div>
+        </div>
+        <!--输入买家留言-->
+        <label for="bbs"></label>
+        <textarea class="comment" name="bbs" id="bbs"></textarea>
+        <!--最终提交订单-->
+        <div class="commit-order">
+            <div class="button-total-pay">
+                <!--标签-->
+                <div class="label">合计：</div>
+                <div class="final-price"><span>￥</span>234.00</div>
+            </div>
+            <!--提交订单-->
+            <div class="button-commit">
+                提交订单
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer></footer>
+</body>
+</html>

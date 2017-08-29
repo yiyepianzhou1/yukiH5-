@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+body {
+  background: #f0f0f0;
+}
+
+.header-nav-recommend .address-delete {
+  font-size: 0.36rem;
+  line-height: 0.36rem;
+  color: #4595E5;
+  text-align: left;
+}
+
+.address {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.address .address-name,
+.address .address-number {
+  width: 6.86rem;
+  height: 1rem;
+  padding: 0 0.32rem;
+  font-size: 0.28rem;
+  line-height: 1rem;
+  color: #333;
+  text-align: left;
+  border: 0;
+  border-bottom: 0.01rem solid #E5E5E5;
+}
+
+.address .address-position {
+  width: 6.86rem;
+  height: 1rem;
+  padding: 0 0.32rem;
+  font-size: 0.28rem;
+  line-height: 1rem;
+  color: #333;
+  text-align: left;
+  border-bottom: 0.01rem solid #E5E5E5;
+  background: #ffffff;
+}
+
+.address .addressDetail {
+  resize: none;
+  width: 6.86rem;
+  height: 1.36rem;
+  padding: 0.32rem;
+  max-width: 6.86rem;
+  max-height: 1.36rem;
+  font-size: 0.28rem;
+  line-height: 0.32rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 0.2rem;
+  border: 0;
+  outline: none;
+}
+
+.address .address-setDefault {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 1rem;
+  padding: 0 0.32rem;
+  background: #ffffff;
+}
+
+.address .address-setDefault .address-setDefault-left {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+}
+
+.address .address-setDefault .moren-btn {
+  width: 1.06rem;
+  height: .66rem;
+  border-radius: .33rem;
+  position: relative;
+  background: #A5A39D;
+}
+
+.address .address-setDefault .moren-btn .ball {
+  height: .58rem;
+  width: .58rem;
+  background: #ffffff;
+  border-radius: .29rem;
+  margin-top: .04rem;
+  position: absolute;
+  left: 0.04rem;
+}
+
+.address .address-setDefault .blueBg {
+  background: #A5A39D !important;
+}
+
+.address .select-address {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+  height: 5rem;
+  background: #FFFFFF;
+}
+
+.address .select-address #distpicker {
+  width: 100%;
+}
+
+.address .select-address #distpicker select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 0.01rem #000;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 0.14rem;
+  padding-left: .16rem;
+  height: .6rem;
+  font-size: .28rem;
+  border: 0;
+  color: #B2BCC4;
+  width: 2.4rem;
+  outline: none;
+}
+
+.address .select-address #distpicker select option {
+  width: 2.4rem;
+  height: .4rem;
+  font-size: .22rem;
+  outline: none;
+}
+
+.addressbtn {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.9rem;
+  height: .7rem;
+  border-bottom: .01rem solid #E4EAED;
+  padding: 0 .3rem .2rem .3rem;
+}
+
+.addressbtn div {
+  font-size: .3rem;
+  height: 100%;
+}
+
+.button-addNewAddress-box {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 1.2rem;
+  background: rgba(240, 240, 240, 0.96);
+  position: fixed;
+  bottom: 0;
+}
+
+.button-addNewAddress-box .button-addNewAddress {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  margin: 0 0.32rem;
+  background: #4595e5;
+  height: 0.8rem;
+  border-radius: 0.06rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .add-icon {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.16rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .button-addNewAddress-word {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #fff;
+  text-align: left;
+}
+
+.hintPopBox {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 9.6rem;
+  z-index: -1;
+}
+
+.hintPopBox .hintPop {
+  height: 0.48rem;
+  padding: 0 0.18rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.26rem;
+  line-height: 0.48rem;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  border-radius: 0.05rem;
+}

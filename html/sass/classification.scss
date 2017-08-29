@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.content {
+  display: flex;
+  flex-direction: row;
+  .content-left {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;/*隐藏滚轮*/
+    }
+    position: fixed;
+    border-right: 1px solid #d9d9d9;
+    width: 151px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    .classification-name{
+      display: flex;
+      flex-direction:row ;
+      align-content: center;
+      justify-content: center;
+      margin-top: 80px;
+      border-left: 8px solid #fff;
+      height: 40px;
+      font-size: 28px;
+      text-align: center;
+      line-height: 40px;
+    }
+    .classification-name-blue{
+      border-left: 8px solid #4595e5;
+      color: #4595e5;
+    }
+  }
+  @mixin goods-item-text{
+    .good-item-text{
+      font-size: 26px;
+      color: #333333;
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @mixin goods-picture{
+    .good-item-picture{
+      width: 158px;
+      height: 158px;
+    }
+  }
+
+  @mixin goods-item{
+    @include goods-picture;
+    @include goods-item-text;
+    @content
+  }
+  .content-right {
+    flex-grow: 1;
+    margin-left: 151px;
+    width: 598px;
+    .banner {
+      width: 540px;
+      height: 232px;
+      margin: 30px 30px 48px 30px;
+      background: url("../img/banner.png") center center;
+      background-size: 100%;
+    }
+    .classification-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .title-left {
+        height: 1px;
+        width: 80px;
+        background: #d9d9d9;
+        overflow: hidden;
+
+      }
+      .star-left{
+        color: #d9d9d9;
+        margin-left: 16px;
+      }
+      .star-right{
+        color: #d9d9d9;
+        margin-right: 16px;
+      }
+      .text{
+        font-size: 28px;
+        color: #333333;
+        margin: 0 16px;
+      }
+      .title-right {
+        height: 1px;
+        width: 80px;
+        background: #d9d9d9;
+        overflow: hidden;
+
+      }
+    }
+    .goods-detail{
+      margin-top: 48px;
+      margin-left: 40px;
+      margin-right: 40px;
+      .goods-row{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .goods-item-1 {
+          @include goods-item;
+          padding-bottom: 40px;
+        }
+        .goods-item-2 {
+          @include goods-item{
+            margin-left: 20px;
+          };
+        }
+        .goods-item-3{
+          @include goods-item{
+            margin-left: 20px;
+          };
+        }
+      }
+    }
+  }
+}

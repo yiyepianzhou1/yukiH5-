@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ensure-order-no-address.css">
+    <title>确认订单有地址</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            填写订单
+        </div>
+    </div>
+</header>
+<main>
+    <div class="ensure-order-no-address">
+        <!--彩条背景-->
+        <div class="color-line"></div>
+        <div id="orderAddress"></div>
+
+    </div>
+
+</main>
+<footer>
+    <!--最终提交订单-->
+    <div class="commit-order" id="commit-order">
+    </div>
+</footer>
+<script id="orderAddress-tpl" type="text/x-dot-template">
+    <div class="add-address">
+        <div class="left">
+            <div class="text"></div>
+            <div class="address-detail">
+                {{? it.orderBean.address.length == 0}}
+                <div class="first-line">
+                    <div class="left-icon"></div>
+                    <div class="user-name">请添加收货地址</div>
+                </div>
+                {{??}}
+                {{~ it.addresses :value:index}}
+                {{? value.addrid == isBackFromEditAddress()}}
+                <div class="first-line">
+                    <div class="left-icon"></div>
+                    <div class="user-name">{{= value.name}}</div>
+                    <div class="user-num">{{= value.phone}}</div>
+                    {{? value.isAvalible == 1}}
+                    <div class="tag-default">默认</div>
+                    {{?}}
+                </div>
+                <div class="user-address">{{= value.address}}</div>
+                {{?}}
+                {{~}}
+                {{?}}
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-icon"></div>
+        </div>
+    </div>
+    <aside style="width: 100%;height: 20px;background: #f0f0f0;"></aside>
+    <!--购物车商品列表-->
+    <div class="carts-goods">
+        {{~ it.orderBean.orderItem :value:index}}
+        <div class="carts-goods-item">
+            <div class="goods-picture">
+                <img src="{{= value.skuPic}}" alt="" style="height: 100%;width: 100%;">
+            </div>
+            <div class="goods-details">
+                <div class="goods-title" style="text-align: left">
+                    {{= value.name}}
+                </div>
+                <div class="sub-heading" style="text-align: left">
+                    {{= value.skuText}}
+                </div>
+                <div class="goods-price">
+                    ￥{{= value.price / 100}}
+                </div>
+            </div>
+            <div class="count"><span>x</span>{{= value.count}}
+            </div>
+        </div>
+        {{~}}
+    </div>
+    <aside style="width: 100%;height: 20px;background: #f0f0f0;"></aside>
+    <!--总价-->
+    <div class="goods-total-price">
+        <div class="left">
+            <div class="text">商品总价</div>
+            <div class="tag"></div>
+        </div>
+        <div class="right">
+            <div class="tag"></div>
+            <div class="text"><span>￥</span>{{= it.orderBean.order.totalPriceNow / 100}}</div>
+        </div>
+    </div>
+    <!--运费-->
+    <div class="carriage">
+        <div class="left">
+            <div class="text">运费</div>
+            <div class="tag"></div>
+        </div>
+        <div class="right">
+            <div class="tag"></div>
+            <div class="text"><span>￥</span>{{= it.orderBean.order.freight}}</div>
+        </div>
+    </div>
+    <!--优惠券-->
+    <div class="coupon">
+        <div class="left">
+            <div class="text">优惠券</div>
+            <!--<div class="tag">2张可用</div>-->
+        </div>
+        <!--<div class="right">
+            <div class="tag"></div>
+            <div class="text"><span>-￥</span>45.00</div>
+        </div>-->
+    </div>
+    <!--折扣信息-->
+    <div class="discount-info">
+        <div class="left">
+            <div class="text">折扣信息</div>
+            <div class="tag"></div>
+        </div>
+        <div class="right">
+            {{? it.orderBean.sales.salesName != null}}
+            <div class="tag">{{= it.orderBean.sales.salesName}}</div>
+            <div class="text"><span>-￥</span>{{= it.orderBean.sales.salesReduce}}</div>
+            {{?}}
+        </div>
+    </div>
+    <!--买家留言-->
+    <div class="bbs">
+        <div class="left">
+            <div class="text">买家留言</div>
+            <div class="tag"></div>
+        </div>
+        <div class="right">
+            <div class="tag"></div>
+            <div class="text"><span>选填：</span>对本次交易的说明</div>
+        </div>
+    </div>
+    <!--输入买家留言-->
+    <textarea class="ensure-order-comment" name="bbs" id="bbs" ></textarea>
+</script>
+<script id="commit-order-tpl" type="text/x-dot-template">
+    <div class="button-total-pay">
+        <!--标签-->
+        <div class="label">合计：</div>
+        <div class="final-price"><span>￥</span>{{= it.orderBean.order.needPay / 100}}</div>
+    </div>
+    <!--提交订单-->
+    <div class="button-commit">
+        提交订单
+    </div>
+</script>
+<script src="js/zepto.js"></script>
+<script src="js/doT.js"></script>
+<script src="js/zepto.js"></script>
+<script src="js/doT.js"></script>
+<script>
+    var data = {
+        "data": {
+            "addresses": [
+                {
+                    "addrid": 2199,
+                    "userId": 95,
+                    "name": "唯一",
+                    "province": "北京市",
+                    "city": "市辖区",
+                    "area": "东城区",
+                    "addressDetail": "李金涛\n给你\n李敏\ntop哦PK\n咯POS我\n全是肉\niOS地X5\n给督促\n哦婆婆\n也破了\ninto怕JJ\n后额可\n以咯破\n个涂抹",
+                    "address": "北京市 市辖区 东城区 李金涛\n给你\n李敏\ntop哦PK\n咯POS我\n全是肉\niOS地X5\n给督促\n哦婆婆\n也破了\ninto怕JJ\n后额可\n以咯破\n个涂抹",
+                    "phone": "13333333333",
+                    "postCode": null,
+                    "isAvalible": 0
+                },
+                {
+                    "addrid": 2082,
+                    "userId": 95,
+                    "name": "虎哥",
+                    "province": "江苏省",
+                    "city": "南京市",
+                    "area": "栖霞区",
+                    "addressDetail": "哈哈",
+                    "address": "江苏省 南京市 栖霞区 哈哈",
+                    "phone": "18710199566",
+                    "postCode": null,
+                    "isAvalible": 0
+                },
+                {
+                    "addrid": 2073,
+                    "userId": 95,
+                    "name": "曹阳",
+                    "province": "江苏省",
+                    "city": "南京市",
+                    "area": "玄武区",
+                    "addressDetail": "asdasdaJJ咯无图默默哦哦哦呕吐美蛙鱼头",
+                    "address": "江苏省 南京市 玄武区 asdasdaJJ咯无图默默哦哦哦呕吐美蛙鱼头",
+                    "phone": "15100000000",
+                    "postCode": null,
+                    "isAvalible": 0
+                }
+            ],
+            "state": "success",
+            "ordersaleid": null,
+            "orderBean": {
+                "order": {
+                    "orderid": null,
+                    "ordercode": null,
+                    "userId": null,
+                    "createTime": null,
+                    "endTime": null,
+                    "payTime": null,
+                    "sendTime": null,
+                    "receiveTime": null,
+                    "completeTime": null,
+                    "receiveName": null,
+                    "receivePhone": null,
+                    "receiveAddress": null,
+                    "sendName": null,
+                    "sendCode": null,
+                    "remarkText": null,
+                    "totalPriceAgo": null,
+                    "totalPriceNow": 1000,
+                    "freight": 10,
+                    "salePrice": null,
+                    "saleReason": null,
+                    "vipSalePrice": null,
+                    "needPay": 2000,
+                    "payType": null,
+                    "orderStateId": null,
+                    "state": null,
+                    "backId": null,
+                    "processTime": null,
+                    "processDesc": null,
+                    "saleId": null,
+                    "isshow": null,
+                    "channelId": null,
+                    "leftTime": null
+                },
+                "totalNumber": 0,
+                "sales": {
+                    "ordersaleid": null,
+                    "salesName": null,
+                    "salesMeet": null,
+                    "salesReduce": null,
+                    "couponsName": null,
+                    "couponsMeet": null,
+                    "couponsReduce": null,
+                    "ordercode": null
+                },
+                "orderItem": [
+                    {
+                        "cartid": null,
+                        "skuid": 3173,
+                        "name": "全职高手贴纸",
+                        "skuText": "人物:叶修 ",
+                        "skuPic": "http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/gooddetailimg_20170718164305111143.JPEG",
+                        "count": 1,
+                        "unitPrice": 1000,
+                        "discount": {
+                            "discountid": 6,
+                            "discountName": "无商品折扣",
+                            "discountType": 6,
+                            "discountDetails": 0,
+                            "discountStartTime": 1494345600000,
+                            "discountEndTime": 1525881600000,
+                            "discountApplys": 1,
+                            "discountStates": 1,
+                            "discountNote": "无商品折扣",
+                            "discountCreateTime": 1494381837000,
+                            "discountFounder": null,
+                            "discountShow": 1
+                        },
+                        "price": 1000,
+                        "goodId": 797
+                    }
+                ],
+                "details": [],
+                "address": {
+                    "addrid": 2199,
+                    "userId": 95,
+                    "name": "唯一",
+                    "province": "北京市",
+                    "city": "市辖区",
+                    "area": "东城区",
+                    "addressDetail": "李金涛\n给你\n李敏\ntop哦PK\n咯POS我\n全是肉\niOS地X5\n给督促\n哦婆婆\n也破了\ninto怕JJ\n后额可\n以咯破\n个涂抹",
+                    "address": "北京市 市辖区 东城区 李金涛\n给你\n李敏\ntop哦PK\n咯POS我\n全是肉\niOS地X5\n给督促\n哦婆婆\n也破了\ninto怕JJ\n后额可\n以咯破\n个涂抹",
+                    "phone": "13333333333",
+                    "postCode": null,
+                    "isAvalible": 0
+                }
+            }
+        }
+    };
+    var addressId = window.localStorage.addrid;
+    function isBackFromEditAddress() {
+        if(addressId == undefined){
+            return data.data.orderBean.address.addrid
+        }else{
+            return addressId;
+        }
+    }
+    Zepto(function ($) {
+        var pagefn = doT.template($('#commit-order-tpl').text(), undefined);
+        showListAppend('#commit-order', data.data, pagefn, true);
+        var pagefn2 = doT.template($('#orderAddress-tpl').text(), undefined);
+        showListAppend('#orderAddress', data.data, pagefn2, true);
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(callback(data));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+    });
+</script>
+</body>
+</html>

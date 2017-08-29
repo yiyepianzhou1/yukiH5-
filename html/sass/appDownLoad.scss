@@ -1,0 +1,33 @@
+@import "functions";
+
+.appDownload{
+  width: 750px;
+  max-width: 750px;
+  margin: 0 auto;
+  .appDownload-box{
+    @include rectangleSize(750px,1049px);
+    @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/appPhoneBg.png");
+    display: flex;
+    flex-direction: column;
+    .appIcon1{
+      @include size(214px);
+      @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/appLogo.png");
+      margin:120px auto 50px auto;
+    }
+    .appInfo{
+      width: 100%;
+      @include fontStyle(34px,34px,#333,center);
+    }
+  }
+  .buttonBox{
+    width: 100%;
+    @include justify-content(row,center);
+    .appDownLoadBtn{
+      @include rectangleSize(480px,88px);
+      border-radius: 6px;
+      background: #1565C0;
+      @include fontStyle(34px,88px,#fff,center);
+      margin: (240px - 88px) / 2 auto 0 auto;
+    }
+  }
+}

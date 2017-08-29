@@ -1,0 +1,444 @@
+@charset "UTF-8";
+/*init*/
+body,
+div,
+ul,
+li,
+input,
+p,
+span,
+a,
+img,
+header,
+aside,
+nav,
+section,
+h2 {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  -o-box-sizing: border-box;
+  /*Opera9.6*/
+  -ms-box-sizing: border-box;
+  /*IE8*/
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Hiragino Sans GB', 'Microsoft Yahei', "WenQuanYi Micro Hei", SimSun, Tahoma, Arial, Helvetica, STHeiti; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+/*颜色部分*/
+.yuki-color-primary {
+  color: #f2921c; }
+
+.yuki-color-light-green {
+  color: #43db7c; }
+
+/*assistant color*/
+.yuki-color-light-blue {
+  color: #97c5ff; }
+
+.yuki-color-transparent-blue {
+  color: #f6faff;
+  border: 1px solid #dcedff;
+  box-shadow: 0 0 10px #dcedff; }
+
+.yuki-color-light-red {
+  color: #ff4d4d; }
+
+.yuki-color-transparent-red {
+  color: #fff6f6;
+  border: 1px solid #ffdcdc;
+  box-shadow: 0 0 10px #ffdcdc; }
+
+/*字体颜色*/
+.yuki-font-color-primary {
+  color: #333333; }
+
+.yuki-font-color-star-gray {
+  color: #787878; }
+
+.yuki-font-smoke-gray {
+  color: #848484; }
+
+.yuki-font-light-gray {
+  color: #d4d4d4; }
+
+.yuki-font-transparent-gray {
+  color: #fefefe;
+  border: 1px solid #efefef;
+  box-shadow: 0 0 10px #efefef; }
+
+/*字体大小部分*/
+.yuki-font-size-primary, .yuki-component-pagination .previous, .yuki-component-pagination .count, .yuki-component-pagination .turn, .yuki-component-pagination .page, .yuki-component-pagination .next, .yuki-component-pagination .current-page, .yuki-component-pagination .redirect, .yuki-component-pagination .ensure-redirect {
+  font-size: 14px; }
+
+.yuki-font-size-small {
+  font-size: 12px; }
+
+.yuki-font-size-large {
+  font-size: 16px; }
+
+/*图标样式部分*/
+.yuki-icon-18-18 {
+  width: 18px;
+  height: 18px; }
+
+.yuki-icon-18-22 {
+  width: 18px;
+  height: 22px; }
+
+.yuki-icon-16-16 {
+  width: 16px;
+  height: 16px; }
+
+.yuki-icon-24-24 {
+  width: 24px;
+  height: 24px; }
+
+.yuki-icon-22-22 {
+  width: 22px;
+  height: 22px; }
+
+.yuki-icon-14-14 {
+  width: 14px;
+  height: 14px; }
+
+/*按钮部分*/
+/*
+$height,
+$border-color:#333333,
+$bg-color:#43db7c,
+$font-color:#ffffff,
+$hover:#43db7c
+*/
+.yuki-button-large-primary, .yuki-brand-body .yuki-brand-btnBox .addBrand {
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid #D2D2D2;
+  background-color: #43db7c;
+  color: #ffffff;
+  text-align: center;
+  line-height: 34px;
+  padding: 0 30px;
+  display: inline-block;
+  vertical-align: top; }
+  .yuki-button-large-primary:hover, .yuki-brand-body .yuki-brand-btnBox .addBrand:hover {
+    background-color: #3ac76f; }
+
+.yuki-button-middle-primary {
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #d4d4d4;
+  background-color: #f2921c;
+  color: #ffffff;
+  text-align: center;
+  line-height: 40px;
+  padding: 0 30px;
+  display: inline-block;
+  vertical-align: top; }
+  .yuki-button-middle-primary:hover {
+    background-color: #f27c1c; }
+
+.yuki-button-middle-gray {
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #d4d4d4;
+  background-color: #efefef;
+  color: #848484;
+  text-align: center;
+  line-height: 40px;
+  padding: 0 30px;
+  display: inline-block;
+  vertical-align: top; }
+  .yuki-button-middle-gray:hover {
+    background-color: #E5E5E5; }
+
+.yuki-icon-button-default {
+  line-height: 34px;
+  width: 88px;
+  height: 34px;
+  background-color: #efefef;
+  color: #848484;
+  border: 1px solid #D2D2D2;
+  border-radius: 6px; }
+  .yuki-icon-button-default:hover {
+    background-color: #F6FAFF;
+    border: 1px solid #97C5FF;
+    color: #97C5FF; }
+    .yuki-icon-button-default:hover span {
+      background: url("../../../img/button_edit_click.png") no-repeat;
+      background-size: 100%; }
+  .yuki-icon-button-default span {
+    vertical-align: top;
+    width: 24px;
+    height: 24px;
+    background: url("../../../img/button_edit.png") no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    margin: 5px 10px; }
+
+/*组件*/
+.yuki-component-pagination {
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+  height: 26px;
+  line-height: 26px; }
+  .yuki-component-pagination .previous {
+    width: 60px;
+    height: 26px;
+    border: 1px solid #D2D2D2;
+    background-color: #efefefef;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: top;
+    background: #fffcf3;
+    border-color: #f7d35d;
+    cursor: pointer; }
+  .yuki-component-pagination .count, .yuki-component-pagination .turn, .yuki-component-pagination .page {
+    color: #8d8d8d;
+    margin: 0 10px; }
+  .yuki-component-pagination .next {
+    width: 60px;
+    height: 26px;
+    border: 1px solid #D2D2D2;
+    background-color: #efefefef;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: top;
+    background: #fffcf3;
+    border-color: #f7d35d;
+    cursor: pointer; }
+  .yuki-component-pagination .current-page {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #D2D2D2;
+    background-color: #efefefef;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: top;
+    margin: 0 10px;
+    background: #f6bb73;
+    border-color: #f6bb73; }
+  .yuki-component-pagination .redirect {
+    width: 30px;
+    height: 26px;
+    border: 1px solid #D2D2D2;
+    background-color: #efefefef;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: top; }
+    .yuki-component-pagination .redirect .redirect-value {
+      border: 1px solid #D2D2D2;
+      width: 30px;
+      height: 26px;
+      background-color: #efefef; }
+  .yuki-component-pagination .ensure-redirect {
+    width: 30px;
+    height: 26px;
+    border: 1px solid #D2D2D2;
+    background-color: #efefefef;
+    display: inline-block;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: top;
+    background: url("../../../img/button_flip.png") no-repeat center;
+    background-size: 100%;
+    cursor: pointer; }
+    .yuki-component-pagination .ensure-redirect:hover {
+      background: url("../../../img/button_flip_click.png") no-repeat center;
+      background-size: 100%; }
+
+.yuki-brand {
+  width: 100%;
+  height: 100%;
+  background: #ffffff; }
+
+.yuki-brand-crumbs {
+  width: 100%;
+  padding: 0 30px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  background: #fcfcfc;
+  color: #999; }
+  .yuki-brand-crumbs a {
+    color: #999; }
+    .yuki-brand-crumbs a:hover {
+      color: #6699cc; }
+
+.yuki-brand-body {
+  width: 100%;
+  padding: 20px 30px; }
+  .yuki-brand-body .yuki-brand-btnBox {
+    width: 100%;
+    height: 34px;
+    margin-bottom: 20px; }
+    .yuki-brand-body .yuki-brand-btnBox .addBrand {
+      width: 156px;
+      height: 34px;
+      border: 1px solid #d4d4d4;
+      outline: none; }
+
+.yuki-brand-table {
+  width: 100%; }
+  .yuki-brand-table tr, .yuki-brand-table td {
+    border-bottom: 1px solid #E7E7E7; }
+  .yuki-brand-table thead tr {
+    background: #EFEFEF;
+    height: 40px;
+    color: #787878; }
+    .yuki-brand-table thead tr td {
+      text-align: center; }
+  .yuki-brand-table tbody tr td {
+    text-align: center;
+    padding: 10px 0; }
+
+.yuki-brand-edit, .yuki-brand-delete {
+  width: 24px; }
+
+.yuki-brand-delete {
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/delete_default.png") no-repeat;
+  background-size: 100%;
+  margin-left: 10px; }
+  .yuki-brand-delete:hover {
+    background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/delete_hover.png") no-repeat;
+    background-size: 100%; }
+
+.yuki-brand-edit {
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/edit_default.png") no-repeat;
+  background-size: 100%;
+  margin-left: 20px; }
+  .yuki-brand-edit:hover {
+    background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/edit_hover.png") no-repeat;
+    background-size: 100%; }
+
+.yuki-brand-btn {
+  height: 24px;
+  line-height: 24px;
+  color: #787878;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer; }
+
+.yuki-brand-relevance {
+  width: 74px;
+  background: #efefef; }
+  .yuki-brand-relevance:hover {
+    color: #333; }
+
+/*弹窗*/
+.yuki-brand-pop {
+  display: none;
+  width: 429px;
+  height: 282px;
+  position: absolute;
+  left: 50%;
+  margin-left: -214.5px;
+  top: 50%;
+  margin-top: -141px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9; }
+  .yuki-brand-pop .yuki-brand-pop-title {
+    width: 100%;
+    height: 52px;
+    background: #F2921C;
+    font-size: 14px;
+    text-align: center;
+    line-height: 52px;
+    color: #ffffff; }
+  .yuki-brand-pop .yuki-brand-pop-search {
+    width: 100%;
+    padding: 30px 100px 20px 30px; }
+    .yuki-brand-pop .yuki-brand-pop-search .link-address-margin {
+      margin-top: 20px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox .yuki-brand-pop-titleName {
+      float: left;
+      height: 30px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox .link-name {
+      width: 194px;
+      height: 30px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox .link-address {
+      width: 260px;
+      height: 30px;
+      margin-right: -66px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox select, .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox input {
+      height: 30px;
+      border: 1px solid #d9d9d9;
+      color: #333;
+      float: right; }
+      .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox select option, .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox input option {
+        color: #333; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox input {
+      width: 192px;
+      padding-left: 12px;
+      margin-left: 16px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox select {
+      width: 160px;
+      margin-left: 16px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBox .yuki-brand-pop-titleName {
+      height: 30px;
+      line-height: 30px; }
+    .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBtn {
+      width: 88px;
+      height: 30px;
+      border-radius: 4px;
+      background: #EFEFEF;
+      margin-right: 0;
+      color: #333;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer; }
+      .yuki-brand-pop .yuki-brand-pop-search .yuki-brand-pop-searchBtn .search-icon {
+        margin-right: 12px; }
+
+.yuki-brand-pop-btn-box {
+  width: 100%;
+  height: 32px;
+  margin-top: 10px; }
+  .yuki-brand-pop-btn-box .yuki-brand-pop-btn {
+    width: 210px;
+    height: 100%;
+    margin: 0 auto; }
+    .yuki-brand-pop-btn-box .yuki-brand-pop-btn .yuki-brand-popBtn {
+      float: left;
+      width: 90px;
+      height: 100%;
+      border-radius: 4px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer; }
+    .yuki-brand-pop-btn-box .yuki-brand-pop-btn .yuki-brand-pop-ensure {
+      background: #F2921C;
+      color: #ffffff;
+      margin-right: 30px; }
+    .yuki-brand-pop-btn-box .yuki-brand-pop-btn .yuki-brand-pop-cancel {
+      background: #EFEFEF;
+      color: #000; }
+
+.yuki-brand-pop-name {
+  width: 282px;
+  margin: 0 auto;
+  height: 30px; }
+
+.yuki-brand-pop-type {
+  width: 254px;
+  margin: 25px auto 0 auto;
+  padding-right: 18px;
+  height: 30px; }

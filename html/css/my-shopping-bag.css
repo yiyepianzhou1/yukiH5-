@@ -1,0 +1,1217 @@
+@charset "UTF-8";
+
+body {
+    background: #f0f0f0;
+}
+
+.bjc{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.orderListChild-info {
+    padding: 0.24rem 0.32rem;
+    background: #FFFFFF;
+    width: 6.84rem;
+    height: auto;
+}
+
+.orderListChild-info:last-child {
+    margin-bottom: 0.2rem;
+}
+
+.orderListChild-info .orderListChild-infoBox {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.orderListChild-info .orderListChild-infoBox .selectIcon {
+    width: 0.47rem;
+    height: 0.4rem;
+    margin-right: 0.32rem;
+    display: block;
+    background: url('../img/shopping-bag/common_icon_empty@2x.png');
+    background-size: .4rem;
+}
+
+.orderListChild-info .orderListChild-infoBox .selectIcon.active {
+    background: url('../img/shopping-bag/common_icon_chose@2x.png');
+    background-size: .4rem;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodImg {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.32rem;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo {
+    position: relative;
+    width: 4.94rem;
+    height: auto;
+    overflow: hidden;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodName {
+    width: 100%;
+    font-size: 0.28rem;
+    line-height: 0.28rem;
+    color: #333;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.16rem;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodStyle {
+    font-size: 0.24rem;
+    height: .28rem;
+    line-height: 0.28rem;
+    color: #999;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .sold-out {
+    position: absolute;
+    right: 0.92rem;
+    bottom: 0;
+    width: 1.02rem;
+    height: 1.02rem;
+    background: url("../img/shopping-bag/sold-out@3x.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodPrice {
+    font-size: 0.32rem;
+    color: #e54560;
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodCount {
+    font-size: 0.32rem;
+    line-height: 0.32rem;
+    color: #333;
+    text-align: left;
+    display: block;
+
+}
+
+.orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.28rem;
+    display: none;
+}
+
+.edit-status {
+    padding: 0.24rem 0.32rem;
+    background: #FFFFFF;
+}
+
+.edit-status:last-child {
+    margin-bottom: 0.2rem;
+}
+
+.edit-status .orderListChild-infoBox {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.edit-status .orderListChild-infoBox .selectIcon {
+    width: 0.47rem;
+    height: 0.4rem;
+    margin-right: 0.32rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodImg {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.32rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo {
+    position: relative;
+    width: 4.94rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodName {
+    display: none;
+    width: 100%;
+    font-size: 0.28rem;
+    line-height: 0.28rem;
+    color: #333;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.16rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodStyle {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.24rem;
+    height: .28rem;
+    line-height: 0.28rem;
+    color: #999;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .sold-out {
+    position: absolute;
+    right: 0.92rem;
+    bottom: 0;
+    width: 1.02rem;
+    height: 1.02rem;
+    background: url("../img/shopping-bag/sold-out@3x.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodPrice {
+    font-size: 0.32rem;
+    color: #e54560;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count {
+    display: block;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.28rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .button-left {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.56rem;
+    width: 0.78rem;
+    border: 0.01rem solid #b3b3b3;
+    border-right: 0;
+    border-top-left-radius: 0.06rem;
+    border-bottom-left-radius: 0.06rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .button-left .icon-nav {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 0.16rem;
+    height: 0.16rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .button-right {
+    display: block;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.56rem;
+    width: 0.78rem;
+    border: 0.01rem solid #666666;
+    border-top-right-radius: 0.06rem;
+    border-bottom-right-radius: 0.06rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .button-right .icon-nav {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 0.16rem;
+    height: 0.16rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .count-input {
+    height: 0.56rem;
+    width: 0.78rem;
+    border: 0.01rem solid #666666;
+    border-right: 0;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .count-input input {
+    text-align: center;
+    font-size: 0.28rem;
+    height: 0.56rem;
+    width: 0.78rem;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .count-input input::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .pedding-buy-count .stored {
+    margin-left: 0.24rem;
+    font-size: 0.24rem;
+    color: #999999;
+}
+
+.edit-status .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodCount {
+    font-size: 0.32rem;
+    line-height: 0.32rem;
+    color: #333;
+    text-align: left;
+    display: none;
+}
+
+.preference {
+    width: 100%;
+    height: 0.96rem;
+    font-size: 0.32rem;
+    line-height: 0.96rem;
+    color: #333;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+/*已选商品，待提交*/
+
+.goodsSelectedContainer {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    background-color: rgba(247, 247, 247, 0.96);
+    height: 0.98rem;
+}
+
+.goodsSelectedContainer .leftCount {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.goodsSelectedContainer .leftCount .selectedIcon {
+    width: 0.4rem;
+    height: 0.4rem;
+    margin: 0 0.32rem;
+    background: url(../img/shopping-bag/common_icon_empty@2x.png) no-repeat;
+    background-size: 100%;
+}
+
+.goodsSelectedContainer .leftCount .selectedIcon.active {
+    background: url(../img/shopping-bag/common_icon_chose@3x.png) no-repeat;
+    background-size: 100%;
+}
+
+.goodsSelectedContainer .leftCount .allCount {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.28rem;
+    color: #333333;
+}
+
+.goodsSelectedContainer .leftCount .allCount .number {
+    font-size: 0.28rem;
+    color: #333333;
+}
+
+.goodsSelectedContainer .rightPrice {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.goodsSelectedContainer .rightPrice .totalPrice {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.28rem;
+    color: #e54560;
+    margin-right: 0.32rem;
+}
+
+.goodsSelectedContainer .rightPrice .buy {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.98rem;
+    background-color: RGB(69, 149, 229);
+    width: 2.28rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+}
+
+.goodsSelectedContainer .rightPrice .delete {
+
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.98rem;
+    background-color: #e0e0e0;
+    width: 2.28rem;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: .98rem;
+    color: #ffffff;
+    display: none;
+}
+
+.goodsSelectedContainer .rightPrice .delete.active {
+    background-color: RGB(69, 149, 229);
+}
+
+/*购物车数据为空的时候*/
+
+.emptyShoppingBag {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 4.5rem;
+}
+
+.emptyShoppingBag .emptyImage {
+    width: 2.1rem;
+    height: 2.1rem;
+}
+
+.emptyShoppingBag .tips {
+    font-size: 0.24rem;
+    color: #999999;
+}
+
+/*弹出*/
+#shopping-car{
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    background: #ffffff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    transform: translate(0, 100%);
+    transition: transform .2s cubic-bezier(0, 0, .25, 1);
+}
+
+#shopping-car.show {
+    transform: translate(0, 0);
+    top: 30%;
+}
+
+.popupBoxBody .goods-picture {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0.32rem;
+}
+
+.popupBoxBody .goods-picture .img {
+    width: 1.68rem;
+    height: 1.68rem;
+}
+
+.popupBoxBody .goods-picture .img img {
+    width: 1.68rem;
+    height: 1.68rem;
+}
+
+.popupBoxBody .goods-picture .text {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin-left: 0.32rem;
+}
+
+.popupBoxBody .goods-picture .text .price {
+    font-size: 0.28rem;
+    color: #e54560;
+}
+
+.popupBoxBody .goods-picture .text .selected-type {
+    margin-top: 0.24rem;
+    font-size: 0.28rem;
+    color: #666666;
+}
+
+.popupBoxBody .type-select-container {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    padding-left: 0.32rem;
+    padding-top: 0.16rem;
+}
+
+.popupBoxBody .type-select-container .text {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.26rem;
+    color: #666666;
+}
+.popupBoxBody .propertyList{
+    width: 100%;
+    height:auto;
+    max-height: 45%;
+    overflow-y: auto;
+}
+.popupBoxBody .propertyList .pedding-select {
+    -webkit-box-lines: multiple;
+    box-lines: multiple;
+    flex-wrap: -webkit-wrap;
+    flex-wrap: -ms-wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0.2rem 0.32rem 0.32rem 0.32rem;
+}
+
+.popupBoxBody .propertyList .pedding-select .text-content {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.24rem;
+    color: #cccccc;
+    border: 0.01rem solid #cccccc;
+    padding: 0.2rem 0.24rem;
+    border-radius: 0.08rem;
+    margin-right: 0.32rem;
+    margin-top: 0.2rem;
+}
+
+.popupBoxBody .propertyList .pedding-select .text-content.active{
+    color: rgb(255, 255, 255)!important;
+    background-color: rgb(69, 149, 229)!important;
+}
+
+.popupBoxBody .propertyList .pedding-select .skuList-item {
+    width: 0;
+    height: 0;
+}
+
+.popupBoxBody .pedding-buy-count {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.28rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.56rem;
+    padding: 0 .3rem;
+}
+
+.popupBoxBody .popupBox-closeBtn {
+    width: 0.48rem;
+    height: 0.48rem;
+    position: absolute;
+    right: 0.24rem;
+    top: 0.24rem;
+    background: url(../img/shopping-bag/bag_icon_close@3x.png) no-repeat;
+    background-size: 100%;
+}
+
+.popupBoxBody .pedding-buy-count .button-left {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.64rem;
+    width: 1.02rem;
+    border: 0.01rem solid #b3b3b3;
+    border-right: 0;
+    border-top-left-radius: 0.06rem;
+    border-bottom-left-radius: 0.06rem;
+}
+
+.popupBoxBody .pedding-buy-count .button-left .icon-nav {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 0.16rem;
+    height: 0.16rem;
+}
+
+.popupBoxBody .pedding-buy-count .button-right {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 0.64rem;
+    width: 1.02rem;
+    border: 0.01rem solid #666666;
+    border-top-right-radius: 0.06rem;
+    border-bottom-right-radius: 0.06rem;
+}
+
+.popupBoxBody .pedding-buy-count .button-right .icon-nav {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 0.16rem;
+    height: 0.16rem;
+}
+
+.popupBoxBody .pedding-buy-count .count-input {
+    height: 0.64rem;
+    width: 1.02rem;
+    border: 0.01rem solid #666666;
+    border-right: 0;
+}
+
+.popupBoxBody .pedding-buy-count .count-input input {
+    text-align: center;
+    font-size: 0.28rem;
+    height: 0.64rem;
+    width: 1.02rem;
+}
+
+
+.shopping-car .popupBoxBody .propertyList .type .pedding-select {
+    -webkit-box-lines: multiple;
+    box-lines: multiple;
+    flex-wrap: -webkit-wrap;
+    flex-wrap: -ms-wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0.2rem 0.32rem 0.32rem 0.32rem;
+}
+
+.shopping-car .popupBoxBody .propertyList .type .pedding-select .text-content {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.24rem;
+    color: #cccccc;
+    border: 0.01rem solid #cccccc;
+    padding: 0.2rem 0.24rem;
+    border-radius: 0.08rem;
+    margin-right: 0.32rem;
+    margin-top: 0.2rem;
+}
+
+.shopping-car .popupBoxBody .propertyList .type .pedding-select .skuList-item {
+    width: 0;
+    height: 0;
+}
+
+.shopping-car .popupBoxBody .propertyList .type .pedding-select {
+    -webkit-box-lines: multiple;
+    box-lines: multiple;
+    flex-wrap: -webkit-wrap;
+    flex-wrap: -ms-wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    padding: 0.2rem 0.32rem 0.32rem 0.32rem;
+}
+
+.shopping-car .popupBoxBody .propertyList .type .pedding-select .text-content {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.24rem;
+    color: #cccccc;
+    border: 0.01rem solid #cccccc;
+    padding: 0.2rem 0.24rem;
+    border-radius: 0.08rem;
+    margin-right: 0.32rem;
+    margin-top: 0.2rem;
+}
+
+.shopping-car .popupBoxBody .propertyList .type1 .pedding-select-1 .skuList-item {
+    width: 0;
+    height: 0;
+}
+
+
+.popupBoxBody .pedding-buy-count .count-input input::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.popupBoxBody .pedding-buy-count .stored {
+    margin-left: 0.24rem;
+    font-size: 0.24rem;
+    color: #999999;
+}
+
+.popupBoxBody .popupBox-ensureBtn {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 7.5rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0.99rem;
+    background: #4595e5;
+    color: #ffffff;
+}
+
+/*遮阴*/
+.cover-decision {
+    width: 100%;
+    opacity: .6;
+    height: 100%;
+    position: fixed;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+}

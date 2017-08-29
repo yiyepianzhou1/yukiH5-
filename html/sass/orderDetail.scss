@@ -1,0 +1,230 @@
+@import "functions";
+
+body{
+  background: #f0f0f0;
+}
+main{
+  margin-bottom: 100px!important;
+}
+.orderDetail{
+  //订单状态
+  .orderDetail-orderState{
+    margin-bottom: 20px;
+    .orderState-waiting{
+      @include rectangleSize(750px,140px);
+      @include align-items(row);
+      @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/my_orderdetail_bg@3x.png");
+      .orderState-waiting-child{
+        @include fontStyle(32px,32px,#fff);
+        margin-left: 32px;
+      }
+    }
+    .orderState-dealSuccess{
+      @include rectangleSize(750px - 64px,170px);
+      padding: 40px 32px 0 32px;
+      @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/my_orderdetail_bg2@3x.png");
+      .orderState-dealSuccess-word{
+        @include fontStyle(32px,32px,#fff);
+      }
+      .orderState-dealSuccess-logisticsDetail{
+        @include justify-content(row,space-between);
+        align-items: center;
+        margin-top: 27px;
+        .orderState-dealSuccess-logisticsDetail-left{
+          @include fontStyle(22px,22px,#fff);
+          width:750px - 64px - 48px -16px;
+          @include textOverFlow();
+        }
+        .orderState-dealSuccess-logisticsDetail-right{
+          @include size(48px);
+          @include bg('../img/warehouse/common_icon_next@3x.png');
+        }
+      }
+      .orderState-dealSuccess-time{
+        @include fontStyle(20px,20px,#fff);
+      }
+    }
+  }
+  //买家信息
+  .buyerInfo{
+    @include rectangleSize(750px - 64px,98px);
+    padding: 19px 32px 0 32px;
+    background: #fff;
+    border-bottom: 1px solid #E5E5E5;
+  }
+  //买家留言
+  .buyerMessage{
+    width:750px - 64px;
+    padding: 19px 32px 24px 32px;
+    background: #fff;
+    margin-bottom: 20px;
+    .buyerInfo-column2Msg{
+      width:750px - 64px - 36px;
+      margin-top: 19px;
+      margin-left: 36px;
+      @include fontStyle(26px,40px,#333);
+    }
+  }
+  //订单商品
+  .orderListChild-info{
+    padding: 24px 32px;
+    background: #FFFFFF;
+    &:last-child{
+      margin-bottom: 20px;
+    }
+    .orderListChild-infoBox{
+      @include justify-content(row,space-between);
+      align-items: center;
+      .myOrder-goodImg{
+        @include size(160px);
+      }
+      .myOrder-goodInfo{
+        width:750px - 64px - 160px - 32px;
+        .myOrder-goodName{
+          width: 100%;
+          @include fontStyle(28px,28px,#333);
+          @include textOverFlow();
+          margin-bottom: 16px;
+        }
+        .myOrder-goodStyle{
+          @include fontStyle(24px,24px,#999);
+          margin-bottom: 40px;
+        }
+        .myOrder-goodPrice-goodCount{
+          width: 100%;
+          @include justify-content(row,space-between);
+          .myOrder-goodPrice,.myOrder-goodCount{
+            @include fontStyle(32px,32px,#333);
+          }
+        }
+      }
+    }
+  }
+  //订单信息
+  .orderInfo{
+    width: 750px - 64px;
+    padding: 0 32px;
+    background: #fff;
+    margin-bottom: 20px;
+    .orderInfo-list{
+      @include rectangleSize(100%,80px);
+      @include align-items(row);
+      justify-content:space-between;
+      border-bottom: 1px solid #E5E5E5;
+      .orderInfo-list-left,.orderInfo-list-right{
+        font-size: 26px;
+      }
+      .orderInfo-list-left-black{
+        color: #333;
+      }
+      .orderInfo-list-left-gray{
+        color: #999;
+      }
+      .orderInfo-list-left-red{
+        color: #E54560;
+      }
+    }
+  }
+  //订单时间，编号
+  .orderTime-orderNumber{
+    width:750px - 64px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-content:center;
+    padding: 24px 32px 0 32px;
+    background: #FFFFFF;
+    .orderTime{
+      @include fontStyle(26px,26px,#333);
+      margin-bottom: 26px;
+    }
+    .orderNumber{
+      @include fontStyle(26px,26px,#333);
+    }
+  }
+  //猜你喜欢
+  .preference{
+    @include rectangleSize(100%,96px);
+    @include fontStyle(32px,96px,#333,center);
+    background: #f0f0f0;
+  }
+}
+.buyerInfo-column1{
+  @include rectangleSize(100%,32px);
+  @include justify-content(row,space-between);
+  .buyerInfo-column1-ro12{
+    @include align-items(row);
+    .buyerInfo-column1-row1{
+      @include size(32px);
+      margin-right: 4px;
+    }
+    .buyerInfo-icon{
+      @include bg("../img/my/my_orderdetail_icon_add@3x.png")
+    }
+    .buyerMessage-icon{
+      @include bg("../img/my/my_orderdetail_icon_msg@3x.png")
+    }
+    .buyerInfo-column1-row2{
+      @include fontStyle(26px,26px,#333);
+    }
+  }
+  .buyerInfo-column1-row3{
+    @include fontStyle(26px,26px,#333);
+  }
+}
+.buyerInfo-column2{
+  @include fontStyle(24px,24px,#999);
+  @include textOverFlow();
+  width:750px - 64px - 36px;
+  margin-top: 19px;
+  margin-left: 36px;
+}
+.buyerMessage-word{
+  font-size: 26px !important;
+  line-height: 26px !important;
+  color: #666 !important;
+}
+//底部按钮
+.order-footer{
+  @include rectangleSize(750px - 64px,100px);
+  padding: 0 32px;
+  position: fixed;
+  bottom: 0;
+  background: rgba(247,247,247,.96);
+  @include justify-content(row,space-between);
+  align-items: center;
+  .order-footer-left{
+    @include align-items(row);
+    justify-content: center;
+    .order-footer-icon{
+      @include size(48px);
+      margin-right: 16px;
+    }
+    .order-footer-left-world{
+      @include fontStyle(26px,28px,#333);
+    }
+  }
+  .order-footer-right{
+    @include align-items(row);
+    .order-footer-right-price{
+      @include fontStyle(26px,28px,#e54560);
+      margin-right: 20px;
+    }
+    .order-btn{
+      @include rectangleSize(156px,52px);
+      border-radius: 6px;
+      font-size: 26px;
+      line-height: 52px;
+      text-align: center;
+    }
+    .order-cancelBtn{
+      color: #666;
+      border: 2px solid #999;
+      margin-right: 20px;
+    }
+    .order-goBuyBtn{
+      color: #4595e5;
+      border:2px solid #4595e5;
+    }
+  }
+}

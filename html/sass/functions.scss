@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+//头部高度
+$headHeight:88px;
+
+// px 转 rem
+@mixin px2rem($property,$px-values,$baseline-px:16px,$support-for-ie:false){
+  //Conver the baseline into rems
+  $baseline-rem: $baseline-px / 1rem * 1;
+  //Print the first line in pixel values
+  @if $support-for-ie {
+    #{$property}: $px-values;
+  }
+  //if there is only one (numeric) value, return the property/value line for it.
+  @if type-of($px-values) == "number"{
+    #{$property}: $px-values / $baseline-rem;
+  }
+  @else {
+    //Create an empty list that we can dump values into
+    $rem-values:();
+    @each $value in $px-values{
+      // If the value is zero or not a number, return it
+      @if $value == 0 or type-of($value) != "number"{
+        $rem-values: append($rem-values, $value / $baseline-rem);
+      }
+    }
+    // Return the property and its list of converted values
+    #{$property}: $rem-values;
+  }
+}
+
+// 字体兼容dpr
+@mixin font-dpr($font-size){
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}
+//正方形尺寸
+@mixin size($argument){
+  width: $argument;
+  height: $argument;
+}
+//矩形尺寸
+@mixin rectangleSize($w,$h){
+  width: $w;
+  height: $h;
+}
+//引入背景图片
+@mixin bg($argument){
+  background: url($argument)no-repeat;
+  background-size: 100%;
+}
+//行内块元素去掉间隙，顶端对齐 (需要在父元素上面定义letter-spacing:-4px)
+@mixin displayLineBlock(){
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: 0;
+}
+//字体大小，行间距，颜色
+@mixin fontStyle($fs,$lh,$fc,$ft:left){
+  font-size: $fs;
+  line-height: $lh;
+  color: $fc;
+  text-align: $ft;
+}
+//连续数字字母换行
+@mixin wordBreak(){
+  word-break: break-all;
+  word-wrap: break-word;
+}
+//文本超出省略号显示
+@mixin textOverFlow(){
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+//背景图片样式
+@mixin bg($url){
+  background: url($url)no-repeat;
+  background-size: 100%;
+}
+//弹性布局 主轴对齐方式
+@mixin justify-content($direction,$jc:center){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+}
+//弹性布局 交叉轴对齐方式
+@mixin align-items($direction,$ai:center){
+  display: flex;
+  flex-direction: $direction;
+  align-items:$ai;
+}
+
+

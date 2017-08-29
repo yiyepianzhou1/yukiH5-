@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/appDownLoad.css">
+    <title>App下载</title>
+</head>
+<body>
+    <div class="appDownload">
+        <div class="appDownload-box">
+            <div class="appIcon1"></div>
+            <div class="appInfo">更多功能请下载Yuki官方APP</div>
+        </div>
+        <div class="buttonBox">
+            <a href="https://xz.2bai.org/1071705" class="appDownLoadBtn">立即下载</a>
+        </div>
+    </div>
+</body>
+
+</html>

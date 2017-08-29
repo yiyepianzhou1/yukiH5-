@@ -1,0 +1,173 @@
+@charset "UTF-8";
+@import "functions";
+
+.allCommentTypes {
+  margin-left: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  .comment-item {
+    margin-top: 24px;
+    display: flex;
+    height: 56px;
+    align-items: center;
+    font-size: 24px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    //margin-right: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    &:hover {
+      color: #ffffff;
+      background-color: #4595e5;
+    }
+  }
+}
+
+.comment-title {
+  height: 86px;
+  background-color: #f0f0f0;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .text {
+    margin-left: 36px;
+    display: flex;
+    flex-direction: row;
+    font-size: 28px;
+    color: #666666;
+  }
+}
+
+@mixin base_flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  //justify-content: center;
+  align-items: center;
+
+}
+
+//评论列表
+.comment-content-list {
+  @include base_flex(column);
+  background: #ffffff;
+  //单个评论项目
+  .comment-item {
+    width: 100%;
+    //padding:0 32px;
+    display: flex;
+    //width: 750px;
+    border-bottom: 1px solid #f0f0f0;
+    //margin: 0 32px;
+    @include base_flex(column);
+    justify-content: center;
+    align-items: flex-start;
+    //用户信息
+    .user-info {
+      //width: 750px;
+      margin-top: 24px;
+      @include base_flex(row);
+      justify-content: space-between;
+      align-items: center;
+      // 头像和姓名
+      .logo-name {
+        @include base_flex(row);
+        //flex-grow: 1;
+        margin:0 32px;
+        .user-logo {
+          @include base_flex(row);
+          width: 64px;
+          height: 64px;
+          border-radius: 32px;
+          img {
+            width: 64px;
+            height: 64px;
+            border-radius: 32px;
+          }
+        }
+        //用户信息
+        .user-name {
+          font-size: 28px;
+          color: #333333;
+          margin-left: 24px;
+          //margin-right: 230px;
+        }
+
+      }
+      //用户名称
+      .time {
+        margin:0 32px;
+        //margin-left: 315px;
+        @include base_flex(column);
+        align-items: flex-end;
+        justify-content: center;
+        flex-grow: 1;
+        font-size: 28px;
+        color: #999999;
+        flex-wrap: nowrap;
+      }
+    }
+    .content {
+      @include base_flex(row);
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 24px;
+      margin-left: 32px;
+      font-size: 24px;
+    }
+    .image-group {
+      margin-top: 24px;
+      @include base_flex(row);
+      max-width: 686px;
+      width: 686px;
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+      overflow-y: hidden;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+      //margin-top: 24px;
+      flex-wrap: nowrap;
+      .photo-item {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-self: center;
+        min-width: 180px;
+        height: 180px;
+        img {
+          width: 180px;
+          height: 180px;
+        }
+      }
+    }
+    .type {
+      margin-top: 24px;
+      margin-left: 32px;
+      font-size: 28px;
+      color: #999999;
+      margin-bottom: 32px;
+    }
+
+  }
+}
+
+#close {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 88px 0 20px 20px;
+  z-index: -3;
+}
+
+.image-footer {
+  text-align: center;
+  font-size: 16px !important;
+  bottom: 20px !important;
+}
+

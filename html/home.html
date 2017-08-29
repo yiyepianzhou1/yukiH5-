@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/home.css">
+<title>首页</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-nav">
+            <div class="header-nav-button-left">
+                <div class="icon-left"></div>
+                <span class="info-left">分类</span>
+            </div>
+            <div class="search-input">
+                <div class="search-icon"></div>
+                <div class="search">
+                    <input class="to-search" type="text" placeholder="日本进口面膜">
+                </div>
+            </div>
+            <div class="header-nav-button-right">
+                <div class="icon-left"></div>
+                <span class="info-left">消息</span>
+            </div>
+        </div>
+    </header>
+    <!-- 内容部分 -->
+    <main>
+        <div class="header-tab-nav">
+            <div class="tab-nav-item-1">
+                推荐
+            </div>
+            <div class="tab-nav-item-2">
+                美妆
+            </div>
+            <div class="tab-nav-item-3">
+                数码
+            </div>
+            <div class="tab-nav-item-4">
+                生活
+            </div>
+            <div class="tab-nav-item-5">
+                穿搭
+            </div>
+            <div class="tab-nav-item-6">
+                学习
+            </div>
+        </div>
+        <div class="home-banner">
+
+        </div>
+        <div class="home-banner">
+
+        </div>
+        <div class="home-banner">
+
+        </div>
+    </main>
+    <!--页脚导航-->
+    <footer>
+        <div class="footer-bar">
+            <div class="footer-bar-item">
+                <div class="icon-1"></div>
+                <span class="info-1">福利仓</span>
+            </div>
+            <div class="footer-bar-item">
+                <div class="icon-2"></div>
+                <span class="info-2">分类</span>
+            </div>
+            <div class="footer-bar-item">
+                <div class="icon-3"></div>
+                <span class="info-3">购物袋</span>
+            </div>
+            <div class="footer-bar-item">
+                <div class="icon-4"></div>
+                <span class="info-4">我的</span>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

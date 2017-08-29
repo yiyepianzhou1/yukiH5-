@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/classification.css">
+    <title>分类</title>
+</head>
+
+<body>
+<!--唯一搜索-->
+<header>
+    <div class="header-nav-only-search">
+        <div class="search-input">
+            <div class="search-icon"></div>
+            <div class="search">
+                <input class="to-search" type="text" placeholder="从这里出发你会发现更多">
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <div class="content">
+        <div class="content-left">
+            <div class="classification-name">美妆</div>
+            <div class="classification-name">数码</div>
+            <div class="classification-name">生活</div>
+            <div class="classification-name">穿搭</div>
+            <div class="classification-name">学习</div>
+        </div>
+        <!--右面部分的内容-->
+        <!--<div class="outer-container">-->
+            <!--<div class="inner-container">-->
+                <div class="content-right">
+                    <!--横幅-->
+                    <div class="banner">
+                    </div>
+                    <!--分类标题-->
+                    <div class="classification-title">
+                        <div class="title-left">1</div>
+                        <div class="star-left">◆</div>
+                        <span class="text">美妆分类</span>
+                        <div class="star-right">◆</div>
+                        <div class="title-right">2</div>
+                    </div>
+                    <!--商品详情-->
+                    <div class="goods-detail">
+                        <!--一行商品的详情-->
+                        <div class="goods-row">
+                            <div class="goods-item-1">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">彩妆</div>
+                            </div>
+                            <div class="goods-item-2">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">眼药水</div>
+                            </div>
+                            <div class="goods-item-3">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">面膜</div>
+                            </div>
+                        </div>
+                        <div class="goods-row">
+                            <div class="goods-item-1">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">彩妆</div>
+                            </div>
+                            <div class="goods-item-2">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">眼药水</div>
+                            </div>
+                            <div class="goods-item-3">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">面膜</div>
+                            </div>
+                        </div>
+                        <div class="goods-row">
+                            <div class="goods-item-1">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">彩妆</div>
+                            </div>
+                            <div class="goods-item-2">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">眼药水</div>
+                            </div>
+                            <div class="goods-item-3">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">面膜</div>
+                            </div>
+                        </div>
+                        <div class="goods-row">
+                            <div class="goods-item-1">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">彩妆</div>
+                            </div>
+                            <div class="goods-item-2">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">眼药水</div>
+                            </div>
+                            <div class="goods-item-3">
+                                <div class="good-item-picture"></div>
+                                <div class="good-item-text">面膜</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+    <div class="footer-bar">
+        <div class="footer-bar-item">
+            <div class="icon-1"></div>
+            <span class="info-1">福利仓</span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-2"></div>
+            <span class="info-2">分类</span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-3"></div>
+            <span class="info-3">购物袋</span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-4"></div>
+            <span class="info-4">我的</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

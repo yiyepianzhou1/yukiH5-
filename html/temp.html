@@ -1,0 +1,16 @@
+$.ajax({
+type:"post",
+dataType:"json",
+url:"http://192.168.0.178:8084/h5/h5goodcart/addUserGoodCart",
+data:{
+skuid:805,
+count:$(".count-input").find("input").val(),
+userid:95,
+},success:function (date) {
+if(date.state = "success"){
+popBox("body","成功加入购物车");
+}else{
+popBox("body",date.state);
+}
+}
+})

@@ -1,0 +1,14 @@
+.home-banner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   height: 420px;
+  width: 750px;
+   background: url("../img/home-banner.png") no-repeat center center;
+   background-size: 100%;
+  img{
+    height: 420px;
+    width: 750px;
+  }
+ }

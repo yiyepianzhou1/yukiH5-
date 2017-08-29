@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/pay.css">
+    <title>确认订单有地址</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            支付方式
+        </div>
+    </div>
+</header>
+<main>
+    <div class="pay">
+        <div id="orderInfo" class="orderInfo">
+
+        </div>
+    </div>
+</main>
+<footer>
+    <!--最终提交订单-->
+    <div class="button-addNewAddress-box">
+        <div class="button-addNewAddress"><span class="button-addNewAddress-word">支付</span></div>
+    </div>
+</footer>
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/doT.js"></script>
+<script src="js/daojishi.js"></script>
+<script id="orderInfo-tpl" type="text/x-dot-template">
+    <div class="orderInfo-needPay">应付金额：￥ {{= it.orderBean.needPay / 100}}</div>
+    <div class="orderInfo-state">
+        <div class="orderInfo-state-left">
+            <img src="img/warehouse/flc_icon_pay_orderok@3x@3x.png" alt="" class="successSubOrder">
+        </div>
+        <div class="orderInfo-state-right">
+            <div class="orderInfo-state-right-row1">订单交易成功！去付款喽</div>
+            <div class="orderInfo-state-right-row2">预计五天发货</div>
+            <div class="orderInfo-state-right-row3">请在 <span class="minite"></span>分<span class="second"></span>秒内完成支付，超时后将取消订单</div>
+        </div>
+    </div>
+    <div class="orderInfo-orderInfo">
+        <div class="orderInfo-orderInfo-row1" data-orderCode="{{= it.orderBean.ordercode}}">订 单 号：{{= it.orderBean.ordercode}}</div>
+        <div class="orderInfo-orderInfo-row2">
+            <div class="addressInfo-row1">收货信息：{{= it.orderBean.receiveName}} {{= it.orderBean.phone}}</div>
+            <div class="addressInfo-row2">{{= it.orderBean.address}}</div>
+        </div>
+        <div class="orderInfo-orderInfo-row3"><span>商品名称：</span><span>{{= it.orderBean.goodInfo}}</span></div>
+    </div>
+    <div class="payment">
+        <div class="chose-payment">选择支付方式</div>
+        <div class="aliPay choseBtn">
+            <div class="aliPay-left">
+                <img src="img/warehouse/flc_icon_alipay@3x.png" alt="" class="pay-icon">
+                <span>支付宝支付</span>
+            </div>
+            <img data-payState="ali"  src="img/shopping-bag/common_icon_empty@3x.png" alt="" class="rightBtn">
+        </div>
+        <div class="weChartPay choseBtn">
+            <div class="weChartPay-left">
+                <img src="img/warehouse/flc_icon_wechatpay@3x.png" alt="">
+                <span>微信支付</span>
+            </div>
+            <img data-payState="wx" src="img/shopping-bag/common_icon_empty@3x.png" alt="" class="rightBtn">
+        </div>
+    </div>
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            type:"post",
+            url:"http://192.168.0.178:8084/h5/h5order/getOrderByCode",
+            dataType:"json",
+            data:{
+                ordercode:window.localStorage.ordercode
+            },success:function (date) {
+                var pagefn = doT.template($('#orderInfo-tpl').text(), undefined);
+                showListAppend('#orderInfo', date.data, pagefn, true);
+                $(".choseBtn").on("touchend",".rightBtn",function () {
+                    $(this).attr("src","img/shopping-bag/common_icon_chose@3x.png").addClass("payState");
+                    $(".rightBtn").not(this).attr("src","img/shopping-bag/common_icon_empty@3x.png").removeClass("payState");
+                });
+                //倒计时
+                $(".orderInfo-state-right-row3").daoJiShi({
+                    leftTime : date.data.orderBean.leftTime,
+                    callbacks  : function(){//自动取消订单
+                        /*window.location.href = "index.html";*/
+                    }
+                })
+            }
+        });
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(callback(data));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+        //付款
+        $(".button-addNewAddress-box").on("click",".button-addNewAddress",function () {
+            console.log(11);
+            var uid = window.localStorage.uid;
+            var orderCode = window.localStorage.ordercode;
+            var payType = $(".payState").attr("data-paystate");
+            $.ajax({
+                type:"post",
+                url:"http://192.168.0.178:8084/h5/h5pay/subPayment",
+                dataType:"json",
+                data:{
+                    ordercode:orderCode,
+                    payType:payType,
+                    userId:uid
+                },success:function (date) {
+                    console.log(date);
+                    if(date.data.state){
+                        if(payType == "wx"){
+                            window.localStorage.chainurl = date.data.imgUrl;
+                            window.location.href = "weChartPay.html"
+                        }else{
+                            window.localStorage.chainurl = date.data.chainurl;
+                            window.location.href = "alipay.html"
+                        }
+
+                    }
+                }
+            })
+        });
+    });
+</script>
+</body>
+</html>

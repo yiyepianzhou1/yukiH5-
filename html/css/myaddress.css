@@ -1,0 +1,303 @@
+@charset "UTF-8";
+
+body {
+  background: #f0f0f0;
+}
+
+.myAddress {
+  padding-bottom: 0.34rem;
+  /*彩条背景*/
+  /*地址列表*/
+}
+
+.myAddress .color-line {
+  height: 0.1rem;
+  background: url("../img/warehouse/color-line.png") no-repeat center center;
+  background-size: 100%;
+}
+
+.myAddress .addressList .addressList-child {
+  background: #F0F0F0;
+  padding-bottom: 0.2rem;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item1 {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: 0.72rem;
+  padding: 0.12rem 0.32rem 0 0.32rem;
+  background: #ffffff;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item1 span {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #333;
+  text-align: left;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item2 {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #999;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.32rem 0.32rem 0.32rem;
+  border-bottom: 0.01rem solid #E5E5E5;
+  background: #ffffff;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: 0.8rem;
+  padding: 0 0.32rem;
+  background: #ffffff;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault .addressDefault-btn {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.16rem;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault .addressDefault-title {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault-right {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault-right .addressDefault-right-btn {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault-right .addressDefault-right-btn:nth-child(1) {
+  margin-right: 0.4rem;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault-right .addressDefault-right-btn .addressDefault-icon {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.16rem;
+}
+
+.myAddress .addressList .addressList-child .addressList-child-item3 .addressDefault-right .addressDefault-right-btn .addressDefault-word {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.button-addNewAddress-box {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 1.2rem;
+  background: rgba(240, 240, 240, 0.96);
+  position: fixed;
+  bottom: 0;
+}
+
+.button-addNewAddress-box .button-addNewAddress {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  margin: 0 0.32rem;
+  background: #4595e5;
+  height: 0.8rem;
+  border-radius: 0.06rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .add-icon {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.16rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .button-addNewAddress-word {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #fff;
+  text-align: left;
+}
+
+.hintPopBox {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 9.6rem;
+  z-index: 1;
+}
+
+.hintPopBox .hintPop {
+  height: 0.48rem;
+  padding: 0 0.18rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.26rem;
+  line-height: 0.48rem;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  border-radius: 0.05rem;
+}

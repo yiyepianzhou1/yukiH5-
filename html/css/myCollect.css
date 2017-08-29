@@ -1,0 +1,165 @@
+body {
+  background: #f0f0f0;
+}
+
+.head-edit {
+  font-size: 0.34rem;
+  color: #333;
+}
+
+.head-cancel {
+  display: none;
+  font-size: 0.34rem;
+  color: #4595E5;
+}
+
+.myCollect .goods-show {
+  padding-top: 0.2rem !important;
+}
+
+.myCollect .goods-show .goods-item {
+  border: 0;
+}
+
+.myCollect .goods-show .goods-item .goods-picture {
+  border: 0;
+  position: relative;
+}
+
+.myCollect .goods-show .goods-item .goods-picture .goods-img {
+  width: 100%;
+  height: 100%;
+}
+
+.myCollect .goods-show .goods-item .goods-picture .collectEdit {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+.deleteAll {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height .5s;
+  -moz-transition: height .5s;
+  /* Firefox 4 */
+  -webkit-transition: height .5s;
+  /* Safari and Chrome */
+  -o-transition: height .5s;
+  /* Opera */
+  background: #ffffff;
+}
+
+.deleteAll .deleteAll-left {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 5.22rem;
+  height: 100%;
+  justify-content: flex;
+}
+
+.deleteAll .deleteAll-left .deleteAll-left-icon {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.32rem;
+  margin-left: 0.32rem;
+}
+
+.deleteAll .deleteAll-left .selectCount {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+}
+
+.deleteAll .deleteAll-right {
+  width: 2.28rem;
+  height: 100%;
+  background: #4595E5;
+  font-size: 0.28rem;
+  line-height: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.slipUp {
+  height: 1rem;
+}
+
+.slipDown {
+  height: 0;
+}
+
+.hintPopBox {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 9.6rem;
+  z-index: -1;
+}
+
+.hintPopBox .hintPop {
+  height: 0.48rem;
+  padding: 0 0.18rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.26rem;
+  line-height: 0.48rem;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  border-radius: 0.05rem;
+}

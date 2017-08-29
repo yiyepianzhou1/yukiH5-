@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comment.css">
+    <title>模板页面</title>
+</head>
+
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            评价
+        </div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+<div class="allCommentTypes">
+    <div class="comment-item">全部(999+)</div>
+    <div class="comment-item">好评(94)</div>
+    <div class="comment-item">中评(94)</div>
+    <div class="comment-item">差评(94)</div>
+    <div class="comment-item">有图(94)</div>
+</div>
+<div class="comment-title">
+    <div class="text">
+        最新评价
+    </div>
+</div>
+
+<div class="comment-content-list">
+
+    <div class="comment-item">
+        <!-- 用户信息 -->
+        <div class="user-info">
+            <div class="logo-name">
+                <!-- 用户头像 -->
+                <div class="user-logo">
+                    <img src="img/logo.golang.png" alt="" title="">
+                </div>
+                <!-- 用户名称 -->
+                <div class="user-name">秦时明月</div>
+            </div>
+            <div class="time">2017.12.12 12:34</div>
+        </div>
+        <div class="content">
+            测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+        </div>
+        <div class="image-group">
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+        </div>
+        <div class="type">
+            类别：全新现货
+        </div>
+    </div>
+    <div class="comment-item">
+        <!-- 用户信息 -->
+        <div class="user-info">
+            <div class="logo-name">
+                <!-- 用户头像 -->
+                <div class="user-logo">
+                    <img src="img/logo.golang.png" alt="" title="">
+                </div>
+                <!-- 用户名称 -->
+                <div class="user-name">秦时明月</div>
+            </div>
+            <div class="time">2017.12.12 12:34</div>
+        </div>
+        <div class="content">
+            测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+        </div>
+        <div class="image-group">
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+            <div class="photo-item"><img src="img/logo.golang.png" alt=""></div>
+        </div>
+        <div class="type">
+            类别：全新现货
+        </div>
+    </div>
+</div>
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/comment.js"></script>
+<script src="js/imageViewer.min.js"></script>
+</body>
+
+</html>

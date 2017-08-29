@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/myOrder.css">
+    <title>我的订单</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon"></div>
+        <div class="recommend">我的订单</div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <div class="myOrder">
+        <div class="goods-tab-nav">
+            <div class="tab-nav-item-2" data-orderTypeId="0">
+                全部
+            </div>
+            <div class="tab-nav-item-2" data-orderTypeId="1">
+                代付款
+            </div>
+            <div class="tab-nav-item-2" data-orderTypeId="2">
+                待发货
+            </div>
+            <div class="tab-nav-item-2" data-orderTypeId="3">
+                已收货
+            </div>
+            <div class="tab-nav-item-2" data-orderTypeId="4">
+                待评价
+            </div>
+        </div>
+        <!--订单列表-->
+        <div class="orderList" id="orderList">
+
+        </div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script id="orderList-tpl" type="text/x-dot-template">
+    {{? it.ordersBean.length == 0}}
+    <div class="orderList-null" >
+        <div class="orderList-null-icon"></div>
+        <div class="orderList-null-title">没有任何订单哦</div>
+    </div>
+    {{??}}
+    {{~it.ordersBean :value}}
+    <div class="orderListChild" data-orderTypeId="{{= value.order.orderStateId}}">
+        <div class="orderListChild-title">
+            <span class="orderNumber">订单编号：{{= value.order.ordercode}}</span>
+            <span class="orderState">{{= value.order.state}}</span>
+        </div>
+        {{~value.orderItem :goodValue}}
+        <div class="orderListChild-info" data-goodId="{{= goodValue.goodId}}">
+            <div class="orderListChild-infoBox">
+                <img src="{{= goodValue.skuPic}}" alt="" class="myOrder-goodImg">
+                <div class="myOrder-goodInfo" >
+                    <div class="myOrder-goodName">{{= goodValue.name}}</div>
+                    <div class="myOrder-goodStyle">
+                        {{= goodValue.skuText}}
+                    </div>
+                    <div class="myOrder-goodPrice-goodCount">
+                        <div class="myOrder-goodPrice">￥{{= goodValue.unitPrice / 100}}</div>
+                        <div class="myOrder-goodCount">x{{= goodValue.count}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{~}}
+        <div class="myOrder-total">
+            <span class="myOrder-goodCount">共{{= value.totalNumber}}件</span>
+            <span class="myOrder-totalPrice">应付总额：</span>
+            <span class="myOrder-price">￥{{= value.order.needPay / 100}}</span>
+            <span class="myOrder-freight">(含运费￥{{= value.order.freight}})</span>
+        </div>
+        {{? value.order.orderStateId == 1}}
+        <div class="orderListChild-button" data-orderTypeId="{{= value.order.orderStateId}}">
+            <div class="orderListChild-button-gray orderListChild-button-pub">取消订单</div>
+            <div class="orderListChild-button-blue orderListChild-button-pub goToPay">去支付</div>
+        </div>
+        {{?}}
+        {{? value.orderStateId == 2}}
+        <div class="orderListChild-button" data-orderTypeId="{{= value.order.orderStateId}}">
+            <div class="orderListChild-button-gray orderListChild-button-pub">取消订单</div>
+            <div class="orderListChild-button-blue orderListChild-button-pub">提醒发货</div>
+        </div>
+        {{?}}
+        {{? value.orderStateId == 3}}
+        <div class="orderListChild-button" data-orderTypeId="{{= value.order.orderStateId}}">
+            <div class="orderListChild-button-gray orderListChild-button-pub">确认收货</div>
+        </div>
+        {{?}}
+        {{? value.orderStateId == 4}}
+        <div class="orderListChild-button" data-orderTypeId="{{= value.order.orderStateId}}">
+            <div class="orderListChild-button-gray orderListChild-button-pub">申请售后</div>
+            <div class="orderListChild-button-blue orderListChild-button-pub">评价</div>
+        </div>
+        {{?}}
+        <aside style="width: 100%;height: 20px;background: #F0F0F0;"></aside>
+    </div>
+    {{~}}
+    {{?}}
+</script>
+<script>
+    Zepto(function ($) {
+        var url = window.location.href;
+        console.log(url);
+        var orderTypeId = null;
+        if(url.indexOf("?orderTypeId=") == -1){
+            orderTypeId = 0;
+        }else{
+            orderTypeId = url.split("=")[1];
+        }
+        console.log(orderTypeId);
+        var userid = window.localStorage.uid;
+        var pageIndex = 1;
+        var sendState = true;
+        $(".tab-nav-item-2").eq(orderTypeId).addClass("tab-nav-item-1");
+        //切换订单类型
+        $(".goods-tab-nav>.tab-nav-item-2").on("touchend",function () {
+            $(this).addClass("tab-nav-item-1");
+            $(".tab-nav-item-2").not(this).removeClass("tab-nav-item-1");
+            orderTypeId = $(this).attr("data-ordertypeid");
+            console.log(orderTypeId);
+            $("#orderList").empty();
+            randerOrderType(userid,orderTypeId,10,1);
+        });
+        randerOrderType(userid,orderTypeId,10,pageIndex);
+        function randerOrderType(userid,state,size,index) {
+            $.ajax({
+                type:"post",
+                url:"http://192.168.0.178:8084/h5/h5order/myOrder",
+                dataType:"json",
+                async:false,
+                data:{
+                    userid:userid,
+                    state:state,
+                    size:size,
+                    index:index
+                },success:function (date) {
+                    console.log(date);
+                    var pagefn = doT.template($('#orderList-tpl').text(), undefined);
+                    showListAppend('#orderList', date.data, pagefn, true);
+                    sendState = false;
+                    console.log(sendState);
+                },complete:function(){
+                    sendState =   true;
+                    console.log(sendState);
+                },error:function(){
+                    popBox("网络错误");
+                }
+            })
+        }
+
+        var range = 50;
+        $(window).scroll(function(){
+            var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+            var scrollHeight = $(document).height();   //当前页面的总高度
+            var clientHeight = $(this).height();    //当前可视的页面高度
+            // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+            if(scrollTop + clientHeight >= (scrollHeight - range)){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 count++;         //每次滑动count加1
+                console.log(sendState);
+                if(sendState){
+                    pageIndex += 1;
+                    console.log(pageIndex);
+                    randerOrderType(userid,orderTypeId,10,pageIndex);
+                }
+
+            }
+        });
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(callback(data));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+        $(".header-nav-recommend").on("touchend",".nav-icon",function(){
+            window.history.go(-1);
+        });
+
+    });
+</script>
+<script>
+
+</script>
+</body>
+
+</html>

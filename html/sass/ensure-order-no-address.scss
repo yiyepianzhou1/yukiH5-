@@ -1,0 +1,365 @@
+// mixin functions
+// 默认标签
+@mixin tag-default($w,$h,$color){
+  display: flex;
+  flex-direction: column;
+  border:1px solid $color;
+  color: $color;  
+  border-radius: 4px;
+  font-size: 20px;
+  height: $h;
+  justify-content: center;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+@mixin header-nav-tab {
+  padding: 32px;
+  text-align: center; //width: 750px;
+  /*no*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.ensure-order-no-address {
+  width: 750px;
+  //display: flex;
+  //颜色条
+  .color-line {
+    height: 10px;
+    background: url("../img/warehouse/color-line.png") no-repeat center center;
+    background-size: 100%;
+  }
+  //添加地址
+  .add-address {
+    display: flex;
+    border:1px solid #d9d9d9;/*no*/
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .left-icon {
+        margin-left: 32px;
+        display: inline-flex;
+        width: 32px;
+        height: 32px; //border: 1px solid #D2D2D2; /*no*/
+        background: url("../img/my/my_orderdetail_icon_add@3x.png") no-repeat center center;
+        background-size: 100%;
+      }
+      // 默认没有地址的提示的文本
+      .text {
+        font-size: 28px;
+        color: #999999;
+      }
+    //  有地址时候的样式
+      .address-detail{
+        margin-left: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 28px;
+        align-content: center;
+        .first-line{
+          margin:32px 0;
+          display: flex;
+          flex-direction: row;
+          justify-content:space-between;
+          .user-num{
+            margin:0 32px;
+          }
+          .tag-default {
+            @include tag-default(53px,32px,#4595e5);
+          }
+        }
+        .user-address{
+          margin-bottom: 32px;
+          margin-left: 70px;
+          width: 580px;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+    .right {
+      .right-icon {
+        margin-right: 32px;
+        display: inline-flex;
+        width: 48px;
+        height: 48px; //border: 1px solid #D2D2D2; /*no*/
+        background: url("../img/warehouse/common_icon_next@3x.png") no-repeat center center;
+        background-size: 100%;
+      }
+    }
+  }
+// 购物车商品列表
+.carts-goods{
+  .carts-goods-item {
+    @include header-nav-tab;
+    height: 208px; // 商品图片
+    .goods-picture {
+      width: 200px;
+      height: 2rem;
+      /*no*/
+      background-size: 100%;
+    }
+    // 商品购买数量
+    .count {
+      margin-top: 135px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-end;
+      font-size: 28px;
+    } // 商品细节
+    .goods-details {
+      margin-left: 24px;
+      flex-grow: 1;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      //  商品标题
+      .goods-title {
+        max-width: 415px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 40px;
+        font-size: 28px;
+        color: #333333;
+      } // 商品价格
+      .goods-price {
+        display: flex;
+        flex-direction: row;
+        max-width: 415px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 28px;
+        color: #333333;
+        margin-top: 40px;
+      } //  副标题
+      .sub-heading {
+        max-width: 415px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 24px;
+        font-size: 28px;
+        color: #999999;
+      }
+    }
+  }
+}
+}
+@mixin common-info{
+  //margin:0 32px;
+  height: 99px;
+  border-bottom: 1px solid #d9d9d9;/*no*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  &:last-child{
+    border-bottom:0;
+  }
+}
+// 商品总价
+.goods-total-price {
+  @include common-info;
+  .left{
+    .text{
+      margin-left: 32px;
+      font-size: 28px;
+    }
+    .tag{
+
+    }
+  }
+  .right{
+    .text{
+      margin-right: 32px;
+      font-size: 28px;
+
+    }
+    .tag{
+
+    }
+  }
+
+}
+//运费
+.carriage{
+  @include common-info;
+  .left{
+    .text{
+      margin-left: 32px;
+      font-size: 28px;
+    }
+    .tag{
+
+    }
+  }
+  .right{
+    .text{
+      margin-right: 32px;
+      font-size: 28px;
+
+    }
+    .tag{
+
+    }
+  }
+
+}
+//优惠券
+.coupon{
+  @include common-info;
+  .left{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    .text{
+      margin-left: 32px;
+      font-size: 28px;
+    }
+    .tag {
+      margin-left: 12px;
+      @include tag-default(85px, 32px, #4595e5);
+    }
+  }
+  .right{
+
+    .text{
+      margin-right: 32px;
+      font-size: 28px;
+
+    }
+    .tag{
+
+    }
+  }
+
+}
+//折扣信息
+.discount-info{
+  @include common-info;
+  .left{
+    .text{
+      margin-left: 32px;
+      font-size: 28px;
+    }
+    .tag{
+      display: flex;
+      flex-direction: row;      justify-content: center;
+      align-items: center;
+    }
+  }
+  .right{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    .text{
+      margin-right: 32px;
+      font-size: 28px;
+
+    }
+    .tag {
+      margin-right: 12px;
+      @include tag-default(170px, 40px, #e54560);
+
+    }
+  }
+
+}
+//买家留言
+.bbs{
+  @include common-info;
+  .left{
+    .text{
+      margin-left: 32px;
+      font-size: 28px;
+
+    }
+    .tag{
+
+    }
+  }
+  .right{
+    .text{
+      margin-right: 32px;
+      font-size: 28px;
+      color: #999999;
+    }
+    .tag{
+
+    }
+  }
+
+}
+main{
+  margin-bottom: 1rem;
+}
+// textarea 标准样式
+@mixin text-area-pretty($h){
+  height: $h - 64px;
+  resize: none;
+  overflow: auto;
+  outline:none;
+  font-size: 28px;
+  width: 750px - 64px;
+  border: 0;
+  background-color: #f0f0f0;
+  color: #333333;
+  word-break: break-all;
+  padding: 32px;
+}
+// 填写区
+
+.ensure-order-comment {
+  @include text-area-pretty(253px);
+}
+// 合计
+.commit-order{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+@mixin commit-button($height,$grow,$color){
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #ffffff;
+  align-items: center;
+  font-size: 28px;
+  height: $height;
+  flex-grow: $grow;
+  background-color: $color;
+}
+  //总计付费
+  .button-total-pay {
+    @include commit-button(99px,7,#f7f7f7);
+    justify-content: flex-end;
+    font-size: 28px;
+    .label{
+      color: #333333;
+    }
+    .final-price{
+      color: #e54560;
+      margin-right: 32px;
+    }
+  }
+  //提交
+  .button-commit{
+    @include commit-button(99px,3,#4595e5);
+  }
+}

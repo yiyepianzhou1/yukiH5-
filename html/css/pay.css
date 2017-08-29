@@ -1,0 +1,310 @@
+.header-nav-recommend {
+  border-bottom: 0.01rem solid #E5E5E5;
+}
+
+html {
+  background: #f0f0f0;
+}
+
+.pay .orderInfo {
+  background: #fff;
+}
+
+.pay .orderInfo .orderInfo-needPay {
+  width: 6.86rem;
+  height: 1rem;
+  margin: 0 0.32rem;
+  font-size: 0.34rem;
+  line-height: 1rem;
+  color: #333;
+  text-align: left;
+  border-bottom: 0.01rem dashed #E5E5E5;
+}
+
+.pay .orderInfo .orderInfo-state {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  padding: 0.32rem;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-left {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.32rem;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-left .successSubOrder {
+  width: 100%;
+  height: 100%;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-right {
+  width: 5.5rem;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-right .orderInfo-state-right-row1 {
+  font-size: 0.34rem;
+  line-height: 0.34rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 0.24rem;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-right .orderInfo-state-right-row2 {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #666;
+  text-align: left;
+  margin-bottom: 0.15rem;
+}
+
+.pay .orderInfo .orderInfo-state .orderInfo-state-right .orderInfo-state-right-row3 {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #666;
+  text-align: left;
+  margin-bottom: 0.32rem;
+}
+
+.pay .orderInfo .orderInfo-orderInfo {
+  width: 6.38rem;
+  margin: 0 0.32rem 0.32rem 0.32rem;
+  padding: 0.24rem;
+  background: #fafafa;
+}
+
+.pay .orderInfo .orderInfo-orderInfo .orderInfo-orderInfo-row1 {
+  font-size: 0.24rem;
+  line-height: 0.36rem;
+  color: #666;
+  text-align: left;
+}
+
+.pay .orderInfo .orderInfo-orderInfo .orderInfo-orderInfo-row2 .addressInfo-row1 {
+  font-size: 0.24rem;
+  line-height: 0.36rem;
+  color: #666;
+  text-align: left;
+}
+
+.pay .orderInfo .orderInfo-orderInfo .orderInfo-orderInfo-row2 .addressInfo-row2 {
+  padding-left: 1.2rem;
+  font-size: 0.24rem;
+  line-height: 0.36rem;
+  color: #666;
+  text-align: left;
+}
+
+.pay .orderInfo .orderInfo-orderInfo .orderInfo-orderInfo-row3 {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0.24rem;
+  line-height: 0.36rem;
+  color: #666;
+  text-align: left;
+}
+
+.pay .orderInfo .orderInfo-orderInfo .orderInfo-orderInfo-row3 span:first-child {
+  width: 1.7rem;
+}
+
+.pay .orderInfo .payment {
+  width: 7.5rem;
+  background: #f0f0f0;
+}
+
+.pay .orderInfo .payment .chose-payment {
+  padding: 0.2rem 0.32rem 0 0.32rem;
+  font-size: 0.28rem;
+  line-height: 0.68rem;
+  color: #333;
+  text-align: left;
+}
+
+.pay .orderInfo .payment .aliPay,
+.pay .orderInfo .payment .weChartPay {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 1.1rem;
+  padding: 0 0.32rem;
+  border-bottom: 0.01rem solid #E5E5E5;
+  background: #fff;
+}
+
+.pay .orderInfo .payment .aliPay .aliPay-left,
+.pay .orderInfo .payment .aliPay .weChartPay-left,
+.pay .orderInfo .payment .weChartPay .aliPay-left,
+.pay .orderInfo .payment .weChartPay .weChartPay-left {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.pay .orderInfo .payment .aliPay .aliPay-left img,
+.pay .orderInfo .payment .aliPay .weChartPay-left img,
+.pay .orderInfo .payment .weChartPay .aliPay-left img,
+.pay .orderInfo .payment .weChartPay .weChartPay-left img {
+  width: 0.62rem;
+  height: 0.62rem;
+  margin-right: 0.25rem;
+}
+
+.pay .orderInfo .payment .aliPay .aliPay-left span,
+.pay .orderInfo .payment .aliPay .weChartPay-left span,
+.pay .orderInfo .payment .weChartPay .aliPay-left span,
+.pay .orderInfo .payment .weChartPay .weChartPay-left span {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+}
+
+.pay .orderInfo .payment .aliPay .rightBtn,
+.pay .orderInfo .payment .weChartPay .rightBtn {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+.button-addNewAddress-box {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 1.2rem;
+  background: rgba(240, 240, 240, 0.96);
+  position: fixed;
+  bottom: 0;
+}
+
+.button-addNewAddress-box .button-addNewAddress {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  margin: 0 0.32rem;
+  background: #4595e5;
+  height: 0.8rem;
+  border-radius: 0.06rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .add-icon {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.16rem;
+}
+
+.button-addNewAddress-box .button-addNewAddress .button-addNewAddress-word {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #fff;
+  text-align: left;
+}

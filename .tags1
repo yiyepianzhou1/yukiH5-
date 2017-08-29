@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+YUKI-Backend-UI	/Users/genius/Desktop/trying/README.md	/^# YUKI-Backend-UI$/;"	function	line:1
+1\. 基本颜色	/Users/genius/Desktop/trying/README.md	/^## 1\\. 基本颜色$/;"	function	line:3
+2\. 文字字体颜色	/Users/genius/Desktop/trying/README.md	/^## 2\\. 文字字体颜色$/;"	function	line:25
+3\.文字字体大小	/Users/genius/Desktop/trying/README.md	/^## 3\\.文字字体大小$/;"	function	line:35
+4. 图标样式部分	/Users/genius/Desktop/trying/README.md	/^## 4. 图标样式部分$/;"	function	line:45
+5\. 按钮样式	/Users/genius/Desktop/trying/README.md	/^## 5\\. 按钮样式$/;"	function	line:58
+6\. 组件	/Users/genius/Desktop/trying/README.md	/^## 6\\. 组件$/;"	function	line:69

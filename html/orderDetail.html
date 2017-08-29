@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/orderDetail.css">
+    <title>模板页面</title>
+</head>
+
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon"></div>
+        <div class="recommend">订单详情</div>
+        <div class="address-delete"></div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <div class="orderDetail">
+        <!--订单状态-->
+        <div class="orderDetail-orderState">
+            <div class="orderState-waiting">
+                <div class="orderState-waiting-child">等待买家付款</div>
+            </div>
+            <div class="orderState-dealSuccess">
+                <div class="orderState-dealSuccess-word">交易成功</div>
+                <div class="orderState-dealSuccess-logisticsDetail">
+                    <div class="orderState-dealSuccess-logisticsDetail-left">物流信息：订单交易成功</div>
+                    <div class="orderState-dealSuccess-logisticsDetail-right"></div>
+                </div>
+                <div class="orderState-dealSuccess-time">2017-03-23 17:34:56</div>
+            </div>
+        </div>
+        <!--买家信息-->
+        <div class="buyerInfo">
+            <div class="buyerInfo-column1">
+                <div class="buyerInfo-column1-ro12">
+                    <div class="buyerInfo-column1-row1 buyerInfo-icon"></div>
+                    <div class="buyerInfo-column1-row2">李达康</div>
+                </div>
+                <div class="buyerInfo-column1-row3">13855554444</div>
+            </div>
+            <div class="buyerInfo-column2">江苏省江宁区敲梦圆8栋1楼</div>
+        </div>
+        <!--买家留言-->
+        <div class="buyerMessage">
+            <div class="buyerInfo-column1">
+                <div class="buyerInfo-column1-ro12">
+                    <div class="buyerInfo-column1-row1 buyerMessage-icon"></div>
+                    <div class="buyerInfo-column1-row2 buyerMessage-word">买家留言</div>
+                </div>
+            </div>
+            <div class="buyerInfo-column2Msg">买家留言买家留言买家留言买家留言买家留言买家留言买家留言买家留言买家留言买家留言买家留言</div>
+        </div>
+        <!--交易商品列表-->
+        <div class="orderGoodList">
+            <div class="orderListChild-info">
+                <div class="orderListChild-infoBox">
+                    <img src="" alt="" class="myOrder-goodImg">
+                    <div class="myOrder-goodInfo">
+                        <div class="myOrder-goodName">这里是商品标题，显示一行</div>
+                        <div class="myOrder-goodStyle">
+                            款式：全新现货
+                        </div>
+                        <div class="myOrder-goodPrice-goodCount">
+                            <div class="myOrder-goodPrice">￥129.00</div>
+                            <div class="myOrder-goodCount">x1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="orderListChild-info">
+                <div class="orderListChild-infoBox">
+                    <img src="" alt="" class="myOrder-goodImg">
+                    <div class="myOrder-goodInfo">
+                        <div class="myOrder-goodName">这里是商品标题，显示一行</div>
+                        <div class="myOrder-goodStyle">
+                            款式：全新现货
+                        </div>
+                        <div class="myOrder-goodPrice-goodCount">
+                            <div class="myOrder-goodPrice">￥129.00</div>
+                            <div class="myOrder-goodCount">x1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--订单信息-->
+        <div class="orderInfo">
+            <div class="orderInfo-list">
+                <div class="orderInfo-list-left orderInfo-list-left-black">订单总价</div>
+                <div class="orderInfo-list-right orderInfo-list-left-red">￥ 345.00</div>
+            </div>
+            <div class="orderInfo-list">
+                <div class="orderInfo-list-left goodsPrice orderInfo-list-left-gray">商品总价</div>
+                <div class="orderInfo-list-right orderInfo-list-left-black">￥ 293.00</div>
+            </div>
+            <div class="orderInfo-list">
+                <div class="orderInfo-list-left orderInfo-list-left-gray">运费</div>
+                <div class="orderInfo-list-right orderInfo-list-left-black">￥ 6.00</div>
+            </div>
+            <div class="orderInfo-list">
+                <div class="orderInfo-list-left orderInfo-list-left-gray">折扣信息</div>
+                <div class="orderInfo-list-right orderInfo-list-left-black">￥ -45.00</div>
+            </div>
+        </div>
+        <!--订单时间，编号-->
+        <div class="orderTime-orderNumber">
+            <div class="orderTime">订单编号：2015456654564656</div>
+            <div class="orderNumber">下单时间：2017-02-13 23:23:23</div>
+        </div>
+        <!--猜你喜欢-->
+        <div class="preference">猜你喜欢</div>
+        <!--商品列表展示-->
+        <div class="goods-show">
+            <div class="goods-item">
+                <div class="goods-picture">
+                    1
+                </div>
+                <div class="goods-title">
+                    这里是商品标题,这里是商品标题，这里是商品标题
+                </div>
+                <div class="goods-price">
+                    ￥34822
+                </div>
+            </div>
+            <div class="goods-item">
+                <div class="goods-picture">
+                    2
+                </div>
+                <div class="goods-title">
+                    这里是商品标题,这里是商品标题，这里是商品标题
+                </div>
+                <div class="goods-price">
+                    ￥34822
+                </div>
+            </div>
+            <div class="goods-item">
+                <div class="goods-picture">
+                    2
+                </div>
+                <div class="goods-title">
+                    这里是商品标题,这里是商品标题，这里是商品标题
+                </div>
+                <div class="goods-price">
+                    ￥34822
+                </div>
+            </div>
+            <div class="goods-item">
+                <div class="goods-picture">
+                    2
+                </div>
+                <div class="goods-title">
+                    这里是商品标题,这里是商品标题，这里是商品标题
+                </div>
+                <div class="goods-price">
+                    ￥34822
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+    <div class="order-footer">
+        <div class="order-footer-left">
+            <img src="" alt="" class="order-footer-icon">
+            <span class="order-footer-left-world">联系客服</span>
+        </div>
+        <div class="order-footer-right">
+            <div class="order-footer-right-price">￥234.0</div>
+            <div class="order-cancelBtn order-btn">取消订单</div>
+            <div class="order-goBuyBtn order-btn">立即支付</div>
+        </div>
+    </div>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+</body>
+
+</html>

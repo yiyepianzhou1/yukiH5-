@@ -1,0 +1,25 @@
+//切换内容
+.switch-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .nav-index{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f7d35d;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f7d35d;
+  }
+}
+
+
+.footer-bar{
+  .button-active{
+    color: #4595e5;
+  }
+}

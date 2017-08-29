@@ -1,0 +1,96 @@
+header {
+  z-index: 1;
+}
+
+aside {
+  width: 100%;
+  height: 0.2rem;
+  background: #f0f0f0;
+}
+
+.search-input,
+.to-search {
+  background: #EBEBEB;
+}
+
+.header-nav-recommend-icon-right {
+  border: 0;
+  border-bottom: 0.01rem solid #E5E5E5;
+  padding: 0;
+  margin: 0 0.32rem;
+}
+
+.goods-item,
+.goods-picture,
+.poplar-goods-show {
+  border: none !important;
+}
+
+.goods-item {
+  height: 4.5rem !important;
+}
+
+#iSlider-wrapper {
+  height: 4.2rem;
+  background-size: 100%;
+}
+
+.preference {
+  width: 100%;
+  height: 0.96rem;
+  font-size: 0.32rem;
+  line-height: 0.96rem;
+  color: #333;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+.header-nav-button-left {
+  width: 100%;
+}
+
+.hintPopBox {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 9.6rem;
+  z-index: -1;
+}
+
+.hintPopBox .hintPop {
+  height: 0.48rem;
+  padding: 0 0.18rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.26rem;
+  line-height: 0.48rem;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+  border-radius: 0.05rem;
+}
+
+.iSlider-img {
+  width: 100%;
+  height: 100%;
+}
+
+.info-1-blue {
+  color: #4595e5;
+}

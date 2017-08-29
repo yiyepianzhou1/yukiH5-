@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js">-->
+    <!--</script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link href="css/index.css" rel="stylesheet">
+    <title>
+        模板页面
+    </title>
+</head>
+
+<body>
+    <!--通用按钮 默认-->
+    <div class="header-nav">
+        <div class="button-primary">
+            保存
+        </div>
+    </div>
+    <!--页脚导航-->
+    <div class="footer-bar">
+        <div class="footer-bar-item">
+            <div class="icon-1">
+            </div>
+            <span class="info-1">
+                    福利仓
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-2">
+            </div>
+            <span class="info-2">
+                    分类
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-3">
+            </div>
+            <span class="info-3">
+                    购物袋
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-4">
+            </div>
+            <span class="info-4">
+                    我的
+                </span>
+        </div>
+    </div>
+    <!-- 头部导航 -->
+    <div class="header-nav">
+        <div class="header-nav-button-left">
+            <div class="icon-left">
+            </div>
+            <span class="info-left">
+                    分类
+                </span>
+        </div>
+        <div class="search-input">
+            <div class="search-icon">
+            </div>
+            <div class="search">
+                <input class="to-search" placeholder="日本进口面膜" type="text">
+            </div>
+        </div>
+        <div class="header-nav-button-right">
+            <div class="icon-left">
+            </div>
+            <span class="info-left">
+                    消息
+                </span>
+        </div>
+    </div>
+    <!--头部标签导航-->
+    <div class="header-tab-nav">
+        <div class="tab-nav-item-1">
+            推荐
+        </div>
+        <div class="tab-nav-item-2">
+            美妆
+        </div>
+        <div class="tab-nav-item-3">
+            数码
+        </div>
+        <div class="tab-nav-item-4">
+            生活
+        </div>
+        <div class="tab-nav-item-5">
+            穿搭
+        </div>
+        <div class="tab-nav-item-6">
+            学习
+        </div>
+    </div>
+    <!--头部搜索带取消-->
+    <div class="header-nav-with-cancel">
+        <div class="search-input">
+            <div class="search-icon">
+            </div>
+            <div class="search">
+                <input class="to-search" placeholder="日本进口面膜" type="text">
+                </input>
+            </div>
+        </div>
+        <div class="cancel">
+            取消
+        </div>
+    </div>
+    <!--新品推荐-->
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            新品推荐
+        </div>
+    </div>
+    <!--新品推荐 图标在右-->
+    <div class="header-nav-recommend-icon-right">
+        <div class="recommend">
+            新品推荐
+        </div>
+        <div class="nav-icon">
+        </div>
+    </div>
+    <!--搜索带返回-->
+    <div class="header-nav-search-back">
+        <div class="nav-icon">
+        </div>
+        <div class="search-input">
+            <div class="search-icon">
+            </div>
+            <div class="search">
+                <input class="to-search" placeholder="音响" type="text">
+                </input>
+            </div>
+        </div>
+    </div>
+    <!--唯一搜索-->
+    <div class="header-nav-only-search">
+        <div class="search-input">
+            <div class="search-icon">
+            </div>
+            <div class="search">
+                <input class="to-search" placeholder="从这里出发你会发现更多" type="text">
+                </input>
+            </div>
+        </div>
+    </div>
+    <!--商品分类切换标签-->
+    <div class="goods-tab-nav">
+        <div class="tab-nav-item-1">
+            萌宅小物
+        </div>
+        <div class="tab-nav-item-2">
+            抱枕
+        </div>
+        <div class="tab-nav-item-3">
+            公仔
+        </div>
+        <div class="tab-nav-item-4">
+            手机壳
+        </div>
+        <div class="tab-nav-item-5">
+            鼠标垫
+        </div>
+    </div>
+    <!--生活-->
+    <div class="header-nav-life">
+        <div class="nav-icon">
+        </div>
+        <div class="title">
+            生活
+        </div>
+        <div class="right-nav-icon">
+        </div>
+    </div>
+    <!--购物袋-->
+    <div class="header-nav-buy-bag">
+        <div class="left-nav-icon">
+        </div>
+        <div class="title">
+            购物袋
+        </div>
+        <div class="cancel">
+            取消
+        </div>
+    </div>
+    <!-- 订单分类-->
+    <div class="order-tab-nav">
+        <div class="tab-nav-item-1">
+            全部
+        </div>
+        <div class="tab-nav-item-2">
+            待付款
+        </div>
+        <div class="tab-nav-item-3">
+            待发货
+        </div>
+        <div class="tab-nav-item-4">
+            待收货
+        </div>
+        <div class="tab-nav-item-5">
+            待评价
+        </div>
+    </div>
+    <!--商品列表展示-->
+    <div class="goods-show">
+        <div class="goods-item">
+            <div class="goods-picture">
+                1
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="goods-item">
+            <div class="goods-picture">
+                2
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+    </div>
+    <!--商品列表展示-->
+    <div class="goods-show">
+        <div class="goods-item">
+            <div class="goods-picture">
+                3
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="goods-item">
+            <div class="goods-picture">
+                4
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+    </div>
+    <!--新品推荐 图标在右-->
+    <div class="header-nav-recommend-icon-right">
+        <div class="recommend">
+            新品推荐
+        </div>
+        <div class="nav-icon">
+        </div>
+    </div>
+    <!--新品推荐-商品列表展示-->
+    <div class="new-goods-show">
+        <div class="goods-item">
+            <div class="goods-picture">
+                1
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="goods-item">
+            <div class="goods-picture">
+                1
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="goods-item">
+            <div class="goods-picture">
+                1
+            </div>
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+    </div>
+    <!--新品推荐 图标在右-->
+    <div class="header-nav-recommend-icon-right">
+        <div class="recommend">
+            人气推荐
+        </div>
+        <div class="nav-icon">
+        </div>
+    </div>
+    <!--人气推荐-商品列表展示-->
+    <div class="poplar-goods-show">
+        <div class="goods-picture">
+            1
+        </div>
+        <div class="goods-details">
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="icon-nav">
+        </div>
+    </div>
+    <div class="poplar-goods-show">
+        <div class="goods-picture">
+            1
+        </div>
+        <div class="goods-details">
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="icon-nav">
+        </div>
+    </div>
+    <div class="poplar-goods-show">
+        <div class="goods-picture">
+            1
+        </div>
+        <div class="goods-details">
+            <div class="goods-title">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="sub-heading">
+                这里是商品标题,这里是商品标题，这里是商品标题
+            </div>
+            <div class="goods-price">
+                ￥34822
+            </div>
+        </div>
+        <div class="icon-nav">
+        </div>
+    </div>
+    <!--限时购-->
+    <div class="collective-buying">
+        <!--z左边区域-->
+        <div class="left-area">
+            <!--限时购区域-->
+            <div class="limited-area">
+                <!--标题-->
+                <div class="title">
+                    Yuki限时购
+                </div>
+                <!--时间区域-->
+                <div class="time-area">
+                    <!--时-->
+                    <div class="h">
+                        23
+                    </div>
+                    <span class="separator">
+                            :
+                        </span>
+                    <!--分-->
+                    <div class="m">
+                        45
+                    </div>
+                    <span class="separator">
+                            :
+                        </span>
+                    <!--秒-->
+                    <div class="s">
+                        34
+                    </div>
+                </div>
+                <!-- 图片展示区域 -->
+                <div class="show-goods-picture">
+                </div>
+            </div>
+        </div>
+        <!-- 右边的区域 -->
+        <div class="right-area">
+            <!-- 往期精选 -->
+            <div class="phase-to-select">
+                <div class="title">
+                    往期精选
+                </div>
+                <div class="goods-show">
+                    <div class="goods-item">
+                    </div>
+                    <div class="goods-item">
+                    </div>
+                </div>
+                <!-- <div class="goods-item"></div> -->
+            </div>
+            <!-- 折扣专区 -->
+            <div class="discount-zone">
+                <div class="title">
+                    折扣专区
+                </div>
+                <div class="goods-show">
+                    <div class="goods-item">
+                    </div>
+                    <div class="goods-item">
+                    </div>
+                </div>
+                <!-- <div class="goods-item"></div> -->
+            </div>
+        </div>
+    </div>
+    <!-- 福利仓2级分类 导航栏-->
+    <div class="warehouse-second-level">
+        <div class="type-one">
+            <span class="tag-name">
+                    人气
+                </span>
+        </div>
+        <div class="type-two">
+            <span class="tag-name">
+                    价格
+                </span>
+            <div class="icon">
+            </div>
+        </div>
+        <div class="type-three">
+            <span class="tag-name">
+                    宝马
+                </span>
+        </div>
+    </div>
+    <!-- 福利仓2级分类弹出框 -->
+    <div class="popupBox-warehouse">
+        <div class="popupBoxBody" id="popupBoxBody" >
+            <div class="price-range-tilte">
+                价格
+            </div>
+            <div class="price-range">
+                <div class="low-price">
+                    <input class="price-value" placeholder="最低价格" type="text">
+                </div>
+                <div class="inline-line">1</div>
+                <div class="high-price">
+                    <input class="price-value" placeholder="最高价格" type="text">
+                </div>
+            </div>
+            <div class="trademark-tilte">
+                品牌
+            </div>
+            <div id="wrap">
+                <div class="tag-group" id="tag-group">
+                    <div class="tag-item"><span class="tag-text">宝马</span></div>
+                    <div class="tag-item"><span class="tag-text">奥迪</span></div>
+                    <div class="tag-item"><span class="tag-text">奔驰</span></div>
+                    <div class="tag-item"><span class="tag-text">大众</span></div>
+                    <div class="tag-item"><span class="tag-text">丰田</span></div>
+                    <div class="tag-item"><span class="tag-text">本田</span></div>
+                    <div class="tag-item"><span class="tag-text">本田</span></div>
+                    <div class="tag-item"><span class="tag-text">本田</span></div>
+                    <div class="tag-item"><span class="tag-text">本田</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                    <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                </div>
+            </div>
+            <div class="popupBox-closeBtn"></div>
+            <div class="control-button-group">
+                <div class="popupBox-reset">重置</div>
+                <div class="popupBox-ensureBtn">确定</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto.js"></script>
+    <script src="js/touch.js"></script>
+    <script src="js/iscroll.js"></script>
+</body>
+<script type="text/javascript">
+var myScroll;
+        Zepto(function ($) {
+            myScroll = new IScroll('#wrap');
+        $('.popupBox-closeBtn').tap(function () {
+            console.log(1);
+            $(this).parents('.popupBox-warehouse').hide();
+        });
+    });
+
+
+</script>
+
+</html>

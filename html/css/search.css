@@ -1,0 +1,88 @@
+.header-nav {
+  height: 0.88rem;
+}
+
+.header-nav .searchCancel {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #4595E5;
+  text-align: left;
+}
+
+.search .search-box {
+  width: 6.86rem;
+  margin: 0.3rem 0.32rem;
+}
+
+.search .search-box .search-box-row1 {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 0.3rem;
+}
+
+.search .search-box .search-box-row1 .historySearch-row1-left {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+}
+
+.search .search-box .search-box-row1 .historySearch-row1-deleteBtn {
+  width: 0.48rem;
+  height: 0.48rem;
+}
+
+.search .search-box .historySearch-row2 {
+  -webkit-box-lines: multiple;
+  box-lines: multiple;
+  flex-wrap: -webkit-wrap;
+  flex-wrap: -ms-wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 7.18rem;
+  margin-left: -0.32rem;
+}
+
+.search .search-box .historySearch-row2 .historySearch-row2-keywords {
+  height: 0.48rem;
+  font-size: 0.26rem;
+  line-height: 0.48rem;
+  color: #666;
+  text-align: left;
+  padding: 0 0.16rem;
+  border: 0.01rem solid #808080;
+  border-radius: 0.06rem;
+  margin-left: 0.32rem;
+  margin-bottom: 0.32rem;
+}

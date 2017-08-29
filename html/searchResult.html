@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/searchResult.css">
+    <title>搜索</title>
+</head>
+
+<body>
+<header style="z-index: 99">
+    <div class="header-nav">
+        <div class="nav-icon back"></div>
+        <div class="search-input">
+            <div class="search-icon"></div>
+            <div class="search">
+                <input class="to-search" type="text" value="日本进口面膜">
+            </div>
+        </div>
+        <div class="searchCancel">搜索</div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <script id="SearchResultInit-tpl" type="text/x-dot-template">
+        {{?it.state=='success' }}
+        {{?it.goodBeanList.length == 0}}
+        <div class="no-goods"><img src="img/nogoods.png"/>您搜索的商品还未上架</div>
+        {{??}}
+        {{~it.goodBeanList :item :index}}
+        <div class="goods-item" data-goodId="{{= item.goodId}}">
+            <div class="goods-picture">
+                <img src="{{= item.goodPicUrl}}"  class="goods-img">
+            </div>
+            <div class="goods-title">
+                {{= item.goodName}}
+            </div>
+            <div class="goods-price">
+                ￥{{= item.goodMinPrice/100}}
+            </div>
+        </div>
+        {{~}}
+        {{?}}
+        {{?}}
+    </script>
+
+    <div class="searchResult">
+        <div class="goods-show" id="SearchResultInit">
+
+        </div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/searchResult.js"></script>
+</body>
+
+</html>

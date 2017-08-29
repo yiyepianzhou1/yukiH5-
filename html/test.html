@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport">
+    <title>阴影遮罩</title>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <style>
+        body{
+            padding:0px;
+            margin:0px;
+        }
+        #back1{
+            z-index: 99999;
+            display: block;
+            background: rgba(0, 0, 0, 0.498039);
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .one{
+            height:100px;
+            width:100%;
+            text-align: center;
+            background-color:#fff;
+            position:absolute;
+            bottom:0px;
+            display:none;
+            position: absolute;
+            bottom: 0;
+            z-index: 9999999;
+        }
+        .one span{
+            font-size:24px;
+            display: inline-block;
+            height:30px;
+            width:30px;
+            position: absolute;
+            right: 18px;
+            top: 0px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="back1" style="display: none; top: 0px;"></div>
+<div class="one"><p>这是遮罩上面的一层</p>     <span class="xx">x</span></div>
+<div>阴影遮罩下面的页面</div>
+<br /><br /><br /><br /><br /><br />
+<div style="height:500px;width:200px;border:1px solid red;"></div>
+<div>阴影遮罩下面的页面</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div class="bottom" style="position:fixed;bottom:0px;height:50px;width:100%;background-color:#ccc;line-height: 50px; text-align: center;">点我出现遮罩</div>
+<script type="text/javascript">
+ script取页面上移的距离
+    function getScrollTop(){
+        var scrollTop=0;
+        if(document.documentElement&&document.documentElement.scrollTop){
+            scrollTop=document.documentElement.scrollTop;
+        }else if(document.body){
+            scrollTop=document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+    $(".bottom").on("click",function(){
+        $("#back1").css("top",getScrollTop()+'px');
+        $("#back1").show();
+        $(".one").css("bottom",-getScrollTop()+'px');
+        $(".one").show();
+        $("body").css("overflow","hidden");
+    });
+    $(".xx").on("click",function(){
+        $("#back1").hide();
+        $(".one").hide();
+        $("body").css("overflow","auto");
+    });
+</script>
+</body>
+</html>

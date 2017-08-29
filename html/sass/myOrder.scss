@@ -1,0 +1,109 @@
+@import "functions";
+
+body{
+  background: #f0f0f0;
+}
+.myOrder{
+  .orderList{
+    width: 100%;
+    .orderListChild{
+      width: 100%;
+      .orderListChild-title{
+        @include rectangleSize(750px - 64px,80px);
+        padding: 0 32px;
+        background: #ffffff;
+        @include justify-content(row,space-between);
+        align-items: center;
+        .orderNumber{
+          @include fontStyle(26px,26px,#333);
+        }
+        .orderState{
+          @include fontStyle(28px,28px,#4595E5);
+        }
+      }
+      .orderListChild-info{
+        padding: 24px 32px;
+        background: #fafafa;
+        .orderListChild-infoBox{
+          @include justify-content(row,space-between);
+          align-items: center;
+          .myOrder-goodImg{
+            @include size(160px);
+          }
+          .myOrder-goodInfo{
+            width:750px - 64px - 160px - 32px;
+            .myOrder-goodName{
+              width: 100%;
+              @include fontStyle(28px,28px,#333);
+              @include textOverFlow();
+              margin-bottom: 16px;
+            }
+            .myOrder-goodStyle{
+              @include fontStyle(24px,24px,#999);
+              margin-bottom: 40px;
+            }
+            .myOrder-goodPrice-goodCount{
+              width: 100%;
+              @include justify-content(row,space-between);
+              .myOrder-goodPrice,.myOrder-goodCount{
+                @include fontStyle(32px,32px,#333);
+              }
+            }
+          }
+        }
+      }
+      .myOrder-total{
+        @include justify-content(row,flex-end);
+        align-items: center;
+        @include rectangleSize(750px - 64px,80px);
+        background: #ffffff;
+        border-bottom: 1px solid #E5E5E5;
+        padding: 0 32px;
+        span{
+          @include fontStyle(26px,26px,#333);
+        }
+        .myOrder-goodCount{
+          margin-right: 16px;
+        }
+        .myOrder-price{
+          color: #E54560 !important;
+        }
+      }
+      .orderListChild-button{
+        @include rectangleSize(750px - 64px,80px);
+        padding: 0 32px;
+        @include justify-content(row,flex-end);
+        align-items: center;
+        .orderListChild-button-pub{
+          @include rectangleSize(160px,52px);
+          font-size: 26px;
+          line-height: 56px;
+          text-align: center;
+          border-radius: 6px;
+        }
+        .orderListChild-button-gray{
+          border: 2px solid #999999;
+          color: #999999;
+          margin-right: 20px;
+        }
+        .orderListChild-button-blue{
+          border: 2px solid #4595e5;
+          color: #4595e5;
+        }
+      }
+    }
+  }
+}
+.orderList-null{
+  width: 300px;
+  margin:300px auto 0 auto;
+  .orderList-null-icon{
+    @include size(300px);
+    @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/icon_order@3x.png");
+  }
+  .orderList-null-title{
+    width: 100%;
+    margin-top: 20px;
+    @include fontStyle(28px,28px,#666,center);
+  }
+}

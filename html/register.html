@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/register.css">
+    <title>注册</title>
+</head>
+<body>
+<div class="header-nav-recommend">
+    <div class="nav-icon"></div>
+    <div class="recommend">注册</div>
+</div>
+<!-- 内容部分 -->
+<main>
+    <div class="number-input">
+        <input type="number" id="logIn-userName" placeholder="手机号" data-rule="tm" data-nullmsg="手机号不能为空" data-errmsg="请输入正确的手机号">
+        <div class="sendVerificationCode disabled">获取验证码</div>
+    </div>
+    <div class="verificationCode-input">
+        <input type="number" id="register-verificationCode-input" data-nullmsg="验证码不能为空" placeholder="请输入验证码">
+    </div>
+    <div class="btnBox">
+        <div id="register-next">下一步</div>
+    </div>
+</main>
+
+</body>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/availdate-v1.0.2.js"></script>
+<script src="js/register.js"></script>
+</html>

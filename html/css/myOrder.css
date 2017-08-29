@@ -1,0 +1,256 @@
+body {
+  background: #f0f0f0;
+}
+
+.myOrder .orderList {
+  width: 100%;
+}
+
+.myOrder .orderList .orderListChild {
+  width: 100%;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-title {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 0.8rem;
+  padding: 0 0.32rem;
+  background: #ffffff;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-title .orderNumber {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-title .orderState {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #4595E5;
+  text-align: left;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info {
+  padding: 0.24rem 0.32rem;
+  background: #fafafa;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodImg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo {
+  width: 4.94rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodName {
+  width: 100%;
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0.16rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodStyle {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #999;
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodPrice,
+.myOrder .orderList .orderListChild .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodCount {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #333;
+  text-align: left;
+}
+
+.myOrder .orderList .orderListChild .myOrder-total {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 0.8rem;
+  background: #ffffff;
+  border-bottom: 0.01rem solid #E5E5E5;
+  padding: 0 0.32rem;
+}
+
+.myOrder .orderList .orderListChild .myOrder-total span {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.myOrder .orderList .orderListChild .myOrder-total .myOrder-goodCount {
+  margin-right: 0.16rem;
+}
+
+.myOrder .orderList .orderListChild .myOrder-total .myOrder-price {
+  color: #E54560 !important;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-button {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 0.8rem;
+  padding: 0 0.32rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-button .orderListChild-button-pub {
+  width: 1.6rem;
+  height: 0.52rem;
+  font-size: 0.26rem;
+  line-height: 0.56rem;
+  text-align: center;
+  border-radius: 0.06rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-button .orderListChild-button-gray {
+  border: 0.02rem solid #999999;
+  color: #999999;
+  margin-right: 0.2rem;
+}
+
+.myOrder .orderList .orderListChild .orderListChild-button .orderListChild-button-blue {
+  border: 0.02rem solid #4595e5;
+  color: #4595e5;
+}
+
+.orderList-null {
+  width: 3rem;
+  margin: 3rem auto 0 auto;
+}
+
+.orderList-null .orderList-null-icon {
+  width: 3rem;
+  height: 3rem;
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/icon_order@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.orderList-null .orderList-null-title {
+  width: 100%;
+  margin-top: 0.2rem;
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #666;
+  text-align: center;
+}

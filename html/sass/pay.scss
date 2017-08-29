@@ -1,0 +1,127 @@
+@import "functions";
+
+.header-nav-recommend{
+  border-bottom: 1px solid #E5E5E5;
+}
+html{
+  background: #f0f0f0;
+}
+.pay{
+  .orderInfo{
+    background: #fff;
+    .orderInfo-needPay{
+      @include rectangleSize(750px - 64px,100px);
+      margin: 0 32px;
+      @include fontStyle(34px,100px,#333);
+      border-bottom: 1px dashed #E5E5E5;
+    }
+    .orderInfo-state{
+      width: 750px - 64px;
+      padding: 32px;
+      @include justify-content(row,space-between);
+      .orderInfo-state-left{
+        @include size(100px);
+        margin-right: 32px;
+        .successSubOrder{
+          @include size(100%);
+        }
+      }
+      .orderInfo-state-right{
+        width: 5.5rem;
+        .orderInfo-state-right-row1{
+          @include fontStyle(34px,34px,#333);
+          margin-bottom: 24px;
+        }
+        .orderInfo-state-right-row2{
+          @include fontStyle(24px,24px,#666);
+          margin-bottom: 15px;
+        }
+        .orderInfo-state-right-row3{
+          @include fontStyle(24px,24px,#666);
+          margin-bottom: 32px;
+        }
+      }
+    }
+    .orderInfo-orderInfo{
+      width: 750px - 64px - 48px;
+      margin: 0 32px 32px 32px;
+      padding: 24px;
+      background: #fafafa;
+      .orderInfo-orderInfo-row1{
+        @include fontStyle(24px,36px,#666);
+      }
+      .orderInfo-orderInfo-row2{
+        .addressInfo-row1{
+          @include fontStyle(24px,36px,#666);
+        }
+        .addressInfo-row2{
+          padding-left: 120px;
+          @include fontStyle(24px,36px,#666);
+        }
+      }
+      .orderInfo-orderInfo-row3{
+        @include fontStyle(24px,36px,#666);
+        @include justify-content(row,space-between);
+        span{
+          &:first-child{
+            width: 1.7rem;
+          }
+        }
+      }
+  }
+  .payment{
+      width: 750px;
+      background: #f0f0f0;
+      .chose-payment{
+        padding: 20px 32px 0 32px;
+        @include fontStyle(28px,68px,#333);
+      }
+      .aliPay,.weChartPay{
+        @include rectangleSize(750px - 64px, 110px);
+        padding: 0 32px;
+        border-bottom: 1px solid #E5E5E5;
+        @include justify-content(row,space-between);
+        align-items: center;
+        background: #fff;
+        .aliPay-left,.weChartPay-left{
+          @include align-items(row);
+          justify-content: space-between;
+          img{
+            @include size(62px);
+            margin-right: 25px;
+          }
+          span{
+            @include fontStyle(28px,28px,#333);
+          }
+        }
+        .rightBtn{
+          @include size(40px);
+        }
+      }
+    }
+}
+}
+.button-addNewAddress-box {
+  @include rectangleSize(100%, 120px);
+  @include justify-content(row);
+  align-items: center;
+  background: rgba(240, 240, 240, .96);
+  position: fixed;
+  bottom: 0;
+  .button-addNewAddress {
+    width: 100%;
+    margin: 0 32px;
+    @include justify-content(row);
+    align-items: center;
+    background: #4595e5;
+    height: 80px;
+    border-radius: 6px;
+    .add-icon {
+      @include size(32px);
+      margin-right: 16px;
+    }
+    .button-addNewAddress-word {
+      @include fontStyle(28px, 28px, #fff);
+    }
+  }
+}

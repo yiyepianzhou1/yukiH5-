@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js">-->
+    <!--</script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/goodList.css">
+    <title>
+        商品列表
+    </title>
+</head>
+
+<body>
+<div id="goodList"></div>
+<script id="goodList-tpl" type="text/x-dot-template">
+    <!--新品推荐-->
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            {{= it.typeBean.typeName}}
+        </div>
+    </div>
+    <!-- 福利仓2级分类 导航栏-->
+    <div class="warehouse-second-level">
+        <div class="type-one">
+            <span class="tag-name">
+                    人气
+                </span>
+        </div>
+        <div class="type-two">
+            <span class="tag-name">
+                    价格
+                </span>
+            <div class="icon">
+            </div>
+        </div>
+        <div class="type-three">
+            <span class="tag-name">
+                    宝马
+                </span>
+        </div>
+    </div>
+    <!--商品列表展示-->
+    <div class="goods-show">
+        {{~ it.goodBeanList :value}}
+        <div class="goods-item" data-goodId="{{= value.goodId}}">
+            <div class="goods-picture">
+                <img src="{{= value.goodPicUrl}}" alt="" style="width: 100%;height: 100%;">
+            </div>
+            <div class="goods-title">
+                {{= value.goodName}}
+            </div>
+            <div class="goods-price">
+                ￥{{= value.goodMinPrice / 100}}
+            </div>
+        </div>
+        {{~}}
+    </div>
+</script>
+
+
+
+<!-- 福利仓2级分类弹出框 -->
+<!--<div class="popupBox-warehouse">
+    <div class="popupBoxBody" id="popupBoxBody" >
+        <div class="price-range-tilte">
+            价格
+        </div>
+        <div class="price-range">
+            <div class="low-price">
+                <input class="price-value" placeholder="最低价格" type="text">
+            </div>
+            <div class="inline-line">1</div>
+            <div class="high-price">
+                <input class="price-value" placeholder="最高价格" type="text">
+            </div>
+        </div>
+        <div class="trademark-tilte">
+            品牌
+        </div>
+        <div id="wrap">
+            <div class="tag-group" id="tag-group">
+                <div class="tag-item"><span class="tag-text">宝马</span></div>
+                <div class="tag-item"><span class="tag-text">奥迪</span></div>
+                <div class="tag-item"><span class="tag-text">奔驰</span></div>
+                <div class="tag-item"><span class="tag-text">大众</span></div>
+                <div class="tag-item"><span class="tag-text">丰田</span></div>
+                <div class="tag-item"><span class="tag-text">本田</span></div>
+                <div class="tag-item"><span class="tag-text">本田</span></div>
+                <div class="tag-item"><span class="tag-text">本田</span></div>
+                <div class="tag-item"><span class="tag-text">本田</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+                <div class="tag-item"><span class="tag-text">保时捷</span></div>
+            </div>
+        </div>
+        <div class="popupBox-closeBtn"></div>
+        <div class="control-button-group">
+            <div class="popupBox-reset">重置</div>
+            <div class="popupBox-ensureBtn">确定</div>
+        </div>
+    </div>
+</div>-->
+<script src="js/zepto.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/doT.js"></script>
+<script src="js/iscroll.js"></script>
+</body>
+<!--<script type="text/javascript">
+    var myScroll;
+    Zepto(function ($) {
+        myScroll = new IScroll('#wrap');
+        $('.popupBox-closeBtn').tap(function () {
+            console.log(1);
+            $(this).parents('.popupBox-warehouse').hide();
+        });
+    });
+</script>-->
+<script>
+    Zepto(function ($) {
+        var posturl = location.href;
+        var url = posturl.split("=");
+        var urlId = "";
+        var id = "";
+        if(url.indexOf("&") == -1){
+            urlId = url[1].split("&");
+            id = urlId[0];
+            console.log(id);
+        }else{
+            id = url[1];
+            console.log(id);
+        }
+        var typeOneId = null;
+        if(window.localStorage.typeOneId == undefined){
+            typeOneId = 1;
+        }else{
+            typeOneId = window.localStorage.typeOneId;
+        }
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            url:"http://192.168.0.178:8084/h5/h5good/goodList",
+            data:{
+                oneLevelTypeId:typeOneId,
+                twoLevelTypeId:id,
+                index:0,
+                size:99999
+            },success:function (date) {
+                console.log(date);
+                var pagefn = doT.template($('#goodList-tpl').text(), undefined);
+                showListOverride('#goodList', date.data, pagefn, true);
+                $(".goods-show").on("touchend",".goods-item",function () {
+                    window.location.href = "goodDetail.html?goodId="+$(this).attr("data-goodid");
+                });
+                $(".header-nav-recommend").on("touchend",".nav-icon",function () {
+                    window.history.back(-1);
+                })
+            }
+        });
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+    })
+</script>
+</html>

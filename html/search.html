@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/search.css">
+    <title>搜索</title>
+</head>
+
+<body>
+<header>
+    <div class="header-nav">
+        <div class="search-input">
+            <div class="search-icon"></div>
+            <div class="search">
+                <input class="to-search" type="text" value="日本进口面膜">
+            </div>
+        </div>
+        <div class="searchCancel">搜索</div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+
+    <script id="searchList-tpl" type="text/x-dot-template">
+        {{?it.state=='success' }}
+        {{~it.searchLogList :item :index}}
+        <div class="historySearch-row2-keywords" data-goodsname="{{= item.keyWord}}">{{= item.keyWord}}</div>
+        {{~}}
+        {{?}}
+    </script>
+
+    <script id="historySearch-tpl" type="text/x-dot-template">
+        {{?it.name.length == 0}}
+        {{??}}
+        <div class="search-box-row1">
+            <div class="historySearch-row1-left">历史搜索</div>
+            <img src="img/warehouse/search_icon_clear@3x.png" class="historySearch-row1-deleteBtn">
+        </div>
+        <div class="historySearch-row2">
+            {{~it.name :item :index}}
+            <div class="historySearch-row2-keywords">{{= item.history}}</div>
+            {{~}}
+        </div>
+        {{?}}
+    </script>
+
+    <div class="search">
+        <!--历史搜索-->
+        <div class="historySearch search-box" id="historySearch">
+        </div>
+        <div class="hotSearch search-box" >
+            <div class="search-box-row1">
+                <div class="historySearch-row1-left">热门搜索</div>
+            </div>
+            <div class="historySearch-row2" id="searchList">
+            </div>
+        </div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/search.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/myCollect.css">
+    <title>我的收藏</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon"></div>
+        <div class="recommend">我的收藏</div>
+        <div class="head-edit">编辑</div>
+        <div class="head-cancel">取消</div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <div class="myCollect">
+        <div class="goods-show">
+        </div>
+    </div>
+    <div class="deleteAll">
+        <div class="deleteAll-left">
+            <img src="img/shopping-bag/common_icon_empty@3x.png" alt="" class="deleteAll-left-icon">
+            <div class="selectCount">已选(0)</div>
+        </div>
+        <div class="deleteAll-right">删除所有</div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script type="text/x-dot-template" id="goods-show-tpl">
+    {{~it.goodBeans :value:index}}
+    <div class="goods-item" data-goodId="{{= value.goodId}}">
+        <div class="goods-picture">
+            <img src="{{= value.goodPicUrl}}" alt="" class="goods-img">
+        </div>
+        <div class="goods-title">
+            {{= value.goodName}}
+        </div>
+        <div class="goods-price">
+            ￥{{= value.nowPrice / 100}}
+        </div>
+    </div>
+    {{~}}
+</script>
+<script>
+    Zepto(function ($) {
+        var storage=window.localStorage;
+        var usreid = window.localStorage.uid;
+        console.log( window.localStorage.uid);
+        isLoggedIn(usreid);
+        function isLoggedIn(usreid) {
+            usreid = window.localStorage.uid;
+            console.log(usreid);
+            if( usreid == undefined){
+                storage.backUrl = location.href;
+                /*window.location.href = "logIn.html";*/
+            }else{
+                return false;
+            }
+        }
+        //验证登陆
+        //渲染模板
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            url:"http://192.168.0.178:8084/h5/h5collection/myCollection",
+            data:{
+                userId: usreid
+            },success:function (date) {
+                console.log(date);
+                var pagefn = doT.template($('#goods-show-tpl').text(), undefined);
+                showListAppend('.goods-show', date.data, pagefn, true);
+
+            },error:function () {
+                popBox("网络错误");
+            }
+        });
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(callback(data));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+        // 弹窗 ，2秒后消失
+        function popBox(msg) {
+            $('main').append(
+                '<div class="hintPopBox">\
+                <div class="hintPop">' + msg + '</div>\
+                </div>'
+            );
+            setTimeout(removePopBox, 2000);
+            function removePopBox() {
+                $('.hintPopBox').remove();
+            }
+        }
+        //点击编辑按钮
+        $(".head-edit").tap(function () {
+            $(this).hide();
+            $(".head-cancel").show();
+            $(".deleteAll").removeClass("slipDown").addClass("slipUp");
+            $(".goods-picture").each(function () {
+                $(this).append(
+                    '<img src="img/shopping-bag/common_icon_empty@3x.png" alt="" class="collectEdit">'
+                )
+            });
+            //点击选中按钮
+            $(".goods-picture").on("touchend",".collectEdit",function () {
+                if($(this).hasClass("choosed")){
+                    $(this).removeClass("choosed").attr("src","img/shopping-bag/common_icon_empty@3x.png");
+                }else{
+                    $(this).addClass("choosed").attr("src","img/shopping-bag/common_icon_chose@3x.png");
+                }
+                var choosedCount = $(".choosed").length;
+                var collectEditCount = $(".collectEdit").length;
+                if(choosedCount == collectEditCount){
+                    $(".deleteAll-left-icon").attr("src","img/shopping-bag/common_icon_chose@3x.png").addClass("addAll");
+                    $(".selectCount").text("已选("+choosedCount+")");
+                }else{
+                    $(".deleteAll-left-icon").attr("src","img/shopping-bag/common_icon_empty@3x.png").removeClass("addAll");
+                    $(".selectCount").text("已选("+choosedCount+")");
+                }
+            });
+        });
+        //全选按钮
+        $(".deleteAll-left").on("touchend",".deleteAll-left-icon",function () {
+            if($(".deleteAll-left-icon").hasClass("addAll")){
+                //全不选
+                $(".collectEdit").removeClass("choosed").attr("src","img/shopping-bag/common_icon_empty@3x.png");
+                $(this).removeClass("addAll").attr("src","img/shopping-bag/common_icon_empty@3x.png");
+            }else{
+                //全选
+                $(".collectEdit").addClass("choosed").attr("src","img/shopping-bag/common_icon_chose@3x.png");
+                $(this).addClass("addAll").attr("src","img/shopping-bag/common_icon_chose@3x.png");
+            }
+        });
+        //点击取消按钮
+        $(".header-nav-recommend").on("touchend",".head-cancel",function () {
+            $(this).hide();
+            $(".collectEdit").remove();
+            $(".head-edit").show();
+            $(".deleteAll").removeClass("slipUp").addClass("slipDown");
+        });
+        //删除选中商品
+        $(".deleteAll").on("touchend",".deleteAll-right",function () {
+            var goodIdList = null;
+            $(".choosed").parents(".goods-item").each(function () {
+                goodIdList += $(this).attr("data-goodid")+',';
+            });
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"http://192.168.0.178:8084/h5/h5collection/deleteCollection",
+                data:{
+                    goodId:goodIdLists,
+                    userId:usreid
+                },success:function (date) {
+                    if(date.data.state == "success"){
+                        popBox("删除成功");
+                        $(".choosed").parents(".goods-item").remove();
+                    }else{
+                        console.log(date);
+                    }
+                }
+            });
+        });
+        $(".header-nav-recommend").on("touchend",".nav-icon",function(){
+            window.history.go(-1);
+        });
+    });
+</script>
+<script>
+
+</script>
+</body>
+
+</html>

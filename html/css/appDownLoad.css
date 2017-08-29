@@ -1,0 +1,73 @@
+.appDownload {
+  width: 7.5rem;
+  max-width: 7.5rem;
+  margin: 0 auto;
+}
+
+.appDownload .appDownload-box {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 7.5rem;
+  height: 10.49rem;
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/appPhoneBg.png") no-repeat;
+  background-size: 100%;
+}
+
+.appDownload .appDownload-box .appIcon1 {
+  width: 2.14rem;
+  height: 2.14rem;
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/appLogo.png") no-repeat;
+  background-size: 100%;
+  margin: 1.2rem auto 0.5rem auto;
+}
+
+.appDownload .appDownload-box .appInfo {
+  width: 100%;
+  font-size: 0.34rem;
+  line-height: 0.34rem;
+  color: #333;
+  text-align: center;
+}
+
+.appDownload .buttonBox {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+.appDownload .buttonBox .appDownLoadBtn {
+  width: 4.8rem;
+  height: 0.88rem;
+  border-radius: 0.06rem;
+  background: #1565C0;
+  font-size: 0.34rem;
+  line-height: 0.88rem;
+  color: #fff;
+  text-align: center;
+  margin: 0.76rem auto 0 auto;
+}

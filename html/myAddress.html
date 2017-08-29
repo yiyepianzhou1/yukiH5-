@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/myAddress.css">
+    <title>地址管理</title>
+</head>
+<body>
+<header>
+    <div class="header-nav-recommend">
+        <div class="nav-icon"></div>
+        <div class="recommend">地址管理</div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <script id="addressList-tpl" type="text/x-dot-template">
+        {{?it.state=='success' }}
+        {{~it.adresses :item :index}}
+        <div class="addressList-child" data-addrid="{{= item.addrid}}">
+            <div class="addressList-child-item1">
+                <span class="addressList-name">{{= item.name}}</span><span
+                    class="addressList-phone">{{= item.phone}}</span>
+            </div>
+            <div class="addressList-child-item2">{{= item.address}}</div>
+            <div class="addressList-child-item3">
+                <div class="addressDefault">
+                    {{? item.isAvalible == "1"}}
+                    <img class="addressDefault-btn choosed" src="img/shopping-bag/common_icon_chose@3x.png" alt="">
+                    {{??}}
+                    <img class="addressDefault-btn" src="img/shopping-bag/common_icon_empty@3x.png" alt="">
+                    {{?}}
+                    <span class="addressDefault-title">设为默认地址</span>
+                </div>
+                <div class="addressDefault-right">
+                    <div class="addressDefault-editBtn addressDefault-right-btn">
+                        <img src="img/my/my_address_icon_edit@3x.png" alt=""
+                             class="addressDefault-editBtn-icon addressDefault-icon">
+                        <span class="addressDefault-editBtn-word addressDefault-word">编辑</span>
+                    </div>
+                    <div class="addressDefault-deleteBtn addressDefault-right-btn">
+                        <img src="img/my/my_address_icon_delete@3x.png" alt=""
+                             class="addressDefault-deleteBtn-icon addressDefault-icon">
+                        <span class="addressDefault-deleteBtn-word addressDefault-word">删除</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{~}}
+        {{?}}
+    </script>
+    <div class="myAddress">
+        <!--彩条背景-->
+        <div class="color-line"></div>
+        <div class="addressList" id="addressList">
+
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="button-addNewAddress-box">
+        <div class="button-addNewAddress"><img class="add-icon" src="img/my/my_address_icon_plus@3x.png" alt=""><span
+                class="button-addNewAddress-word">新增收货地址</span></div>
+    </div>
+</footer>
+<!--页脚导航-->
+<footer>
+</footer>
+<script src="js/zepto.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/yuki_base.js"></script>
+<script>
+    var pagefn = doT.template($('#addressList-tpl').html(), undefined);
+
+    /*初始化r页面*/
+    function MyAddressInit(err, data) {
+        if (err) {
+            console.log('Error', err);
+        }
+        if (data) {
+            console.log(data);
+            //            render
+            showListAppend('#addressList', data.data, pagefn, true);
+            /*监听修改地址*/
+            EditAdress();
+            /*监听删除地址*/
+            DeleteAddress();
+            //设为默认地址
+            $(".addressList-child-item3").on("tap", ".addressDefault", function () {
+                var adrid = $(this).parents(".addressList-child").attr("data-addrid");
+                var $this = this;
+                $.ajax({
+                    type:"post",
+                    url:"http://180.111.125.79:8084/h5/h5address/setDefault",
+                    dataType:"json",
+                    data:{
+                        adrid:adrid
+                    },success:function (date) {
+                        if(date.data.state == "success"){
+                            $($thiss).find(".addressDefault-btn").addClass("choosed").attr("src", "img/shopping-bag/common_icon_chose@3x.png");
+                            $(".addressDefault").not($this).find(".addressDefault-btn").removeClass("choosed").attr("src", "img/shopping-bag/common_icon_empty@3x.png");
+                        }
+                    }
+                });
+            });
+            //删除地址
+            $(".addressDefault-right").on("tap", ".addressDefault-deleteBtn", function () {
+                var adrid = $(this).parents(".addressList-child").attr("data-addrid");
+                $.ajax({
+                    type:"post",
+                    url:"http://180.111.125.79:8084/h5/h5address/deletUserAddress",
+                    dataType:"json",
+                    data:{
+                        adrid:adrid
+                    },success:function (date) {
+                        if(date.data.state == "success"){
+                            $(this).parents(".addressList-child").remove();
+                        }
+                    }
+                });
+            });
+            //新增地址
+            $(".button-addNewAddress-box").on("tap",".button-addNewAddress",function () {
+                if($(".addressList-child").length >= 5){
+                    popBox("body","地址数已达到上限");
+                }else{
+                    window.location.href = "address.html";
+                }
+            });
+            //选中地址，后退，传参
+            $(".addressList-child").on("tap",".addressList-child-item1,.addressList-child-item2",function () {
+                console.log(111);
+                window.localStorage.addrId = $(this).parent().attr("data-addrid");
+                window.location.href = window.localStorage.backUrl;
+            });
+        }
+    }
+    /*提示信息*/
+    function popBox(el, msg) {
+        console.log('msg' + msg);
+        $(el).append(
+            '<div class="hintPopBox">\
+            <div class="hintPop">' + msg + '</div>\
+                </div>'
+        );
+        setTimeout(removePopBox, 2000);
+        function removePopBox() {
+            $('.hintPopBox').remove();
+        }
+    }
+    /*初始化r页面*/
+    function Logs(err, data) {
+        if (err) {
+            console.log('Error', err);
+        }
+        if (data) {
+            console.log(data);
+            if(data.data.state == "success"){
+                location.reload();
+            }
+        }
+    }
+
+    /*编辑地址*/
+    function EditAdress() {
+        $('#addressList').find('.addressList-child').each(function (index) {
+            /*获取跳转到编辑页面里面需要的参数)
+ *
+ * key	参数类型	是否必须	参数解释
+ * userid	int	是	添加地址id
+ * adrName	string	是	收件人
+ * adrPhone	string	是	手机
+ * adrProvince	string	是	省
+ * adrCity	string	是	市
+ * adrDistrict	string	是	区
+ * adrDetail	string	是	详细地址
+ * isAvalible	int	是	设为默认传1
+*/
+            var adrid = $(this).attr('data-addrid');
+            console.log('adrid::'+adrid);
+            var adrName = $(this).find('.addressList-name').text();
+            console.log(adrName);
+            var adrPhone = $(this).find('.addressList-phone').text();
+            console.log(adrPhone);
+            var fullAddress = $(this).find('.addressList-child-item2').text().split(' ');
+            console.log(fullAddress);
+            var adrProvince = fullAddress[0];
+            console.log('省：' + adrProvince);
+            var adrCity = fullAddress[1];
+            console.log('市：' + adrCity);
+            var adrDistrict = fullAddress[2];
+            console.log('县：' + adrDistrict);
+            var adrDetail = fullAddress[3];
+            console.log('详细地址：' + adrDetail);
+            var isAvalible = 1;
+            var EditAction = {
+//                userid: userid,
+                adrid:adrid,
+                adrName: adrName,
+                adrPhone: adrPhone,
+                adrProvince: adrProvince,
+                adrCity: adrCity,
+                adrDistrict: adrDistrict,
+                adrDetail: adrDetail,
+                isAvalible: isAvalible
+            };
+
+            $(this).find('.addressDefault-editBtn ').on('touchend', function () {
+                //_Ajax('POST', 'http://222.95.116.88:8084/h5/h5address/editUserAddress', EditAction, Logs);
+                window.location.href = "address.html?addrId="+$(this).parents(".addressList-child").attr("data-addrid");
+            });
+        });
+
+    }
+
+    /*删除地址*/
+    function DeleteAddress() {
+        $('#addressList').find('.addressList-child').each(function (index) {
+            /*获取跳转到编辑页面里面需要的参数)
+             *
+             * key	参数类型	是否必须	参数解释
+            adrid	int	是	地址id
+
+            */
+            console.log($(this));
+            var adrid = $(this).attr('data-addrid');
+            console.log(adrid);
+            var isAvalible = 1;
+            var DelAction = {
+                adrid: adrid
+
+            };
+
+            $(this).find('.addressDefault-deleteBtn').on('touchend', function () {
+                _Ajax('POST', 'http://180.111.125.79:8084/h5/h5address/deletUserAddress', DelAction, Logs);
+
+            });
+        });
+    }
+
+    Zepto(function ($) {
+        $(".header-nav-recommend").on("touchend",".nav-icon",function(){
+            window.history.go(-1);
+        });
+        /*Ajax请求数据 调用callback*/
+        _Ajax('POST', 'http://180.111.125.79:8084/h5/h5address/getUserAddresses', {userid: window.localStorage.uid}, MyAddressInit);
+    });
+</script>
+<script>
+
+</script>
+</body>
+
+</html>

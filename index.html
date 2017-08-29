@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>yuki-backend</title>
+    <link rel="stylesheet" href="./css/yuki/backend/backend.css">
+</head>
+<body>
+<!--按钮样式-->
+<div class="yuki-button-large-primary">默认按钮</div>
+<!--字体图标-->
+<div class="yuki-icon-button-default">
+    <span></span>修改
+</div>
+<!--分页组件-->
+<div class="yuki-component-pagination">
+    <div class=" yuki-component-pagination previous">◀上一页</div>
+    <div class="yuki-component-pagination current-page">1</div>
+    <div class="yuki-component-pagination next">下一页▶</div>
+    <span class="yuki-component-pagination count">共999条</span>
+    <span class="yuki-component-pagination turn">转第</span>
+    <div class="yuki-component-pagination redirect">
+        <input class="redirect-value" type="text" title="">
+    </div>
+    <span class=" yuki-component-pagination page">页</span>
+    <div class="yuki-component-pagination ensure-redirect"></div>
+</div>
+<!--面包屑-->
+<div class="yuki-brand">
+    <div class="yuki-brand-crumbs"><a href="">首页</a> > <a href="">运营管理</a> > <a href="">友情链接管理</a></div>
+    <div class="yuki-brand-body">
+        <div class="yuki-brand-btnBox">
+            <div class="addBrand">新增友情链接</div>
+        </div>
+        <table class="yuki-brand-table">
+            <thead>
+            <tr>
+                <td>友情链接名称</td>
+                <td>链接地址</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>百度</td>
+                <td>https://www.baidu.com</td>
+                <td>
+                    <span class="yuki-brand-edit yuki-brand-btn"></span>
+                    <span class="yuki-brand-delete yuki-brand-btn"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="yuki-brand-pop">
+            <div class="yuki-brand-pop-title">添加友情链接</div>
+            <div class="yuki-brand-pop-search">
+                <div class="yuki-brand-pop-name yuki-brand-pop-searchBox">
+                    <div class="yuki-brand-pop-titleName">链接名称:</div>
+                    <input class="link-name" type="text" placeholder="请输入链接名称..."/>
+                </div>
+                <div class="yuki-brand-pop-name yuki-brand-pop-searchBox link-address-margin">
+                    <div class="yuki-brand-pop-titleName">链接地址:</div>
+                    <input class="link-address" type="text" placeholder="请输入链接地址..."/>
+                </div>
+            </div>
+            <div class="yuki-brand-pop-btn-box">
+                <div class="yuki-brand-pop-btn">
+                    <div class="yuki-brand-pop-ensure yuki-brand-popBtn">确定</div>
+                    <div class="yuki-brand-pop-cancel yuki-brand-popBtn">取消</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

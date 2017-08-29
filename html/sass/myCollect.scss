@@ -1,0 +1,88 @@
+@import "functions";
+
+body{
+  background: #f0f0f0;
+}
+.head-edit{
+  font-size: 34px;
+  color: #333;
+}
+.head-cancel{
+  display: none;
+  font-size: 34px;
+  color: #4595E5;
+}
+.myCollect{
+  .goods-show{
+    padding-top: 20px !important;
+    .goods-item{
+      border: 0;
+      .goods-picture{
+        border: 0;
+        position: relative;
+        .goods-img{
+          @include size(100%);
+        }
+        .collectEdit{
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          @include size(40px);
+        }
+      }
+    }
+  }
+}
+.deleteAll{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition:height .5s;
+  -moz-transition:height .5s; /* Firefox 4 */
+  -webkit-transition:height .5s; /* Safari and Chrome */
+  -o-transition:height .5s; /* Opera */
+  @include align-items(row,center);
+  background: #ffffff;
+  .deleteAll-left{
+    @include rectangleSize(750px - 228px,100%);
+    @include justify-content(row,flex);
+    align-items: center;
+    .deleteAll-left-icon{
+      @include size(40px);
+      margin-right: 32px;
+      margin-left: 32px;
+    }
+    .selectCount{
+      @include fontStyle(28px,28px,#333);
+    }
+  }
+  .deleteAll-right{
+    @include rectangleSize(228px,100%);
+    background: #4595E5;
+    @include fontStyle(28px,100px,#fff,center);
+  }
+}
+.slipUp{
+  height: 100px;
+}
+.slipDown{
+  height: 0;
+}
+.hintPopBox{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 960px;
+  z-index: -1;
+  @include justify-content(row,center);
+  .hintPop{
+    height: 48px;
+    padding: 0 18px;
+    background: rgba(0,0,0,.5);
+    @include fontStyle(26px,48px,#fff);
+    z-index: 2;
+    border-radius: 5px;
+  }
+}

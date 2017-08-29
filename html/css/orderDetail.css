@@ -1,0 +1,534 @@
+body {
+  background: #f0f0f0;
+}
+
+main {
+  margin-bottom: 1rem !important;
+}
+
+.orderDetail .orderDetail-orderState {
+  margin-bottom: 0.2rem;
+}
+
+.orderDetail .orderDetail-orderState .orderState-waiting {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 7.5rem;
+  height: 1.4rem;
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/my_orderdetail_bg@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.orderDetail .orderDetail-orderState .orderState-waiting .orderState-waiting-child {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #fff;
+  text-align: left;
+  margin-left: 0.32rem;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess {
+  width: 6.86rem;
+  height: 1.7rem;
+  padding: 0.4rem 0.32rem 0 0.32rem;
+  background: url("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/m.yuki/my_orderdetail_bg2@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess .orderState-dealSuccess-word {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #fff;
+  text-align: left;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess .orderState-dealSuccess-logisticsDetail {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-top: 0.27rem;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess .orderState-dealSuccess-logisticsDetail .orderState-dealSuccess-logisticsDetail-left {
+  font-size: 0.22rem;
+  line-height: 0.22rem;
+  color: #fff;
+  text-align: left;
+  width: 6.22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess .orderState-dealSuccess-logisticsDetail .orderState-dealSuccess-logisticsDetail-right {
+  width: 0.48rem;
+  height: 0.48rem;
+  background: url("../img/warehouse/common_icon_next@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.orderDetail .orderDetail-orderState .orderState-dealSuccess .orderState-dealSuccess-time {
+  font-size: 0.2rem;
+  line-height: 0.2rem;
+  color: #fff;
+  text-align: left;
+}
+
+.orderDetail .buyerInfo {
+  width: 6.86rem;
+  height: 0.98rem;
+  padding: 0.19rem 0.32rem 0 0.32rem;
+  background: #fff;
+  border-bottom: 0.01rem solid #E5E5E5;
+}
+
+.orderDetail .buyerMessage {
+  width: 6.86rem;
+  padding: 0.19rem 0.32rem 0.24rem 0.32rem;
+  background: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.orderDetail .buyerMessage .buyerInfo-column2Msg {
+  width: 6.5rem;
+  margin-top: 0.19rem;
+  margin-left: 0.36rem;
+  font-size: 0.26rem;
+  line-height: 0.4rem;
+  color: #333;
+  text-align: left;
+}
+
+.orderDetail .orderListChild-info {
+  padding: 0.24rem 0.32rem;
+  background: #FFFFFF;
+}
+
+.orderDetail .orderListChild-info:last-child {
+  margin-bottom: 0.2rem;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodImg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo {
+  width: 4.94rem;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodName {
+  width: 100%;
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0.16rem;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodStyle {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #999;
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodPrice,
+.orderDetail .orderListChild-info .orderListChild-infoBox .myOrder-goodInfo .myOrder-goodPrice-goodCount .myOrder-goodCount {
+  font-size: 0.32rem;
+  line-height: 0.32rem;
+  color: #333;
+  text-align: left;
+}
+
+.orderDetail .orderInfo {
+  width: 6.86rem;
+  padding: 0 0.32rem;
+  background: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.orderDetail .orderInfo .orderInfo-list {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 0.8rem;
+  border-bottom: 0.01rem solid #E5E5E5;
+}
+
+.orderDetail .orderInfo .orderInfo-list .orderInfo-list-left,
+.orderDetail .orderInfo .orderInfo-list .orderInfo-list-right {
+  font-size: 0.26rem;
+}
+
+.orderDetail .orderInfo .orderInfo-list .orderInfo-list-left-black {
+  color: #333;
+}
+
+.orderDetail .orderInfo .orderInfo-list .orderInfo-list-left-gray {
+  color: #999;
+}
+
+.orderDetail .orderInfo .orderInfo-list .orderInfo-list-left-red {
+  color: #E54560;
+}
+
+.orderDetail .orderTime-orderNumber {
+  -ms-flex-line-pack: center;
+  flex-line-pack: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 0.96rem;
+  padding: 0.24rem 0.32rem 0 0.32rem;
+  background: #FFFFFF;
+}
+
+.orderDetail .orderTime-orderNumber .orderTime {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 0.26rem;
+}
+
+.orderDetail .orderTime-orderNumber .orderNumber {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.orderDetail .preference {
+  width: 100%;
+  height: 0.96rem;
+  font-size: 0.32rem;
+  line-height: 0.96rem;
+  color: #333;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+.buyerInfo-column1 {
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 0.32rem;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-ro12 {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-ro12 .buyerInfo-column1-row1 {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.04rem;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-ro12 .buyerInfo-icon {
+  background: url("../img/my/my_orderdetail_icon_add@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-ro12 .buyerMessage-icon {
+  background: url("../img/my/my_orderdetail_icon_msg@3x.png") no-repeat;
+  background-size: 100%;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-ro12 .buyerInfo-column1-row2 {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.buyerInfo-column1 .buyerInfo-column1-row3 {
+  font-size: 0.26rem;
+  line-height: 0.26rem;
+  color: #333;
+  text-align: left;
+}
+
+.buyerInfo-column2 {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #999;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 6.5rem;
+  margin-top: 0.19rem;
+  margin-left: 0.36rem;
+}
+
+.buyerMessage-word {
+  font-size: 0.26rem !important;
+  line-height: 0.26rem !important;
+  color: #666 !important;
+}
+
+.order-footer {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 6.86rem;
+  height: 1rem;
+  padding: 0 0.32rem;
+  position: fixed;
+  bottom: 0;
+  background: rgba(247, 247, 247, 0.96);
+}
+
+.order-footer .order-footer-left {
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.order-footer .order-footer-left .order-footer-icon {
+  width: 0.48rem;
+  height: 0.48rem;
+  margin-right: 0.16rem;
+}
+
+.order-footer .order-footer-left .order-footer-left-world {
+  font-size: 0.26rem;
+  line-height: 0.28rem;
+  color: #333;
+  text-align: left;
+}
+
+.order-footer .order-footer-right {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.order-footer .order-footer-right .order-footer-right-price {
+  font-size: 0.26rem;
+  line-height: 0.28rem;
+  color: #e54560;
+  text-align: left;
+  margin-right: 0.2rem;
+}
+
+.order-footer .order-footer-right .order-btn {
+  width: 1.56rem;
+  height: 0.52rem;
+  border-radius: 0.06rem;
+  font-size: 0.26rem;
+  line-height: 0.52rem;
+  text-align: center;
+}
+
+.order-footer .order-footer-right .order-cancelBtn {
+  color: #666;
+  border: 0.02rem solid #999;
+  margin-right: 0.2rem;
+}
+
+.order-footer .order-footer-right .order-goBuyBtn {
+  color: #4595e5;
+  border: 0.02rem solid #4595e5;
+}

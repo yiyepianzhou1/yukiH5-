@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header_and_footer.css">
+    <title>底部和头部导航切换</title>
+</head>
+
+<body>
+<header>
+    <!--新品推荐-->
+    <div class="header-nav-recommend">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend">
+            新品推荐
+        </div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <div class="switch-content">
+        <div class="nav-index">1</div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+    <!--页脚导航-->
+    <div class="footer-bar">
+        <div class="footer-bar-item">
+            <div class="icon-1">
+            </div>
+            <span class="info-1">
+                    福利仓
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-2">
+            </div>
+            <span class="info-2">
+                    分类
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-3">
+            </div>
+            <span class="info-3">
+                    购物袋
+                </span>
+        </div>
+        <div class="footer-bar-item">
+            <div class="icon-4">
+            </div>
+            <span class="info-4">
+                    我的
+                </span>
+        </div>
+    </div>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script>
+    Zepto(function ($) {
+        randomFooterButton();
+    });
+    // 任意切换footer按钮样式
+    function randomFooterButton() {
+        //        默认背景图
+//        背景图
+        var buttonBgImgGroup = {
+            0: 'url("../img/tabbar_icon_home_p@3x.png")',
+            1: 'url("../img/tabbar_icon_column_p@3x.png") ',
+            2: 'url("../img/tabbar_icon_bag_p@3x.png") ',
+            3: 'url("../img/tabbar_icon_me_p@3x.png") '
+        };
+        //        切换   footer-bar
+        $('.footer-bar').children('.footer-bar-item').each(function (e) {
+            console.log(e);
+            var num = e;
+//             绑定事件
+            $(this).on('click', function (e) {
+                console.log(e);
+                var thisButton = $(this);
+//                激活的按钮
+                var thisActive = $('.footer-bar > .button-active');
+                console.log('.icon-' + num);
+//                激活的图标
+                var thisActiveIcon = $('.footer-bar').find('.icon-' + (num + 1));
+//                激活的文字
+                var thisActiveInfo = $('.footer-bar').find('.info-' + (num + 1)).text().trim();
+                initFooterButton();
+                $(thisActiveIcon).css({
+                    'backGround': buttonBgImgGroup[num]
+                });
+//                打印点击的图标
+                console.log(thisActiveIcon);
+                console.log('thisActiveInfo' + thisActiveInfo);
+//                移除active 文字 样式
+                $(thisActive).removeClass('button-active');
+//                恢复默认显示状态
+//                添加按钮样式
+//                添加按钮样式
+                $(thisButton).addClass('button-active');
+//                切换头部信息
+                randomHeader(thisActiveInfo);
+            });
+        })
+    }
+    // 初始化footer 按钮样式
+    function initFooterButton() {
+        var buttonPrimaryBgImgGroup = {
+            0: 'url("../img/tabbar_icon_home_n@3x.png")',
+            1: 'url("../img/tabbar_icon_column_n@3x.png") ',
+            2: 'url("../img/tabbar_icon_bag_n@3x.png") ',
+            3: 'url("../img/tabbar_icon_me_n@3x.png") '
+        };
+        $('.footer-bar').children('.footer-bar-item').each(function (e) {
+            var num = e;
+            console.log(e);
+//             icon 的数字比数组大 1
+            var thisActiveIcon = $('.footer-bar').find('.icon-' + (num + 1));
+            $(thisActiveIcon).css({
+                'backGround': buttonPrimaryBgImgGroup[num]
+            });
+        })
+    }
+    // 切换头部标签
+    function randomHeader(a) {
+        console.log('footer' + a);
+        var header = $('header');
+        console.log(header);
+        $(header).html(
+            "<div class=\"header-nav-recommend\">" +
+            "<div class=\"nav-icon\">" +
+            "</div>" +
+            "<div class=\"recommend\">" +
+            a +
+            "</div>" +
+            "</div>"
+        )
+    }
+</script>
+</body>
+</html>

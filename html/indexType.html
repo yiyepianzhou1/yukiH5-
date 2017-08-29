@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <!--<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js">-->
+    <!--</script>-->
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/goodList.css">
+    <title>
+        商品列表
+    </title>
+</head>
+
+<body>
+<div id="goodList">
+    <!--新品推荐-->
+    <div class="header-nav-recommend" style="background: #FFFFFF;">
+        <div class="nav-icon">
+        </div>
+        <div class="recommend"></div>
+    </div>
+</div>
+<script id="goodList-tpl" type="text/x-dot-template">
+    <!--商品列表展示-->
+    <div class="goods-show">
+        {{~ it :value}}
+        <div class="goods-item" data-goodId="{{= value.goodId}}">
+            <div class="goods-picture">
+                <img src="{{= value.goodPicUrl}}" alt="" style="width: 100%;height: 100%;">
+            </div>
+            <div class="goods-title">
+                {{= value.goodName}}
+            </div>
+            <div class="goods-price">
+                ￥{{= value.goodMinPrice / 100}}
+            </div>
+        </div>
+        {{~}}
+    </div>
+</script>
+<script src="js/zepto.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/doT.js"></script>
+<script>
+    Zepto(function ($) {
+        var posturl = location.href;
+        var url = posturl.split("=");
+        var urlId = "";
+        var isNew = "";
+        var pageIndex = 0;
+        var sendState = true;
+        if(url.indexOf("&") == -1){
+            urlId = url[1].split("&");
+            isNew = urlId[0];
+
+        }else{
+            isNew = url[1];
+        }
+        if(isNew == "true"){
+            console.log(111);
+            randerNewList(pageIndex);
+        }else{
+            console.log(222);
+            randerHotList(pageIndex);
+            scrollFrash();
+        }
+        //新品推荐
+        function randerNewList() {
+            console.log(111);
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"http://192.168.0.178:8084/h5/h5good/findNewGoodList",
+                success:function (date) {
+                    console.log(date);
+                    var pagefn1 = doT.template($('#goodList-tpl').text(), undefined);
+                    showListAppend('#goodList', date.data.newGoodBeanList, pagefn1, true);
+                    $(".goods-show").on("touchend",".goods-item",function () {
+                        window.location.href = "goodDetail.html?goodId="+$(this).attr("data-goodid");
+                    });
+                    $(".header-nav-recommend").on("touchend",".nav-icon",function () {
+                        window.history.back(-1);
+                    });
+                    $(".header-nav-recommend").find(".recommend").text("新品推荐");
+                    sendState = false;
+                },complete:function(){
+                    sendState =   true;
+                    console.log(sendState);
+                }
+            });
+        }
+        //人气推荐
+        function randerHotList(n) {
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"http://192.168.0.178:8084/h5/h5good/goodList",
+                data:{
+                    oneLevelTypeId:0,
+                    twoLevelTypeId:0,
+                    index:n,
+                    size:10
+                },success:function (date) {
+                    console.log(date);
+                    var pagefn = doT.template($('#goodList-tpl').text(), undefined);
+                    showListAppend('#goodList', date.data.goodBeanList, pagefn, true);
+                    $(".goods-show").on("touchend",".goods-item",function () {
+                        window.location.href = "goodDetail.html?goodId="+$(this).attr("data-goodid");
+                    });
+                    $(".header-nav-recommend").on("touchend",".nav-icon",function () {
+                        window.history.back(-1);
+                    });
+                    $(".header-nav-recommend").find(".recommend").text("人气推荐");
+                    sendState = false;
+                },complete:function(){
+                    sendState =   true;
+                    console.log(sendState);
+                }
+            });
+        }
+        function scrollFrash() {
+            var range = 50;
+            $(window).scroll(function(){
+                var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+                var scrollHeight = $(document).height();   //当前页面的总高度
+                var clientHeight = $(this).height();    //当前可视的页面高度
+                // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+                if(scrollTop + clientHeight >= (scrollHeight - range)){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 count++;         //每次滑动count加1
+                    console.log(sendState);
+                    if(sendState){
+                        pageIndex += 1;
+                        console.log(pageIndex);
+                        randerHotList(pageIndex);
+                    }
+
+                }
+            });
+        }
+        //        添加内容的方法
+        function showListAppend(el, data, callback, type) {
+            /* console.log(data); */
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).append(callback(data));
+            } else {
+                console.log('禁止渲染');
+                /* ? */
+            }
+        }
+
+        //        覆盖内容的方法
+        function showListOverride(el, data, callback, type) {
+            if (type) {
+                console.log(JSON.stringify(callback(data)));
+                $(el).html(callback(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

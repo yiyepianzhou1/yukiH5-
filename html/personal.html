@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/personal.css">
+    <title>个人中心</title>
+</head>
+<body>
+<!-- 内容部分 -->
+<main>
+    <div class="personal">
+        <div class="outLogin">退出</div>
+        <div class="personal-head" id="personal-head">
+            <div class="personal-avatar-box">
+                <img src="./img/my/my_avatar_def@3x.png" alt="">
+            </div>
+            <div class="personal-userName-box">请登录</div>
+        </div>
+        <div class="personalBody">
+            <div class="add-address address">
+                <div class="left">
+                    <div class="text">我的订单</div>
+                </div>
+                <div class="right">
+                    <div class="right-icon"></div>
+                </div>
+            </div>
+            <!--  订单分类 -->
+            <div class="orderType" id="orderType" >
+                <div class="orderType-child" data-orderTypeId="1">
+                    <div class="orderType-iconBox">
+                        <img src="img/my/my_icon_payment@3x.png" alt="" class="orderType-icon">
+                    </div>
+                    <span class="orderType-name">待付款</span>
+                </div>
+                <div class="orderType-child" data-orderTypeId="2">
+                    <div class="orderType-iconBox">
+                        <img src="img/my/my_icon_wait@3x.png" alt="" class="orderType-icon">
+                    </div>
+                    <span class="orderType-name">待发货</span>
+                </div>
+                <div class="orderType-child" data-orderTypeId="3">
+                    <div class="orderType-iconBox">
+                        <img src="img/my/my_icon_send@3x.png" alt="" class="orderType-icon">
+                    </div>
+                    <span class="orderType-name">已发货</span>
+                </div>
+                <div class="orderType-child" data-orderTypeId="4">
+                    <div class="orderType-iconBox">
+                        <img src="img/my/my_icon_comment@3x.png" alt="" class="orderType-icon">
+                    </div>
+                    <span class="orderType-name">待评价</span>
+                </div>
+                <div class="orderType-child">
+                    <div class="orderType-iconBox">
+                        <img src="img/my/my_icon_aftermarket@3x.png" alt="" class="orderType-icon">
+                    </div>
+                    <span class="orderType-name">售后服务</span>
+                </div>
+            </div>
+        </div>
+        <aside></aside>
+        <div class="add-address myDiscount">
+            <div class="left">
+                <div class="discount-icon"></div>
+                <div class="text">我的优惠券</div>
+            </div>
+            <div class="right">
+                <div class="right-icon"></div>
+            </div>
+        </div>
+        <aside></aside>
+        <div class="add-address myCollect">
+            <div class="left">
+                <div class="myCollect-icon"></div>
+                <div class="text">我的收藏</div>
+            </div>
+            <div class="right">
+                <div class="right-icon"></div>
+            </div>
+        </div>
+        <div class="add-address myAddress">
+            <div class="left">
+                <div class="myAddress-icon"></div>
+                <div class="text">我的地址</div>
+            </div>
+            <div class="right">
+                <div class="right-icon"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="footer-bar">
+        <div class="footer-bar-item" data-src="index.html">
+            <img class="icon-1 icon" src="img/tabbar_icon_home_n@3x.png" alt="">
+            <span class="info-1 info">福利仓</span>
+        </div>
+        <div class="footer-bar-item" data-src="goodType.html">
+            <img class="icon-2 icon" src="img/tabbar_icon_column_n@3x.png" alt="">
+            <span class="info-2 info">分类</span>
+        </div>
+        <div class="footer-bar-item" data-src="shoppingBag.html">
+            <img class="icon-3 icon" src="img/tabbar_icon_bag_n@3x.png" alt="">
+            <span class="info-3 info">购物袋</span>
+        </div>
+        <div class="footer-bar-item" data-src="personal.html">
+            <img class="icon-4 icon" src="img/tabbar_icon_me_n@3x.png" alt="">
+            <span class="info-4 info">我的</span>
+        </div>
+    </div>
+</footer>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/doT.min.js"></script>
+<script id="personal-head-tpl" type="text/x-dot-template">
+    <div class="personal-avatar-box">
+        {{?it.user.userAvatar}}
+        <img src="{{= it.user.userAvatar}}" alt="">
+        {{?? }}
+        <img src="./img/my/my_avatar_def@3x.png" alt="">
+        {{?}}
+    </div>
+    {{?it.user.userNickName == "" }}
+    <div class="personal-userName-box">{{= it.user.userPhone}}</div>
+    {{??}}
+    <div class="personal-userName-null">{{= it.user.userNickName}}</div>
+    {{?}}
+</script>
+<script id="orderType-tpl" type="text/x-dot-template">
+    <div class="orderType-child" data-orderTypeId="1">
+        <div class="orderType-iconBox">
+            <img src="img/my/my_icon_payment@3x.png" alt="" class="orderType-icon">
+            {{? it.user.waitPayOrderCount > 0}}
+            <div class="badge">{{=it.user.waitPayOrderCount}}</div>
+            {{?}}
+        </div>
+        <span class="orderType-name">待付款</span>
+    </div>
+    <div class="orderType-child" data-orderTypeId="2">
+        <div class="orderType-iconBox">
+            <img src="img/my/my_icon_wait@3x.png" alt="" class="orderType-icon">
+            {{?it.user.waitSendOrderCount != 0 }}
+            <div class="badge">{{=it.user.waitSendOrderCount}}</div>
+            {{?}}
+        </div>
+        <span class="orderType-name">待发货</span>
+    </div>
+    <div class="orderType-child" data-orderTypeId="3">
+        <div class="orderType-iconBox">
+            <img src="img/my/my_icon_send@3x.png" alt="" class="orderType-icon">
+            {{?it.user.waitReceiveOrderCount != 0 }}
+            <div class="badge">{{=it.user.waitReceiveOrderCount}}</div>
+            {{?}}
+        </div>
+        <span class="orderType-name">已发货</span>
+    </div>
+    <div class="orderType-child" data-orderTypeId="4">
+        <div class="orderType-iconBox">
+            <img src="img/my/my_icon_comment@3x.png" alt="" class="orderType-icon">
+            {{?it.user.waitCommentOrderCount != 0 }}
+            <div class="badge">{{=it.user.waitCommentOrderCount}}</div>
+            {{?}}
+        </div>
+        <span class="orderType-name">待评价</span>
+    </div>
+    <div class="orderType-child">
+        <div class="orderType-iconBox">
+            <img src="img/my/my_icon_aftermarket@3x.png" alt="" class="orderType-icon">
+        </div>
+        <span class="orderType-name">售后服务</span>
+    </div>
+
+</script>
+<script>
+    Zepto(function ($) {
+        var storage=window.localStorage;
+        var userId = storage.uid;
+        console.log(userId);
+        //验证是否登录
+        function isLoggedIn(userId) {
+            if( userId == "undefined"){
+                $(".personal-avatar-box").on("touchend","img",function () {
+                    window.location.href = "logIn.html";
+                });
+                return false;
+            }else{
+                $(".outLogin").show();
+                randerPresonal(userId);
+                console.log(11);
+            }
+        }
+        isLoggedIn(userId);
+        function randerPresonal(userId){
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                url:"http://192.168.0.178:8084/h5/h5MyInfo/getUserInfo",
+                data:{
+                    userId:userId
+                },success:function (date) {
+                    console.log(date);
+                    $("#orderType").empty();
+                    var pagefn = doT.template($('#personal-head-tpl').text(), undefined);
+                    showListOverride('#personal-head', date.data, pagefn, true);
+                    var pagefn2 = doT.template($('#orderType-tpl').text(), undefined);
+                    showListAppend('#orderType', date.data, pagefn2, true);
+                    //如果没有昵称，给手机号打码
+                    //mosaicOnNumber(".personal-userName-null");
+                }
+            });
+            //        添加内容的方法
+            function showListAppend(el, data, callback, type) {
+                /* console.log(data); */
+                if (type) {
+                    console.log(callback(data));
+                    $(el).append(callback(data));
+                } else {
+                    console.log('禁止渲染');
+                    /* ? */
+                }
+            }
+
+            //        覆盖内容的方法
+            function showListOverride(el, data, callback, type) {
+                if (type) {
+                    console.log(JSON.stringify(callback(data)));
+                    $(el).html(callback(data));
+                } else {
+                    console.log('禁止渲染');
+                }
+            }
+        }
+        //给手机号打码
+        function mosaicOnNumber(el) {
+            var $el = $(el);
+            var phoneNumber = $el.text();
+            var midNumber = phoneNumber.slice(3,7);//?
+            var numberArray = phoneNumber.split(midNumber);//?
+            var newPhoneNumber = numberArray[0]+"****"+numberArray[1];
+            $el.text(newPhoneNumber);
+        }
+        $(".address").on("touchend",function () {
+            if( userId == undefined){
+                window.localStorage.backUrl = location.href;
+                window.location.href = "logIn.html";
+            }else{
+                window.localStorage.backUrl = location.href;
+                window.location.href = "myOrder.html?orderTypeId=0";
+            }
+        });
+        $(".orderType").on("touchend",".orderType-child",function () {
+            if( userId == undefined){
+                window.localStorage.backUrl = location.href;
+                window.location.href = "logIn.html";
+            }else{
+                window.localStorage.backUrl = location.href;
+                window.location.href = "myOrder.html?orderTypeId=" + $(this).attr("data-orderTypeId");
+            }
+
+        });
+        $(".personal").on("touchend",".myCollect",function () {
+            if( userId == undefined){
+                window.localStorage.backUrl = location.href;
+                window.location.href = "logIn.html";
+            }else{
+                window.localStorage.backUrl = location.href;
+                window.location.href = "myCollect.html";
+            }
+
+        });
+        $(".personal").on("tap",".myAddress",function () {
+            if( userId == undefined){
+                window.location.href = "logIn.html";
+            }else{
+                window.localStorage.backUrl = location.href;
+                window.location.href = "myAddress.html";
+            }
+        });
+        //
+        $(".personal").on("tap",".myDiscount",function () {
+            window.location.href = "appDownLoad.html";
+        });
+        $(".personal").on("tap",".outLogin",function () {
+            window.localStorage.uid = undefined;
+            location.reload();
+        });
+        // 切换footer tab
+        $('.footer-bar-item').on("touchend	",function () {
+            $(this).find('.info').addClass('info-1-blue');
+            $('.footer-bar-item').not(this).find('.info').removeClass('info-1-blue');
+            var src = $(this).find('.icon').attr('src');
+            var str = 'n@3x';
+            var strBlue = 'p@3x';
+            var srcBlue = src.replace(str, strBlue);
+            $(this).find('.icon').attr('src', srcBlue);
+            $('.footer-bar-item').not(this).find('.icon').each(function () {
+                var otherSrc = $(this).attr('src');
+                var srcDefalut = otherSrc.replace(strBlue, str);
+                $(this).attr('src', srcDefalut);
+            });
+            console.log($(this).attr("data-src"));
+            if($(this).attr("data-src") == "shoppingBag.html"){
+                if( userId == undefined){
+                    window.localStorage.backUrl = location.href;
+                    window.location.href = "logIn.html";
+                }else{
+                    window.location.href = $(this).attr("data-src");
+                }
+            }else{
+                window.location.href = $(this).attr("data-src");
+            }
+        });
+    });
+</script>
+</body>
+</html>

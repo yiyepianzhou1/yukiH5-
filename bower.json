@@ -1,0 +1,24 @@
+{
+  "name": "trying",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "xiaomiwujiecao <1410200695@qq.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/SwiftAndGo/YUKI-Backend-UI",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zeptojs": "^1.2.0",
+    "jquery-touchslider": "*",
+    "jquery": "^3.2.1",
+    "swiper": "^3.4.2"
+  }
+}

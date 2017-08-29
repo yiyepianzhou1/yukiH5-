@@ -1,0 +1,547 @@
+@charset "utf-8";
+/*init*/
+body,
+div,
+ul,
+li,
+input,
+p,
+span,
+a,
+img,
+header,
+aside,
+nav,
+section,
+h2 {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  /*Firefox3.5+*/
+  -webkit-box-sizing: border-box;
+  /*Safari3.2+*/
+  -o-box-sizing: border-box;
+  /*Opera9.6*/
+  -ms-box-sizing: border-box;
+  /*IE8*/
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Hiragino Sans GB', 'Microsoft Yahei', "WenQuanYi Micro Hei", SimSun, Tahoma, Arial, Helvetica, STHeiti;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+// content
+$init-size: 100px;
+@mixin icon($width:18,$height:18) {
+  width: $width+px;
+  height: $height+px;
+}
+
+@mixin button($height,$border-color:#333333,$bg-color:#43db7c,$font-color:#ffffff,$hover:#43db7c) {
+  height: $height+px;
+  border-radius: 6px;
+  border: 1px solid $border-color;
+  background-color: $bg-color;
+  color: $font-color;
+  text-align: center;
+  line-height: $height+px;
+  padding: 0 $init-size*0.3;
+  display: inline-block;
+  vertical-align: top;
+  &:hover {
+    background-color: $hover;
+  }
+  @content
+}
+
+@mixin icon-button-default($bg1:"http://img0.imgtn.bdimg.com/it/u=3804783751,581297715&fm=26&gp=0.jpg",$bg2:"http://img3.imgtn.bdimg.com/it/u=1637191855,1579546862&fm=26&gp=0.jpg") {
+  line-height: 0.34*$init-size;
+  width: 0.88*$init-size;
+  height: 0.34*$init-size;
+  background-color: #efefef;
+  color: #848484;
+  border: 1px solid #D2D2D2;
+  border-radius: 6px;
+  &:hover {
+    background-color: #F6FAFF;
+    border: 1px solid #97C5FF;
+    color: #97C5FF;
+    span {
+      background: url($bg2) no-repeat;
+      background-size: 100%;
+    }
+  }
+  span {
+    vertical-align: top;
+    $picture-size: 24;
+    @include icon($picture-size, $picture-size);
+    background: url($bg1) no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    margin: (0.34 * $init-size - $picture-size)/2 (0.34 * $init-size - $picture-size);
+    //vertical-align:;
+  }
+}
+
+.backend {
+
+}
+
+/*颜色部分*/
+// 主色 橙色
+.yuki-color-primary {
+  color: #f2921c;
+}
+
+// 主色 淡绿
+.yuki-color-light-green {
+  color: #43db7c;
+}
+
+/*assistant color*/
+// 辅色 淡蓝
+.yuki-color-light-blue {
+  color: #97c5ff;
+}
+
+// 辅色 透明蓝
+.yuki-color-transparent-blue {
+  color: #f6faff;
+  border:1px solid #dcedff;
+  box-shadow: 0 0 10px #dcedff;
+}
+
+// 辅色 淡红色
+.yuki-color-light-red {
+  color: #ff4d4d;
+}
+
+// 辅色 透明红
+.yuki-color-transparent-red {
+  color: #fff6f6;
+  border:1px solid #ffdcdc;
+  box-shadow: 0 0 10px #ffdcdc;
+}
+
+/*字体颜色*/
+.yuki-font-color-primary {
+  color: #333333;
+}
+
+// 星空灰
+.yuki-font-color-star-gray {
+  color: #787878;
+}
+
+// 烟灰色
+.yuki-font-smoke-gray {
+  color: #848484;
+}
+
+// 淡灰色
+.yuki-font-light-gray {
+  color: #d4d4d4;
+}
+
+// 透明灰
+.yuki-font-transparent-gray {
+  color: #fefefe;
+  border:1px solid #efefef;
+  box-shadow: 0 0 10px #efefef;
+}
+
+/*字体大小部分*/
+.yuki-font-size-primary {
+  font-size: 0.14*$init-size;
+}
+
+.yuki-font-size-small {
+  font-size: 0.12*$init-size;
+}
+
+.yuki-font-size-large {
+  font-size: 0.16*$init-size;
+}
+
+/*图标样式部分*/
+// 18 18
+.yuki-icon-18-18 {
+  @include icon();
+}
+
+// 18 22
+.yuki-icon-18-22 {
+  @include icon(18, 22);
+}
+
+// 16 16
+.yuki-icon-16-16 {
+  @include icon(16, 16);
+}
+
+// 24 24
+.yuki-icon-24-24 {
+  @include icon(24, 24);
+}
+
+// 22 22
+.yuki-icon-22-22 {
+  @include icon(22, 22);
+}
+
+// 14 14
+.yuki-icon-14-14 {
+  @include icon(14, 14);
+}
+
+/*按钮部分*/
+// 大按钮
+/*
+$height,
+$border-color:#333333,
+$bg-color:#43db7c,
+$font-color:#ffffff,
+$hover:#43db7c
+*/
+.yuki-button-large-primary {
+  @include button(34, #D2D2D2, #43db7c, #ffffff, $hover: #3ac76f)
+}
+
+// 中 按钮
+.yuki-button-middle-primary {
+  @include button(40, #d4d4d4, #f2921c, #ffffff, $hover: #f27c1c)
+}
+// 中 按钮 灰色
+.yuki-button-middle-gray {
+  @include button(40, #d4d4d4, #efefef, #848484, $hover: #E5E5E5)
+}
+
+.yuki-icon-button-default {
+  //   传递的参数 $bg1,$bg2
+  @include icon-button-default('../../../img/button_edit.png','../../../img/button_edit_click.png')
+}
+
+/*组件*/
+// 分页组件
+@mixin pagination($w,$h,$bc,$bgc) {
+  width: $w;
+  height: $h;
+  border: $bc;
+  background-color: $bgc;
+  display: inline-block;
+  line-height: $h;
+  text-align: center;
+  vertical-align: top;
+  //float: left;
+  @extend .yuki-font-size-primary;
+}
+
+.yuki-component-pagination {
+  text-align: center;
+  vertical-align: top;
+  //border: 1px solid #D2D2D2;
+  width: 100%;
+  height: 0.26*$init-size;
+  line-height: 0.26*$init-size;
+  //上一页
+  .previous {
+    //width:0.6*$init-size;
+    //height:0.26*$init-size;
+    //border: 1px solid #D2D2D2;
+    @include pagination(0.6*$init-size, 0.26*$init-size, 1px solid #D2D2D2, #efefefef);
+    background: #fffcf3;
+    border-color: #f7d35d;
+    cursor: pointer;
+
+  }
+  // 计数
+  .count{
+    @extend .yuki-font-size-primary;
+    color: #8d8d8d;
+    margin: 0 0.1*$init-size;
+  }
+  .turn{
+    @extend .count;
+  }
+  .page{
+    @extend .count;
+  }
+  //下一页
+  .next {
+    //width:0.6*$init-size;
+    //height:0.26*$init-size;
+    @include pagination(0.6*$init-size, 0.26*$init-size, 1px solid #D2D2D2, #efefefef);
+    background: #fffcf3;
+    border-color: #f7d35d;
+    cursor: pointer;
+  }
+  //当前页
+  .current-page {
+    @include pagination(0.26*$init-size, 0.26*$init-size, 1px solid #D2D2D2, #efefefef);
+    margin: 0 0.1*$init-size;
+    background: #f6bb73;
+    border-color: #f6bb73;
+  }
+  // 跳转到的页数
+  .redirect {
+    //width:0.3*$init-size;
+    //height:0.26*$init-size;
+    @include pagination(0.3*$init-size, 0.26*$init-size, 1px solid #D2D2D2, #efefefef);
+    .redirect-value {
+      border: 1px solid #D2D2D2;
+      width: 0.3*$init-size;
+      height: 0.26*$init-size;
+      background-color: #efefef;
+    }
+  }
+  // 确认跳转到的页数
+  .ensure-redirect {
+    //width:0.26*$init-size;
+    //height:0.26*$init-size;
+    @include pagination(0.3*$init-size, 0.26*$init-size, 1px solid #D2D2D2, #efefefef);
+    background:  url("../../../img/button_flip.png") no-repeat center;
+    background-size: 100%;
+    &:hover{
+      background:  url("../../../img/button_flip_click.png") no-repeat center;
+      background-size: 100%;
+    }
+    cursor: pointer;
+  }
+
+}
+
+//  友情链接部分
+$bgColor:#ffffff;
+$brand-crumbs-height:56px;
+$crumbs-font:14px;
+$brand-btnBox-height:34px;
+.yuki-brand{
+  width: 100%;
+  height: 100%;
+  background: $bgColor;
+}
+.yuki-brand-crumbs{
+  width: 100%;
+  padding: 0 30px;
+  height: $brand-crumbs-height;
+  line-height: $brand-crumbs-height;
+  font-size: $crumbs-font;
+  background: #fcfcfc;
+  color: #999;
+  a{
+    color: #999;
+    &:hover{
+      color: #6699cc;
+    }
+  }
+}
+.yuki-brand-body{
+  width: 100%;
+  padding: 20px 30px;
+  .yuki-brand-btnBox{
+    width: 100%;
+    height: $brand-btnBox-height;
+    margin-bottom: 20px;
+    .addBrand{
+      @extend .yuki-button-large-primary;
+      width: 156px;
+      height: $brand-btnBox-height;
+      border: 1px solid #d4d4d4;
+      outline: none;
+    }
+  }
+}
+$table-fontColor:#787878;
+.yuki-brand-table{
+  width: 100%;
+  tr,td{
+    border-bottom: 1px solid #E7E7E7;
+  }
+  thead tr{
+    background: #EFEFEF;
+    height: 40px;
+    color: $table-fontColor;
+    td{
+      text-align: center;
+    }
+  }
+  tbody tr td{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+.yuki-brand-edit,.yuki-brand-delete{
+  width: 24px;
+}
+@mixin bg($argument){
+  background: url($argument)no-repeat;
+  background-size: 100%;
+}
+.yuki-brand-delete{
+ @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/delete_default.png");
+  margin-left: 10px;
+  &:hover{
+    @include  bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/delete_hover.png");
+  }
+}
+.yuki-brand-edit{
+  @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/edit_default.png");
+  margin-left: 20px;
+  &:hover{
+    @include bg("http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukicomicNew/edit_hover.png");
+  }
+}
+$brand-btn-height:24px;
+.yuki-brand-btn{
+  height: $brand-btn-height;
+  line-height: $brand-btn-height;
+  color: $table-fontColor;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: top;
+  cursor:pointer;
+}
+.yuki-brand-relevance{
+  width: 74px;
+  background: #efefef;
+  &:hover{
+    color: #333;
+  }
+}
+/*弹窗*/
+// 弹窗的参数
+
+@mixin yuki-brand-pop-func($w,$h){
+  display: none;
+  width: $w;
+  height: $h;
+  position: absolute;
+  left: 50%;
+  margin-left: -$w / 2;
+  top: 50%;
+  margin-top: -$h / 2;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+}
+$brand-pop-width:429px;
+$brand-pop-height:282px;
+// 弹窗的头部高度
+$brand-pop-titleHeight:52px;
+.yuki-brand-pop {
+  @include yuki-brand-pop-func($brand-pop-width, $brand-pop-height);
+  .yuki-brand-pop-title {
+    width: 100%;
+    height: $brand-pop-titleHeight;
+    background: #F2921C;
+    font-size: 14px;
+    text-align: center;
+    line-height: $brand-pop-titleHeight;
+    color: #ffffff;
+  }
+  .yuki-brand-pop-search {
+    width: 100%;
+    padding: 30px 100px 20px 30px;
+    .link-address-margin {
+      margin-top: 20px;
+    }
+    .yuki-brand-pop-searchBox {
+      .yuki-brand-pop-titleName {
+        float: left;
+        height: 30px;
+      }
+      .link-name {
+        width: 194px;
+        height: 30px;
+      }
+      .link-address {
+        width: 260px;
+        height: 30px;
+        margin-right: -66px;
+      }
+
+      select, input {
+        height: 30px;
+        border: 1px solid #d9d9d9;
+        color: #333;
+        float: right;
+        option {
+          color: #333;
+        }
+      }
+      input {
+        width: 192px;
+        padding-left: 12px;
+        margin-left: 16px;
+      }
+      select {
+        width: 160px;
+        margin-left: 16px;
+      }
+      .yuki-brand-pop-titleName {
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+    .yuki-brand-pop-searchBtn {
+      width: 88px;
+      height: 30px;
+      border-radius: 4px;
+      background: #EFEFEF;
+      margin-right: 0;
+      color: #333;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+      .search-icon {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+.yuki-brand-pop-btn-box{
+  width: 100%;
+  height: 32px;
+  margin-top: 10px;
+  .yuki-brand-pop-btn{
+    width: 210px;
+    height: 100%;
+    margin: 0 auto;
+    .yuki-brand-popBtn{
+      float: left;
+      width: 90px;
+      height: 100%;
+      border-radius: 4px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .yuki-brand-pop-ensure{
+      background: #F2921C;
+      color: #ffffff;
+      margin-right: 30px;
+    }
+    .yuki-brand-pop-cancel{
+      background: #EFEFEF;
+      color: #000;
+    }
+  }
+}
+.yuki-brand-pop-name{
+  width: 282px;
+  margin: 0 auto;
+  height: 30px;
+}
+.yuki-brand-pop-type{
+  width: 254px;
+  margin: 25px auto 0 auto;
+  padding-right: 18px;
+  height: 30px;
+}
+

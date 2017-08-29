@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <script src="dist/bundle-aa8c8b8910.min.js"></script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/logIn.css">
+    <title>登录</title>
+</head>
+
+<body>
+<!-- 内容部分 -->
+<main>
+    <div class="logIn-logoBox">
+        <div class="logIn-logo"></div>
+    </div>
+    <div class="logIn-input">
+        <input type="number" id="logIn-userName" placeholder="手机号/邮箱" data-rule="tm" data-nullmsg="手机或固话不能为空" data-errmsg="请输入正确的手机/邮箱">
+    </div>
+    <div class="logIn-input">
+        <input type="password" id="logIn-passWorld" placeholder="密码" data-nullmsg="请输入密码" data-errmsg="密码长度6~16位,其中数字,字母和符号至少包含两种">
+    </div>
+    <div class="goToRegister-backPassWord">
+        <div class="goToRegister">立即注册</div>
+        <div class="backPassWord">忘记密码?</div>
+    </div>
+    <div class="logIn-btn">
+        <div class="logInBtn">登录</div>
+    </div>
+</main>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/availdate-v1.0.2.js"></script>
+<script src="js/logIn.js?time=6666"></script>
+</body>
+</html>

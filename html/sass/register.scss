@@ -1,0 +1,88 @@
+@import "functions";
+@import "index";
+html,body{
+  background: #F0F0F0;
+}
+.header-nav-recommend{
+  margin-bottom: -68px;
+  background: #fff;
+}
+main{
+  padding-left: 30px;
+  background: #ffffff;
+}
+.number-input{
+  height: 100px;
+  background: #fff;
+  padding-right: 30px;
+  border-bottom: 1px solid #E5E5E5;
+  @include justify-content(row,space-between);
+  align-items: center;
+  #logIn-userName,#register-password{
+    height: 60px;
+    @include fontStyle(28px,60px,#333);
+    &::-webkit-input-placeholder {
+      color: #ccc;
+    }
+  }
+  .sendVerificationCode{
+    @include rectangleSize(160px,56px);
+    border-radius: 6px;
+    background: #cccccc;
+    @include fontStyle(26px,56px,#fff);
+    text-align: center;
+  }
+}
+.verificationCode-input{
+  height: 100px;
+  background: #fff;
+  padding-right: 30px;
+  @include align-items(row);
+  #register-verificationCode-input,#register-rePassword{
+    height: 60px;
+    @include fontStyle(28px,60px,#333);
+    &::-webkit-input-placeholder {
+      color: #ccc;
+    }
+  }
+}
+.btnBox{
+  margin-left: -30px;
+  @include justify-content(row);
+  background: #F0F0F0;
+  padding: 40px 30px 0 30px;
+}
+#register-next{
+  @extend .button-primary;
+  width: 690px;
+  margin: 0;
+}
+.hintPopBox{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 960px;
+  z-index: -1;
+  @include justify-content(row,center);
+  .hintPop{
+    max-width: 600px;
+    height: 48px;
+    padding: 0 18px;
+    background: rgba(0,0,0,.5);
+    @include fontStyle(26px,48px,#fff);
+    z-index: 1;
+    border-radius: 5px;
+  }
+}
+.disabled {
+  pointer-events: none;
+}
+.newPass{
+  width: 100%;
+  height: 66px;
+  background: #F1F1F1;
+  @include fontStyle(26px,66px,#666);
+  padding-left: 30px;
+  margin-left: -30px;
+  border-top: 1px solid #F1F1F1;
+}

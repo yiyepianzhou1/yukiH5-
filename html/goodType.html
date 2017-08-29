@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/classification.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>福利仓</title>
+</head>
+<body>
+<header>
+    <div class="typeListPage">
+        <!--分类搜索-->
+        <div id="head-search"></div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <!--分类页-->
+    <div id="typeListPage"></div>
+</main>
+<!--页脚导航-->
+<footer>
+    <div class="footer-bar">
+        <div class="footer-bar-item" data-src="index.html">
+            <img class="icon-1 icon" src="img/tabbar_icon_home_n@3x.png" alt="">
+            <span class="info-1 info">福利仓</span>
+        </div>
+        <div class="footer-bar-item" data-src="goodType.html">
+            <img class="icon-2 icon" src="img/tabbar_icon_column_n@3x.png" alt="">
+            <span class="info-2 info">分类</span>
+        </div>
+        <div class="footer-bar-item" data-src="shoppingBag.html">
+            <img class="icon-3 icon" src="img/tabbar_icon_bag_n@3x.png" alt="">
+            <span class="info-3 info">购物袋</span>
+        </div>
+        <div class="footer-bar-item" data-src="personal.html">
+            <img class="icon-4 icon" src="img/tabbar_icon_me_n@3x.png" alt="">
+            <span class="info-4 info">我的</span>
+        </div>
+    </div>
+</footer>
+<!--分类页搜索-->
+<script id="head-search-tpl" type="text/x-dot-template">
+    <div class="header-nav-only-search">
+        <div class="search-input">
+            <div class="search-icon"></div>
+            <div class="search">
+                <input class="to-search" type="text" placeholder="从这里出发你会发现更多">
+            </div>
+        </div>
+    </div>
+</script>
+<!--一级分类-->
+<script id="typeListOne-tpl" type="text/x-dot-template">
+    <div class="content">
+        <div class="content-left">
+            {{~it.typeBeanList :value :index}}
+            <div class="classification-name" data-typeId="{{= value.typeId}}">{{= value.typeName}}</div>
+            {{~}}
+        </div>
+        <!--右面部分的内容-->
+        <div class="content-right">
+            <!--商品详情-->
+            <div class="goods-detail">
+                <!--一行商品的详情-->
+                <div class="goods-row" id="typeListTwo">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</script>
+<script id="typeListTwo-tpl" type="text/x-dot-template">
+    {{~it.typeBeanList :value :index}}
+    <div class="goods-item-1" data-typeId="{{= value.typeId}}">
+        <div class="good-item-picture">
+            <img src="{{= value.typePicUrl}}" alt="" style="width: 100%;height: 100%;">
+        </div>
+        <div class="good-item-text">{{= value.typeName}}</div>
+    </div>
+    {{~}}
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/goodType.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>doT.js Demo</title>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<script id="demo-doT-tpl" type="text/x-dot-template">
+    {{ for(var prop in it) { }}
+    <li>{{=prop}}</li>
+    {{ } }}
+</script>
+
+<ul id="content">
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+    <h1>asdasd</h1>
+    <h2>sadasd</h2>
+    <span>asdasd</span>
+
+    </body>
+    </html>
+</ul>
+<script src="js/zepto.min.js"></script>
+<script src="js/doT.min.js"></script>
+<script>
+    Zepto(function($){
+        var pagefn = doT.template($('#demo-doT-tpl').html(), undefined);
+//        添加内容的方法
+        function showListAppend(userList,data, type) {
+            if (type) {
+                console.log(JSON.stringify(pagefn(data)));
+                $(userList).append(pagefn(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+        //        覆盖内容的方法
+        function showListOverride(userList,data, type) {
+            if (type) {
+                console.log(JSON.stringify(pagefn(data)));
+                $(userList).html(pagefn(data));
+            } else {
+                console.log('禁止渲染');
+            }
+        }
+
+        var obj = {
+            a:'aaaa',
+            b:'bbbb',
+            c:'ccc',
+            d:'ddd',
+            e:'eeee',
+            f:'eeee'
+        };
+//调用
+        showListAppend($('#content'), obj, true);
+//        showListOverride($('#content'), obj, true);
+
+    })
+
+</script>
+</body>
+</html>

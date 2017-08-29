@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/iSlider.css"/>
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/classification.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>福利仓</title>
+</head>
+<body>
+<header>
+    <div class="indexPage">
+        <div class="header-nav">
+            <div class="header-nav-button-left">
+                <div class="icon-left"></div>
+                <span class="info-left">优惠券</span>
+            </div>
+            <div class="search-input">
+                <div class="search-icon"></div>
+                <div class="search">
+                    <input class="to-search" type="text" placeholder="日本进口面膜">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 内容部分 -->
+<main>
+    <!--首页-->
+    <div class="indexPage">
+        <div class="header-tab-nav" id="typeBeanList"></div>
+        <div class="banners">
+            <div id="iSlider-wrapper"></div>
+        </div>
+        <!--新品推荐 图标在右-->
+        <div class="header-nav-recommend-icon-right" data-isNew="true">
+            <div class="recommend">
+                新品推荐
+            </div>
+            <div class="nav-icon">
+            </div>
+        </div>
+        <!--新品推荐-商品列表展示-->
+        <div class="new-goods-show" id="newGoodBeanList"></div>
+        <aside></aside>
+
+        <!--人气推荐-商品列表展示-->
+        <div class="poplar-goods-show-container" id="popularGoodBeanList">
+
+        </div>
+
+        <!--商品列表展示-->
+        <div class="goods-show" id="guessGoodList"></div>
+    </div>
+</main>
+<!--页脚导航-->
+<footer>
+    <div class="footer-bar">
+        <div class="footer-bar-item" data-src="index.html">
+            <img class="icon-1 icon" src="img/tabbar_icon_home_n@3x.png" alt="">
+            <span class="info-1 info">福利仓</span>
+        </div>
+        <div class="footer-bar-item" data-src="goodType.html">
+            <img class="icon-2 icon" src="img/tabbar_icon_column_n@3x.png" alt="">
+            <span class="info-2 info">分类</span>
+        </div>
+        <div class="footer-bar-item" data-src="shoppingBag.html">
+            <img class="icon-3 icon" src="img/tabbar_icon_bag_n@3x.png" alt="">
+            <span class="info-3 info">购物袋</span>
+        </div>
+        <div class="footer-bar-item" data-src="personal.html">
+            <img class="icon-4 icon" src="img/tabbar_icon_me_n@3x.png" alt="">
+            <span class="info-4 info">我的</span>
+        </div>
+    </div>
+</footer>
+<!--人气推荐-->
+<script id="popularGoodBeanList-tpl" type="text/x-dot-template">
+    <!--新品推荐 图标在右-->
+    <div class="header-nav-recommend-icon-right" data-isNew="false">
+        <div class="recommend">
+            人气推荐
+        </div>
+        <div class="nav-icon">
+        </div>
+    </div>
+    {{~it.popularGoodBeanList :value:index}}
+    <div class="poplar-goods-show" data-goodId="{{= value.goodId}}">
+        <div class="goods-picture">
+            <img src="{{= value.goodPicUrl}}" alt="">
+        </div>
+        <div class="goods-details">
+            <div class="goods-title">
+                {{= value.goodName}}
+            </div>
+            <div class="sub-heading">
+                {{= value.goodSecondName}}
+            </div>
+            <div class="goods-price">
+                ￥{{= value.goodMinPrice/100}}
+            </div>
+        </div>
+        <div class="icon-nav">
+        </div>
+    </div>
+    {{~}}
+</script>
+<!--新品推荐-->
+<script id="newGoodBeanList-tpl" type="text/x-dot-template">
+
+    {{~it.newGoodBeanList :value:index}}
+    <div class="goods-item" data-goodId="{{= value.goodId}}">
+        <div class="goods-picture">
+            <img src="{{= value.goodPicUrl}}" alt="">
+        </div>
+        <div class="goods-title">
+            {{= value.goodName}}
+        </div>
+        <div class="sub-heading">
+            {{= value.goodSecondName}}
+        </div>
+        <div class="goods-price">
+            ￥{{= value.goodMinPrice/100 }}
+    </div>
+    </div>
+    {{~}}
+</script>
+<!--轮播图 home.sass-->
+<!--<script id="banners-tpl" type="text/x-dot-template">
+    <div id="iSlider-wrapper"></div>
+</script>-->
+<!--猜你喜欢-->
+<script id="guessGoodList-tpl" type="text/x-dot-template">
+    <!--猜你喜欢-->
+    <div class="preference">猜你喜欢</div>
+    {{~it.guessGoodList :value:index}}
+    <div class="goods-item" data-goodId="{{= value.goodId}}">
+        <div class="goods-picture">
+            <img src="{{= value.goodPicUrl}}" alt="">
+        </div>
+        <div class="goods-title">
+            {{= value.goodName}}
+    </div>
+        <div class="goods-price">
+            ￥{{= value.goodMinPrice/100}}
+        </div>
+    </div>
+    {{~}}
+</script>
+<!--猜你喜欢-->
+<script id="typeBeanList-tpl" type="text/x-dot-template">
+    {{~it.typeBeanList :value:index}}
+    <div class="tab-nav-item-{{= index+1}}">
+        {{= value.typeName}}
+    </div>
+    {{~}}
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/iSlider.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

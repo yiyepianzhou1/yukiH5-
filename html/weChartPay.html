@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <style>
+        #test{
+            width: 5rem;
+            height: 5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -2.5rem;
+            margin-left: -2.5rem;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+    <img src="" alt="">
+</div>
+<script src="js/zepto.js"></script>
+<script>
+    (function () {
+        var chainurl = window.localStorage.chainurl;
+        console.log(chainurl);
+        $("#test").find("img").attr("src",chainurl);
+        localStorage.removeItem('chainurl');
+    })()
+</script>
+</body>
+</html>

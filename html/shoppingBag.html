@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>我的购物袋</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <script>
+        (function () {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function () {
+                var screenWidth = docEl.clientWidth || window.screen.width || 360;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            window.addEventListener('resize', setRem, false);
+            setRem();
+        })();
+    </script>
+    <link rel="apple-touch-icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico">
+    <link rel="Shortcut Icon" href="http://yukicomic-pic.oss-cn-hangzhou.aliyuncs.com/yukiicon/favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/my-shopping-bag.css">
+</head>
+
+<body>
+
+<!--增加z-index属性，防止页面滚动出现header被遮挡,改变叠层顺序-->
+<header style="z-index: 99;">
+    <div class="header-nav-buy-bag">
+        <div class="left-nav-icon">
+        </div>
+        <div class="title">
+            购物袋
+        </div>
+        <div class="cancel to-edit">
+            编辑
+        </div>
+    </div>
+</header>
+
+<!-- 内容部分 -->
+<script id="goods-shopping-tpl" type="text/x-dot-template">
+    <main>
+        {{ if(it.cartBeanList.length == 0 ){ }}
+        <!--购物车为空的样式-->
+        <div class="emptyShoppingBag">
+            <!--图-->
+            <img src="img/shopping-bag/bag_icon_cat_empty@3x.png" alt="" class="emptyImage">
+            <!--提示-->
+            <span class="tips">要不去添点东西吧</span>
+        </div>
+
+        {{ } else { }}
+        <!--交易商品列表-->
+        <div class="orderGoodList">
+
+            {{ for(var item in it.cartBeanList){ }}
+            {{ if( it.cartBeanList[item].count === 0 ) { }}
+            <div class="orderListChild-info false" data-cartid="{{=it.cartBeanList[item].cartid}}"
+                 data-goodsid="{{=it.cartBeanList[item].goodid}}" data-skuid="{{=it.cartBeanList[item].skuid}}"
+                 data-skuStock="{{=it.cartBeanList[item].skuStock}}">
+                {{ } else { }}
+                <div class="orderListChild-info" data-cartid="{{=it.cartBeanList[item].cartid}}"
+                     data-goodsid="{{=it.cartBeanList[item].goodid}}" data-skuid="{{=it.cartBeanList[item].skuid}}"
+                     data-skuStock="{{=it.cartBeanList[item].skuStock}}">
+                    {{ } }}
+                    <div class="orderListChild-infoBox">
+                        <span class="selectIcon"></span>
+                        <img src="{{=it.cartBeanList[item].goodDetailPicUrl}}" class="myOrder-goodImg"/>
+                        <div class="myOrder-goodInfo">
+                            <div class="myOrder-goodName">{{=it.cartBeanList[item].goodName}}</div>
+                            <div class="myOrder-goodStyle">
+                                款式：{{=it.cartBeanList[item].valueText}}
+                            </div>
+
+                            <!--判断商品数量是否为0-->
+                            {{ if( it.cartBeanList[item].count === 0 ) { }}
+                            <span class="sold-out"></span>
+                            {{ } }}
+
+                            <div class="myOrder-goodPrice-goodCount">
+                                <div class="myOrder-goodPrice">￥<em class="myOrder-single-price">{{= it.cartBeanList[item].priceNow/100 }}</em>
+                                </div>
+                                <div class="pedding-buy-count">
+                                    <div class="button-left">
+                                        <div class="icon-nav">-</div>
+                                    </div>
+                                    <div class="count-input">
+                                        <input type="number" name="buy-count" value="{{=it.cartBeanList[item].count}}"
+                                               disabled>
+                                    </div>
+                                    <div class="button-right">
+                                        <div class="icon-nav">+</div>
+                                    </div>
+                                </div>
+                                <div class="myOrder-goodCount">x<em class="myOrder-goods-count">{{=it.cartBeanList[item].count}}</em>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {{ } }}
+            </div>
+
+            {{ } }}
+
+            <!--猜你喜欢-->
+            <div class="preference">猜你喜欢</div>
+
+            <!--商品列表展示-->
+            <div class="goods-show">
+                {{ for (item in it.guessGoodList) { }}
+                <div class="goods-item" data-goodsid="{{=it.guessGoodList[item].goodId}}">
+                    <div class="goods-picture">
+                        <img src="{{=it.guessGoodList[item].goodPicUrl}}"/>
+                    </div>
+                    <div class="goods-title">
+                        {{=it.guessGoodList[item].goodName }}
+                    </div>
+                    <div class="goods-price">
+                        ￥{{= it.guessGoodList[item].goodMinPrice/100 }}
+                    </div>
+                </div>
+                {{ } }}
+            </div>
+        </div>
+    </main>
+</script>
+<div class="goods-shopping" id="goods-shopping"></div>
+
+<!--弹出窗-->
+<script id="shopping-car-tpl" type="text/x-dot-template">
+    <div class="popupBoxBody"  style="z-index: 999; width: 100%; height:100%;">
+        <!-- 图片和说明 -->
+        <div class="goods-picture">
+            <div class="img"><img src="{{=it.goodDetailBean.goodPicUrl}}"></div>
+            <div class="text">
+                <div class="price">￥0</div>
+                <div class="selected-type">已选类型</div>
+            </div>
+        </div>
+        <!-- 类型 -->
+        <div class="propertyList">
+
+            <!--遍历 列表-->
+            {{~it.goodDetailBean.propertyList:p:index}}
+            <div class="goodDetailBean-item type" data-propertyid="{{= p.propertyid}}">
+                <div class="type-select-container">
+                    <div class="text" >
+                        {{= p.propertyName}}
+                    </div>
+                </div>
+                <!-- 选择文字 -->
+                <div class="pedding-select">
+                    <!--遍历valueList-->
+                    {{~p.valueList :list}}
+                    <div class="text-content" data-valueid="{{= list.valueid}}">
+                        {{= list.valueName}}
+                    </div>
+                    {{~}}
+                </div>
+            </div>
+            {{~}}
+
+        </div>
+
+        <!-- 数量提示-->
+        <div class="type-select-container">
+            <div class="text">
+                数量
+            </div>
+        </div>
+        <!-- 数量 -->
+        <div class="pedding-buy-count">
+            <div class="button-left">
+                <div class="icon-nav">-</div>
+            </div>
+            <div class="count-input">
+                <input type="number" name="buy-count" placeholder="1" value="1" disabled="disabled">
+            </div>
+            <div class="button-right">
+                <div class="icon-nav">+</div>
+            </div>
+            <!--库存-->
+            <div class="stored">
+                库存:
+            </div>
+        </div>
+
+        <div class="popupBox-closeBtn"></div>
+        <div class="popupBox-ensureBtn">确定</div>
+    </div>
+</script>
+<div class="shopping-car" id="shopping-car"></div>
+
+
+<!--阴影遮罩-->
+<div class="cover-decision" style="display: none"></div>
+
+<!--页脚导航-->
+<footer>
+    <!--已选购物车商品-->
+    <div class="goodsSelectedContainer">
+        <!--左边计数-->
+        <div class="leftCount">
+            <span class="selectedIcon"></span>
+            <div class="allCount">全选</div>
+        </div>
+        <!--右边结算-->
+        <div class="rightPrice">
+            <div class="totalPrice">￥<em class="total-number">0</em></div>
+            <div class="buy">结算</div>
+            <div class="delete">删除</div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/zepto.min.js"></script>
+<!--消除点击事件在移动端300ms延迟,消除事件穿透Bug-->
+<script src="js/fastclick.js"></script>
+<script src="js/doT.min.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/my-shopping-bag.js"></script>
+</body>
+</html>

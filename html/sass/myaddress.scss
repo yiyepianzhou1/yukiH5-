@@ -1,0 +1,112 @@
+@import "functions";
+
+body{
+  background: #f0f0f0;
+}
+.myAddress{
+  padding-bottom: 34px;
+  /*彩条背景*/
+  .color-line {
+    height: 10px;
+    background: url("../img/warehouse/color-line.png") no-repeat center center;
+    background-size: 100%;
+  }
+  /*地址列表*/
+  .addressList{
+    .addressList-child{
+      background: #F0F0F0;
+      padding-bottom: 20px;
+      .addressList-child-item1{
+        height: 72px;
+        @include justify-content(row,space-between);
+        align-items: center;
+        padding: 12px 32px 0 32px;
+        span{
+          @include fontStyle(32px,32px,#333);
+        }
+        background: #ffffff;
+      }
+      .addressList-child-item2{
+        @include fontStyle(26px,26px,#999);
+        @include textOverFlow();
+        padding:0 32px 32px 32px;
+        border-bottom: 1px solid #E5E5E5;
+        background: #ffffff;
+      }
+      .addressList-child-item3{
+        @include justify-content(row,space-between);
+        align-items: center;
+        height: 80px;
+        padding: 0 32px;
+        background: #ffffff;
+        .addressDefault{
+          @include justify-content(row,space-between);
+          align-items: center;
+          .addressDefault-btn{
+            @include size(40px);
+            margin-right: 16px;
+          }
+          .addressDefault-title{
+            @include fontStyle(26px,26px,#333);
+          }
+        }
+        .addressDefault-right{
+          @include align-items(row,center);
+          .addressDefault-right-btn{
+            @include align-items(row,center);
+            &:nth-child(1){
+              margin-right: 40px;
+            }
+            .addressDefault-icon{
+              @include size(32px);
+              margin-right: 16px;
+            }
+            .addressDefault-word{
+              @include fontStyle(26px,26px,#333);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.button-addNewAddress-box{
+  @include rectangleSize(100%,120px);
+  @include justify-content(row);
+  align-items: center;
+  background: rgba(240,240,240,.96);
+  position: fixed;
+  bottom: 0;
+  .button-addNewAddress{
+    width: 100%;
+    margin: 0 32px;
+    @include justify-content(row);
+    align-items: center;
+    background: #4595e5;
+    height: 80px;
+    border-radius: 6px;
+    .add-icon{
+      @include size(32px);
+      margin-right: 16px;
+    }
+    .button-addNewAddress-word{
+      @include fontStyle(28px,28px,#fff);
+    }
+  }
+}
+.hintPopBox{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 960px;
+  z-index: 1;
+  @include justify-content(row,center);
+  .hintPop{
+    height: 48px;
+    padding: 0 18px;
+    background: rgba(0,0,0,.5);
+    @include fontStyle(26px,48px,#fff);
+    z-index: 2;
+    border-radius: 5px;
+  }
+}
